@@ -1,4 +1,31 @@
-html,
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: "trebuchet ms";
+    src: url("/fonts/trebuchet ms.woff2") format("woff2");
+    font-weight: 400;
+    font-display: swap;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "arial";
+    src: url("/fonts/arial.woff") format("woff");
+    font-weight: 400;
+    font-display: swap;
+    font-style: normal;
+  }
+  .link {
+    @apply text-sm text-custom-gray3 underline hover:no-underline cursor-pointer;
+  }
+  .home-footer-link {
+    @apply text-[15px] text-custom-gray4 underline hover:no-underline cursor-pointer;
+  }
+}
+
+/* html,
 body {
   padding: 0;
   margin: 0;
@@ -23,4 +50,4 @@ a {
     color: white;
     background: black;
   }
-}
+} */
