@@ -41,6 +41,8 @@ function Locations() {
                                     .join("-")
                                     .split(".")
                                     .join("")
+                                    .split("'")
+                                    .join("")
                                     .toLowerCase()}
                                   passHref
                                 >

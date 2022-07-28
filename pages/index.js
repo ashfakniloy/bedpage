@@ -5,7 +5,7 @@ import Locations from "../components/Home/Locations";
 
 export default function Home() {
   return (
-    <div className="">
+    <div className="font-trebuchetMs">
       <Header />
       <Locations />
       <Description />

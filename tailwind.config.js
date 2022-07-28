@@ -23,7 +23,7 @@ module.exports = {
         "custom-gray3": "#686262",
         "custom-gray4": "#151f28",
         "custom-gray5": "#494444",
-        "custom-gray6": "#ebecec",
+        "custom-gray6": "#eaecec",
         "custom-red": "#bb0000",
         "custom-red2": "#c12525",
         "custom-red3": "#f44336",

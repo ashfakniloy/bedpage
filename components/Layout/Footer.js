@@ -2,8 +2,8 @@ import React from "react";
 
 function Footer() {
   return (
-    <div className="mt-10 pt-2 px-2 pb-3 bg-custom-gray6">
-      <div className="flex gap-1 ml-2 text-sm text-custom-red2">
+    <div className=" pt-2 px-2 pb-3 bg-custom-gray6">
+      <div className="flex gap-1 ml-2 text-sm text-custom-red2 underline">
         <p>Home</p>|<p>About us</p>|<p>My Account</p>|<p>Buy Credit</p>|
         <p>Contact</p>|<p>Privacy</p>|<p>Terms</p>
       </div>

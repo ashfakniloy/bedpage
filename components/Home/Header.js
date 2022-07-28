@@ -11,7 +11,7 @@ function Header() {
           <Image src="/images/logo.png" alt="logo" width={148} height={40} />
         </div>
         <div className="link">
-          <Link href="#">Login / Signup</Link>
+          <Link href="/login">Login / Signup</Link>
         </div>
       </div>
 
@@ -24,7 +24,7 @@ function Header() {
       <div className="flex justify-between items-start border-b-2 border-black">
         <p className="text-sm font-semibold text-black">Choose a location:</p>
         <p className="text-lg font-semibold text-custom-gray4 underline hover:no-underline">
-          <Link href="#">post ad</Link>
+          <Link href="/login">post ad</Link>
         </p>
       </div>
     </div>
