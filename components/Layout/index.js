@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Header from "./Header";
 import Footer from "./Footer";
+import Sidebar from "./Sidebar";
 
 function Layout({ children, pageDetails }) {
   // const { title, description, keywords } = pageDetails;

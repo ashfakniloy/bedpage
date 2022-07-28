@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Layout from "../components/Layout";
 
-function login() {
+function LoginPage() {
   return (
     <div className="h-screen bg-custom-gray6">
       <Layout>
@@ -36,4 +36,4 @@ function login() {
   );
 }
 
-export default login;
+export default LoginPage;
