@@ -10,12 +10,14 @@ function Sidebar({ showSidebar, setShowSidebar }) {
       <div className="fixed top-0 left-0 shadow-lg w-[150px]">
         <div className="bg-white h-screen ">
           <div className="flex justify-center">
-            <button
-              type="button"
-              className="my-4 bg-custom-gray4 px-7 text-white text-lg font-semibold underline rounded"
-            >
-              Post ad
-            </button>
+            <Link href="/login" passHref>
+              <button
+                type="button"
+                className="my-4 bg-custom-gray4 px-7 text-white text-lg font-semibold underline rounded"
+              >
+                Post ad
+              </button>
+            </Link>
           </div>
           <Link href="/" passHref>
             <div className="bg-custom-gray6 py-2 text-center text-[15px] underline font-semibold cursor-pointer">
