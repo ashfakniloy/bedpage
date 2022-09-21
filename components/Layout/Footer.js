@@ -1,20 +1,28 @@
-import React from "react";
-
 function Footer() {
   return (
-    <div className=" pt-2 px-2 pb-3 bg-custom-gray6">
-      <div className="flex gap-1 ml-2 text-sm text-custom-red2 underline">
-        <p>Home</p>|<p>About us</p>|<p>My Account</p>|<p>Buy Credit</p>|
-        <p>Contact</p>|<p>Privacy</p>|<p>Terms</p>
+    <div className="bg-custom-gray3 flex flex-col items-center gap-2 py-4">
+      <div className="flex gap-2">
+        <p className="cursor-pointer hover:underline">Home</p>|
+        <p className="cursor-pointer hover:underline">About us</p>|
+        <p className="cursor-pointer hover:underline">Contact </p>|
+        <p className="cursor-pointer hover:underline">Privacy </p>|
+        <p className="cursor-pointer hover:underline">Terms </p>
       </div>
-      <p className="mt-1 text-[10.6667px]">
-        bedpage.com is an interactive computer service that enables access by
-        multiple users and should not be treated as the publisher or speaker of
-        any information provided by another information content provider. &copy;
-        2020{" "}
-        <span className="text-custom-red2 underline cursor-pointer">
-          bedpage.com
-        </span>
+      <div className="flex gap-2">
+        <p className="cursor-pointer hover:underline">Alternative to Bedpage</p>
+        |
+        <p className="cursor-pointer hover:underline">
+          Website similiar to Bedpage
+        </p>
+        |
+        <p className="cursor-pointer hover:underline">
+          Best sites like Bedpage
+        </p>
+        |<p className="cursor-pointer hover:underline">Bedpage replacement</p>
+      </div>
+      <p className="text-[15px]">
+        &copy; 2022{" "}
+        <span className="cursor-pointer hover:underline">bedpage.cam</span>
       </p>
     </div>
   );

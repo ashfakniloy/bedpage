@@ -2,8 +2,8 @@ import React from "react";
 
 function Description() {
   return (
-    <div className="mt-8 mb-4 mx-2 px-3 py-5 bg-custom-gray2 border-2 border-gray-300 border-b-slate-700 space-y-3 text-[15px] rounded">
-      <h4 className="text-lg">
+    <div className="space-y-3 text-[15px] pb-7">
+      <h4 className="text-3xl font-medium pt-5">
         Are you a service provider looking for Backpage alternatives? Look no
         further than bedpage.cam!
       </h4>
@@ -31,7 +31,9 @@ function Description() {
         user interface with the added safety and security for its users that the
         original backpage was never able to provide.
       </p>
-      <h4 className="text-lg">A Reasonable Decision for Organizations</h4>
+      <h4 className="text-3xl font-medium pt-5">
+        A Reasonable Decision for Organizations
+      </h4>
       <p>
         Currently, many clients and sellers are quickly trying to find Backpage
         replacements and may have a limited time. Many websites are specifically
@@ -67,7 +69,9 @@ function Description() {
         websites. In addition to preventing dangerous and unsafe activity, this
         also eliminates spam and phony ads.
       </p>
-      <h4 className="text-lg ">How Bedpage Stands Out From the Crowd</h4>
+      <h4 className="text-3xl font-medium pt-5 ">
+        How Bedpage Stands Out From the Crowd
+      </h4>
       <p>
         Since its commencement, bed page has cemented itself as the best
         Backpage alternative, despite the fact that hundreds of competitors have
@@ -94,7 +98,9 @@ function Description() {
         occur on the web page. Bedpage does not tolerate unsafe activity or
         scams.
       </p>
-      <h4 className="text-lg">Advantages for Organizations</h4>
+      <h4 className="text-3xl font-medium pt-5">
+        Advantages for Organizations
+      </h4>
       <p>
         Bedpage.cam offers completely free classified ads for you or your
         organization. This is a wonderful way to advertise your services without
@@ -130,7 +136,7 @@ function Description() {
         Place an ad, contact a seller, make connections with like-minded
         individuals. Why wait?
       </p>
-      <h4 className="text-lg">Various Plans</h4>
+      <h4 className="text-3xl font-medium pt-5">Various Plans</h4>
       <p>
         Bedpage, the foremost Backpage substitution web page, has various plans
         that are taken into consideration based on their large, varying user
@@ -155,7 +161,9 @@ function Description() {
         amount of extra effort on the seller’s part can make a world of
         difference from the customer’s point of view.
       </p>
-      <h4 className="text-lg">Give the Purchasers Their Due</h4>
+      <h4 className="text-3xl font-medium pt-5">
+        Give the Purchasers Their Due
+      </h4>
       <p>
         By the time they reach Bedpage.cam, most customers probably already have
         an idea of what they are looking for when it comes to the adult
@@ -182,7 +190,7 @@ function Description() {
         important that they go through legitimate avenues like Bedpage to avoid
         becoming a victim.
       </p>
-      <h4 className="text-lg">Indicate Your Prerequisites</h4>
+      <h4 className="text-3xl font-medium pt-5">Indicate Your Prerequisites</h4>
       <p>
         As mentioned before, Bedpage has something for every customer, provided
         they are a legitimate, consenting adult. Some specific niches include:
@@ -266,7 +274,7 @@ function Description() {
         rectified as soon as possible. Your safety and security is important,
         and Bedpage knows this!
       </p>
-      <h4 className="text-lg">Overview</h4>
+      <h4 className="text-3xl font-medium pt-5">Overview</h4>
       <p>
         It is 2021, and it is high time that you or your business finds a
         better, safer, more secure Backpage alternative. Look no further,

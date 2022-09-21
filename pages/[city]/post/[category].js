@@ -13,8 +13,6 @@ function CategoryPage() {
     )
   );
 
-  console.log(result);
-
   return (
     <Layout>
       <div className="p-2">

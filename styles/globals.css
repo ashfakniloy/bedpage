@@ -3,6 +3,24 @@
 @tailwind utilities;
 
 @layer base {
+  html,
+  body {
+    @apply p-0 m-0 font-sans text-slate-100 bg-white;
+  }
+  .container {
+    @apply bg-custom-gray2 px-4;
+  }
+
+  /* .link {
+    @apply underline hover:no-underline cursor-pointer;
+  } */
+}
+
+/* body {
+  font-family: -apple-system, Segoe UI;
+} */
+
+/* @layer base {
   @font-face {
     font-family: "trebuchet ms";
     src: url("/fonts/trebuchet ms.woff2") format("woff2");
@@ -23,7 +41,7 @@
   .home-footer-link {
     @apply text-[15px] text-custom-gray4 underline hover:no-underline cursor-pointer;
   }
-}
+} */
 
 /* html,
 body {

@@ -7,20 +7,36 @@ function Services() {
   const router = useRouter();
   const { city } = router.query;
 
+  console.log(router.query);
+
+  // console.log(city);
+
+  // const { asPath } = useRouter();
+
+  // const pageName = (path) =>
+  //   path
+  //     .substring(path.lastIndexOf("/") + 1)
+  //     .split("-")
+  //     .join(" ");
+
+  // pageName(asPath);
+
+  // console.log(pageName(asPath));
+
   return (
-    <div className="p-2 space-y-4 columns-4 font-arial">
+    <div className="mt-6 space-y-8 columns-3">
       {servicesData &&
         servicesData.map((service, i) => (
           <div key={i} className="break-inside-avoid">
-            <div className="bg-black px-3 text-white font-semibold rounded-full">
+            <div className="text-custom-yellow2 font-semibold">
               {service.name}
             </div>
-            <ul className="mt-2 ml-10 space-y-4 list-disc">
+            <ul className="mt-2 space-y-4">
               {service.categories &&
                 service.categories.map((category, i) => (
                   <li
                     key={i}
-                    className="text-[15px] capitalize underline cursor-pointer"
+                    className="text-[15px] ml-[18px] capitalize cursor-pointer hover:underline"
                   >
                     <Link
                       href={`/${city}/post/${category

@@ -1,35 +1,31 @@
 import Head from "next/head";
 import Header from "./Header";
 import Footer from "./Footer";
-import Sidebar from "./Sidebar";
+// import Sidebar from "./Sidebar";
 
 function Layout({ children, pageDetails }) {
   // const { title, description, keywords } = pageDetails;
 
   return (
-    <div>
+    <div className="bg-custom-gray">
       <Head>
         <title>
-          bedpage Auburn, female escorts, body rubs, ts escort, escort ads,
-          adult jobs, strip clubs, exotic dancers, craigslist personal, bed page
+          free classified site, bedpage , female escorts, body rubs, ts escort,
+          escort ads, adult jobs, strip clubs, exotic dancers, craigslist
+          personal, bed page
         </title>
-        <meta
-          name="description"
-          content="bedpage Auburn, female escorts, body rubs, ts escort, escort ads, adult jobs, strip clubs, exotic dancers, craigslist personal, bed page"
-        />
-        <meta
-          name="keywords"
-          content="bedpage Auburn, female escorts, body rubs, ts escort, escort ads, adult jobs, strip clubs, exotic dancers, craigslist personal, adultsearch, cityxguide.com, erotic monkey, bed page"
-        />
+        <meta name="description" content="bedpage" />
+        <meta name="keywords" content="bedpage" />
       </Head>
 
-      <div className="font-arial">
-        <Header />
+      <>
+        <div className="container">
+          <Header />
 
-        {children}
-
+          {children}
+        </div>
         <Footer />
-      </div>
+      </>
     </div>
   );
 }

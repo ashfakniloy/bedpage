@@ -1,65 +1,64 @@
-import { useState } from "react";
-import Link from "next/link";
 import Image from "next/image";
-import { FaPaperPlane, FaSearch } from "react-icons/fa";
-
-import Sidebar from "./Sidebar";
+import { FaBars } from "react-icons/fa";
+// import { useState } from "react";
+import MenuModal from "./MenuModal";
+import useMenu from "../../hooks/useMenu";
+import Link from "next/link";
 
 function Header() {
-  const [showSidebar, setShowSidebar] = useState(false);
+  // const [showMenu, setShowMenu] = useState(false);
+
+  const { showMenu, setShowMenu, node } = useMenu();
+
+  // useEffect(() => {
+  //   showMenu &&
+  //     typeof window != "undefined" &&
+  //     document.body.style.overflow === "hidden";
+  // }, []);
+
+  // useEffect(() => {
+  //   if (showMenu) {
+  //     document.body.style.overflow = "hidden";
+  //   }
+  //   // else {
+  //   //   document.body.style.overflow = "unset";
+  //   // }
+
+  //   return () => {
+  //     document.body.style.overflow = "unset";
+  //   };
+  // }, [showMenu]);
 
   return (
     <>
-      <div className="bg-custom-gray4 px-2 py-2 flex justify-between items-center">
-        <div className="flex gap-5">
-          <div className="" onClick={() => setShowSidebar(!showSidebar)}>
-            <Image
-              src="/images/sidebar.png"
-              alt="button"
-              width={24}
-              height={24}
-            />
-          </div>
+      <div className="flex justify-between pt-[1px]">
+        <div className="">
+          <Link href="/" passHref>
+            <a href="">
+              <h1 className="py-[7px] px-2 text-orange-400 font-serif text-4xl font-medium tracking-wide border border-gray-500 select-none">
+                bedpage
+                {/* backpage */}
+              </h1>
+            </a>
+          </Link>
+          {/* <Image src="/images/logo.png" alt="logo" width={176} height={60} /> */}
+        </div>
+        <div className="mt-2 flex justify-between gap-[211px] text-custom-yellow2 mr-[140px]">
           <div className="">
-            <Link href="/login" passHref>
-              <button
-                type="button"
-                className="bg-gradient-to-b from-custom-red3 to-red-700 border border-custom-red2 flex items-center gap-1 font-sans text-white text-sm px-3 py-1 underline rounded"
-              >
-                <span>
-                  <FaPaperPlane />
-                </span>
-                Post ad
-              </button>
-            </Link>
-          </div>
-          <div className="flex items-center gap-[6px] text-sm">
-            <input type="text" placeholder="keyword" className="px-2 py-1" />
-            <input type="text" className="px-2 py-1" />
-            <button
-              type="submit"
-              className="flex items-center gap-[3px] bg-gradient-to-b from-cyan-600 to-cyan-900 border border-custom-blue px-3 py-1 text-white text-sm rounded font-sans"
-            >
-              <span>
-                <FaSearch />
-              </span>
-              Search
+            <button className="bg-custom-yellow3 px-[7px] py-[6px]  text-gray-900 text-sm uppercase rounded hover:bg-custom-yellow4 focus:bg-custom-yellow4 transition duration-200 focus:ring-4 ring-yellow-800">
+              Post Ad
             </button>
           </div>
-        </div>
-
-        <div className="flex items-center text-white text-sm font-semibold underline">
-          <p className="">Backpage Auburn | </p>
-          <p className="">Auburn option | </p>
-          <p className="">Options in Auburn </p>
+          <div
+            className="mt-[5px] text-[23px]"
+            onClick={() => setShowMenu(true)}
+          >
+            <FaBars />
+          </div>
         </div>
       </div>
 
-      <div className="">
-        {showSidebar && (
-          <Sidebar showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
-        )}
-      </div>
+      <MenuModal showMenu={showMenu} setShowMenu={setShowMenu} node={node} />
     </>
   );
 }
