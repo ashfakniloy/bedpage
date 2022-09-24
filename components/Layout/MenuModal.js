@@ -179,7 +179,7 @@ function MenuModal({ showMenu, setShowMenu, node }) {
             >
               <div className="" ref={node}>
                 <div className="p-4 ">
-                  <h2 className="text-2xl font-semibold">
+                  <h2 className="text-2xl lg:font-semibold">
                     Bedpage Menu
                     {/* Backpage Alter Menu */}
                   </h2>
