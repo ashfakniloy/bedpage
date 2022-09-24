@@ -37,7 +37,7 @@ function UserResetPage() {
                     <TextField
                       label="Your Email"
                       name="email"
-                      type="text"
+                      type="email"
                       icon={<FaAt />}
                     />
                     <button
