@@ -31,7 +31,7 @@ function Header() {
 
   return (
     <>
-      <div className="flex justify-between pt-[1px]">
+      <div className="flex gap-[15px] lg:gap-0 lg:justify-between pt-[1px]">
         <div className="">
           <Link href="/" passHref>
             <a href="">
@@ -43,11 +43,15 @@ function Header() {
           </Link>
           {/* <Image src="/images/logo.png" alt="logo" width={176} height={60} /> */}
         </div>
-        <div className="mt-2 flex justify-between gap-[211px] text-custom-yellow2 mr-[140px]">
+        <div className="mt-2 flex justify-between gap-[43px] lg:gap-[211px] text-custom-yellow2 mr-[10px] lg:mr-[140px]">
           <div className="">
-            <button className="bg-custom-yellow3 px-[7px] py-[6px]  text-gray-900 text-sm uppercase rounded hover:bg-custom-yellow4 focus:bg-custom-yellow4 transition duration-200 focus:ring-4 ring-yellow-800">
-              Post Ad
-            </button>
+            <Link href="/user-login" passHref>
+              <a>
+                <button className="button px-[8px] py-[6px] text-sm uppercase">
+                  Post Ad
+                </button>
+              </a>
+            </Link>
           </div>
           <div
             className="mt-[5px] text-[23px]"

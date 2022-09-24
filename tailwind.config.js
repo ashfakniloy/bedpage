@@ -14,7 +14,7 @@ module.exports = {
         },
       },
       fontFamily: {
-        notoSans: ["Noto Sans", "sans-serif"],
+        roboto: ["Roboto", "sans-serif"],
       },
       colors: {
         "custom-gray": "#212428",
@@ -28,6 +28,7 @@ module.exports = {
         "custom-yellow3": "#ffc107",
         "custom-yellow4": "#e0a800",
         "custom-blue": "#97bff1",
+        "custom-blue2": "#0056b3",
       },
       // colors: {
       //   "custom-gray": "#eeeeee",

@@ -1,15 +1,15 @@
-import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { modelsData } from "../data/modelsData";
 
 function Banner() {
   return (
     <div className="mb-8">
       <div className="">
-        <h1 className="text-custom-yellow text-[40px] font-semibold">
+        <h1 className="text-custom-yellow text-[40px] font-semibold leading-tight">
           Discreet Personal Classified Website that works
         </h1>
-        <p className="">
+        <p className="mt-2">
           Backpage is no more 2022 but Backpage Alternative is here. Highly
           strict to child abuse, trafficking. Nothing wrong to visit a personal
           classified for your search for a dating partner. Backpage Alternative
@@ -25,7 +25,7 @@ function Banner() {
           ---- cover <span className="px-[6px]"></span> stars ----
         </p>
 
-        <div className="mt-4 flex justify-center items-center">
+        <div className="mt-4 flex justify-center items-center flex-wrap">
           {modelsData &&
             modelsData.map((model, i) => (
               <div
@@ -36,6 +36,7 @@ function Banner() {
                   src={model.image}
                   alt={model.name}
                   layout="fill"
+                  priority
                   // objectFit="cover"
                 />
               </div>
@@ -43,18 +44,22 @@ function Banner() {
         </div>
       </div>
 
-      <div className="mt-4 flex gap-[30px]">
+      <div className="mt-4 flex flex-wrap gap-[20px] lg:gap-[30px]">
         <div className="">
-          <p className=" text-gray-800 bg-custom-blue rounded-md py-[11px] pl-[193px] pr-[35px]">
+          <p className=" text-gray-800 bg-custom-blue rounded-md text-right lg:text-left py-[11px] pl-[30px] lg:pl-[193px] pr-[20px] lg:pr-[35px]">
             Post your own ad {">"} get emails and calls {">"} Select one {"> "}
             Start dating. You must be 18+
           </p>
         </div>
 
         <div className="">
-          <button className="bg-custom-yellow3 px-[7px] py-[6px]  text-gray-800  uppercase rounded hover:bg-custom-yellow4 focus:bg-custom-yellow4 transition duration-200 focus:ring-4 ring-yellow-800">
-            Post Ad Now
-          </button>
+          <Link href="/user-login" passHref>
+            <a>
+              <button className="bg-custom-yellow3 px-[7px] py-[6px]  text-gray-800  uppercase rounded hover:bg-custom-yellow4 focus:bg-custom-yellow4 transition duration-200 focus:ring-4 ring-yellow-800">
+                Post Ad Now
+              </button>
+            </a>
+          </Link>
         </div>
       </div>
     </div>

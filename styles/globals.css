@@ -5,10 +5,13 @@
 @layer base {
   html,
   body {
-    @apply p-0 m-0 font-sans text-slate-100 bg-white;
+    @apply p-0 m-0 font-sans bg-white;
   }
   .container {
     @apply bg-custom-gray2 px-4;
+  }
+  .button {
+    @apply bg-custom-yellow3 text-gray-900 rounded hover:bg-custom-yellow4 focus:bg-custom-yellow4 transition duration-200 focus:ring-4 ring-yellow-800;
   }
 
   /* .link {

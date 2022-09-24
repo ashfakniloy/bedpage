@@ -34,13 +34,10 @@ function MenuModal({ showMenu, setShowMenu, node }) {
   useEffect(() => {
     if (showMenu) {
       document.body.style.overflow = "hidden";
-      if (window.innerWidth >= 768) {
+      if (window.innerWidth >= 768 && document.body.scrollHeight > 947) {
         document.body.style.marginRight = "17px";
       }
     }
-    // else {
-    //   document.body.style.overflow = "unset";
-    // }
 
     return () => {
       document.body.style.overflow = "unset";
@@ -178,12 +175,13 @@ function MenuModal({ showMenu, setShowMenu, node }) {
               // initial={false}
               // animate={showMenu ? "animate" : "initial"}
               // transition={{ duration: 0.3, ease: "easeOut" }}
-              className="fixed top-2 bg-white text-gray-900 w-[498px] rounded"
+              className="fixed top-2 bg-white text-gray-900 lg:w-[498px] rounded"
             >
               <div className="" ref={node}>
                 <div className="p-4 ">
                   <h2 className="text-2xl font-semibold">
-                    Backpage Alter Menu
+                    Bedpage Menu
+                    {/* Backpage Alter Menu */}
                   </h2>
                   <button
                     className="absolute top-[2px] right-[2px] focus:ring-2 ring-slate-800 transition duration-100 rounded px-[14px] py-[18px] text-gray-400 hover:text-gray-600"
@@ -201,7 +199,7 @@ function MenuModal({ showMenu, setShowMenu, node }) {
                           <div key={i}>
                             <Link href={link.link} passHref>
                               <a>
-                                <button className="flex items-center gap-[7px] w-full px-5 py-[13px] text-left hover:bg-custom-gray5 hover:text-custom-gray4 focus:bg-custom-gray5 focus:text-custom-gray4 active:text-custom-gray6 hover:rounded focus:rounded">
+                                <button className="flex items-center gap-[7px] w-full px-4 lg:px-5 py-[13px] text-left hover:bg-custom-gray5 hover:text-custom-gray4 focus:bg-custom-gray5 focus:text-custom-gray4 active:text-custom-gray6 hover:rounded focus:rounded">
                                   <span className="text-[15px]">
                                     {link.icon}
                                   </span>

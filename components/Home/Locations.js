@@ -1,4 +1,3 @@
-import React from "react";
 import Link from "next/link";
 import { countriesData } from "../data/countriesData";
 import { FaMapMarkerAlt } from "react-icons/fa";
@@ -25,7 +24,7 @@ function Locations() {
                 inboxes, emails from {country.name}.
               </p>
             </div>
-            <div className="mt-4 space-y-8 columns-3">
+            <div className="mt-4 space-y-8 columns-2 lg:columns-3">
               {country.states &&
                 country.states.map((state, i) => (
                   <div key={i} className="break-inside-avoid">
@@ -37,29 +36,30 @@ function Locations() {
                         {state.cities &&
                           state.cities.map((city, i) => (
                             <div key={i} className="ml-[15px]">
-                              <Link
-                                href={city
-                                  .split("/")
-                                  .join("")
-                                  .split(" ")
-                                  .join("-")
-                                  .split(".")
-                                  .join("")
-                                  .split("'")
-                                  .join("")
-                                  .toLowerCase()}
-                                passHref
-                              >
-                                <div className="flex items-center gap-[5px]">
-                                  <span className="text-[14px]">
-                                    <FaMapMarkerAlt />
-                                  </span>
-                                  <p className="text-[15px] capitalize hover:underline cursor-pointer">
+                              <div className="flex items-center gap-[5px]">
+                                <span className="text-[14px]">
+                                  <FaMapMarkerAlt />
+                                </span>
+                                <p className="text-[15px] capitalize hover:underline cursor-pointer break-all">
+                                  <Link
+                                    href={`/${city
+                                      // .split("/")
+                                      // .join("")
+                                      .split("/")
+                                      .join("_")
+                                      .split(" ")
+                                      .join("-")
+                                      .split(".")
+                                      .join("")
+                                      .split("'")
+                                      .join("")
+                                      .toLowerCase()}`}
+                                  >
                                     {/* {city.replace(/-/g, " ")} */}
                                     {city.split("-").join(" ")}
-                                  </p>
-                                </div>
-                              </Link>
+                                  </Link>
+                                </p>
+                              </div>
                             </div>
                           ))}
                       </div>

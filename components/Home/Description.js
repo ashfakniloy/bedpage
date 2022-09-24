@@ -1,5 +1,3 @@
-import React from "react";
-
 function Description() {
   return (
     <div className="space-y-3 text-[15px] pb-7">

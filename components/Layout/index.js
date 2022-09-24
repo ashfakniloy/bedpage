@@ -7,7 +7,7 @@ function Layout({ children, pageDetails }) {
   // const { title, description, keywords } = pageDetails;
 
   return (
-    <div className="bg-custom-gray">
+    <div className="bg-custom-gray text-slate-100">
       <Head>
         <title>
           free classified site, bedpage , female escorts, body rubs, ts escort,

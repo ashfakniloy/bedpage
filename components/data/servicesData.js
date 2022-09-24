@@ -57,7 +57,7 @@ export const servicesData = [
   },
   {
     name: "Local Places",
-    categories: ["Bars/ Clubs", "Events", "Restaurants", "Salons/ Nails/ Spas"],
+    categories: ["Bars/Clubs", "Events", "Restaurants", "Salons/Nails/Spas"],
   },
   {
     name: "Rentals",
@@ -78,7 +78,7 @@ export const servicesData = [
     name: "Community",
     categories: [
       "Childcare",
-      "Classes/ Workshops",
+      "Classes/Workshops",
       "General",
       "Groups",
       "Lost & Found",
@@ -109,7 +109,7 @@ export const servicesData = [
     ],
   },
   {
-    name: "Buy/ Sell/ Trade",
+    name: "Buy/Sell/Trade",
     categories: [
       "Antiq.-Collectibles",
       "Appliances",

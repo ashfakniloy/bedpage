@@ -1,15 +1,15 @@
 export const modelsData = [
   {
     name: "model 1",
-    image: "/images/models/model1.webp",
+    image: "/images/models/model4.webp",
   },
   {
     name: "model 2",
-    image: "/images/models/model2.webp",
+    image: "/images/models/model4.webp",
   },
   {
     name: "model 3",
-    image: "/images/models/model3.webp",
+    image: "/images/models/model4.webp",
   },
   {
     name: "model 4",
@@ -17,19 +17,19 @@ export const modelsData = [
   },
   {
     name: "model 5",
-    image: "/images/models/model5.webp",
+    image: "/images/models/model4.webp",
   },
   {
     name: "model 6",
-    image: "/images/models/model1.webp",
+    image: "/images/models/model4.webp",
   },
   {
     name: "model 7",
-    image: "/images/models/model2.webp",
+    image: "/images/models/model4.webp",
   },
   {
     name: "model 8",
-    image: "/images/models/model3.webp",
+    image: "/images/models/model4.webp",
   },
   {
     name: "model 9",
@@ -37,6 +37,6 @@ export const modelsData = [
   },
   {
     name: "model 10",
-    image: "/images/models/model5.webp",
+    image: "/images/models/model4.webp",
   },
 ];
