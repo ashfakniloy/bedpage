@@ -6,7 +6,7 @@ function Banner() {
   return (
     <div className="mb-8">
       <div className="">
-        <h1 className="text-custom-yellow text-[40px] font-semibold leading-tight">
+        <h1 className="text-custom-yellow text-[40px] lg:font-semibold leading-tight">
           Discreet Personal Classified Website that works
         </h1>
         <p className="mt-2">

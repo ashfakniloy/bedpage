@@ -41,7 +41,7 @@ function Services() {
   return (
     <>
       <div className="">
-        <h1 className=" text-white text-[32px] font-medium leading-tight">
+        <h1 className=" text-white text-[32px] lg:font-medium leading-tight">
           <span className="capitalize">{cityName}</span> Bedpage Classified
         </h1>
         <p className="text-[16px] mt-1">

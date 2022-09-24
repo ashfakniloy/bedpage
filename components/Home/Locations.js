@@ -14,7 +14,7 @@ function Locations() {
             className="border-t border-gray-800/40 pt-4 py-8 last:border-b"
           >
             <div className="">
-              <h1 className=" text-white text-[32px] font-medium">
+              <h1 className=" text-white text-[32px] lg:font-medium">
                 {country.name} {currentYear}
               </h1>
               <p className="text-[16px]">

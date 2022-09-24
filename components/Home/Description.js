@@ -1,7 +1,7 @@
 function Description() {
   return (
     <div className="space-y-3 text-[15px] pb-7">
-      <h4 className="text-3xl font-medium pt-5">
+      <h4 className="text-3xl lg:font-medium pt-5">
         Are you a service provider looking for Backpage alternatives? Look no
         further than bedpage.cam!
       </h4>
@@ -29,7 +29,7 @@ function Description() {
         user interface with the added safety and security for its users that the
         original backpage was never able to provide.
       </p>
-      <h4 className="text-3xl font-medium pt-5">
+      <h4 className="text-3xl lg:font-medium pt-5">
         A Reasonable Decision for Organizations
       </h4>
       <p>
@@ -67,7 +67,7 @@ function Description() {
         websites. In addition to preventing dangerous and unsafe activity, this
         also eliminates spam and phony ads.
       </p>
-      <h4 className="text-3xl font-medium pt-5 ">
+      <h4 className="text-3xl lg:font-medium pt-5 ">
         How Bedpage Stands Out From the Crowd
       </h4>
       <p>
@@ -96,7 +96,7 @@ function Description() {
         occur on the web page. Bedpage does not tolerate unsafe activity or
         scams.
       </p>
-      <h4 className="text-3xl font-medium pt-5">
+      <h4 className="text-3xl lg:font-medium pt-5">
         Advantages for Organizations
       </h4>
       <p>
@@ -134,7 +134,7 @@ function Description() {
         Place an ad, contact a seller, make connections with like-minded
         individuals. Why wait?
       </p>
-      <h4 className="text-3xl font-medium pt-5">Various Plans</h4>
+      <h4 className="text-3xl lg:font-medium pt-5">Various Plans</h4>
       <p>
         Bedpage, the foremost Backpage substitution web page, has various plans
         that are taken into consideration based on their large, varying user
@@ -159,7 +159,7 @@ function Description() {
         amount of extra effort on the seller’s part can make a world of
         difference from the customer’s point of view.
       </p>
-      <h4 className="text-3xl font-medium pt-5">
+      <h4 className="text-3xl lg:font-medium pt-5">
         Give the Purchasers Their Due
       </h4>
       <p>
@@ -188,7 +188,9 @@ function Description() {
         important that they go through legitimate avenues like Bedpage to avoid
         becoming a victim.
       </p>
-      <h4 className="text-3xl font-medium pt-5">Indicate Your Prerequisites</h4>
+      <h4 className="text-3xl lg:font-medium pt-5">
+        Indicate Your Prerequisites
+      </h4>
       <p>
         As mentioned before, Bedpage has something for every customer, provided
         they are a legitimate, consenting adult. Some specific niches include:
@@ -272,7 +274,7 @@ function Description() {
         rectified as soon as possible. Your safety and security is important,
         and Bedpage knows this!
       </p>
-      <h4 className="text-3xl font-medium pt-5">Overview</h4>
+      <h4 className="text-3xl lg:font-medium pt-5">Overview</h4>
       <p>
         It is 2021, and it is high time that you or your business finds a
         better, safer, more secure Backpage alternative. Look no further,
