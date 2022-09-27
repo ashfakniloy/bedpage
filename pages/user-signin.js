@@ -49,7 +49,7 @@ function userSigninPage() {
                       type="submit"
                       className="button self-end mr-[60px] capitalize px-[12px] py-[7px]"
                     >
-                      Login Now
+                      Sign In
                     </button>
                   </div>
                 </Form>
@@ -72,7 +72,7 @@ function userSigninPage() {
             <Link href="/user-signup" passHref>
               <a>
                 <button className="button ml-[180px] lg:ml-[220px] mt-4 capitalize px-[13px] py-[7px]">
-                  Join Now
+                  Sign Up
                 </button>
               </a>
             </Link>
