@@ -2,13 +2,15 @@ import React from "react";
 import { Formik, Form } from "formik";
 import Layout from "../components/Layout";
 import { TextField } from "../components/common/InputField";
-import { FaAt, FaLock } from "react-icons/fa";
+import { FaAlignLeft, FaAt, FaLock } from "react-icons/fa";
 import Link from "next/link";
 
-function UserLoginPage() {
+function UserSignupPage() {
   const initialvalues = {
+    name: "",
     email: "",
     password: "",
+    retype_password: "",
   };
 
   const handleSubmit = (values, formik) => {
@@ -17,11 +19,13 @@ function UserLoginPage() {
 
   return (
     <Layout>
-      <div className="font-roboto pt-[30px] pb-[360px] flex justify-center font-thin">
+      <div className="font-roboto pt-[30px] pb-[50px] flex justify-center font-thin">
         <div className="">
-          <h1 className="text-center text-[32px] text-white">Login: Bedpage</h1>
+          <h1 className="text-center text-[32px] text-white mb-3">
+            Join with Bedpage
+          </h1>
 
-          <div className="pt-10 pb-4">
+          <div className="pt-16 pb-4 border-t border-custom-yellow2">
             <Formik
               initialValues={initialvalues}
               // validationSchema={validate}
@@ -29,7 +33,13 @@ function UserLoginPage() {
             >
               {(formik) => (
                 <Form>
-                  <div className="flex flex-col">
+                  <div className="flex flex-col ">
+                    <TextField
+                      label="Name"
+                      name="name"
+                      type="text"
+                      icon={<FaAlignLeft />}
+                    />
                     <TextField
                       label="Email"
                       name="email"
@@ -43,11 +53,18 @@ function UserLoginPage() {
                       autoComplete="on"
                       icon={<FaLock />}
                     />
+                    <TextField
+                      label="Retype Password"
+                      name="retype_password"
+                      type="password"
+                      autoComplete="on"
+                      icon={<FaLock />}
+                    />
                     <button
                       type="submit"
                       className="button self-end mr-[60px] capitalize px-[12px] py-[7px]"
                     >
-                      Login Now
+                      Join Now
                     </button>
                   </div>
                 </Form>
@@ -56,21 +73,11 @@ function UserLoginPage() {
           </div>
 
           <div className="flex flex-col items-center">
-            <div className="lg:pr-32 text-center font-extralight text-custom-yellow2 hover:text-custom-blue2 hover:underline">
-              <Link href="/user-reset">Forgot Password?</Link>
-            </div>
-            <p className="pt-[41px] font-extralight text-custom-yellow2">
-              Don`t have an account?
-            </p>
-
-            {/* <button className="button self-end mt-4 mr-[116px] capitalize px-[13px] py-[7px]">
-              Join Now
-            </button> */}
-
-            <Link href="/user-join" passHref>
+            <p className=" text-custom-yellow2">Already have an account?</p>
+            <Link href="/user-signin" passHref>
               <a>
-                <button className="button ml-[180px] lg:ml-[220px] mt-4 capitalize px-[13px] py-[7px]">
-                  Join Now
+                <button className="button  mt-4 mr-[50px] capitalize px-[13px] py-[7px]">
+                  Login Now
                 </button>
               </a>
             </Link>
@@ -81,4 +88,4 @@ function UserLoginPage() {
   );
 }
 
-export default UserLoginPage;
+export default UserSignupPage;

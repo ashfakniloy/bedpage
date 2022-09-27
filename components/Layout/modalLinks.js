@@ -13,28 +13,28 @@ import { BsCurrencyBitcoin } from "react-icons/bs";
 
 export const modalLinks = [
   {
-    name: "Login",
-    link: "/user-login",
+    name: "Sign In",
+    link: "/user-signin",
     icon: <FaLock />,
   },
   {
-    name: "Create Account",
-    link: "/user-join",
+    name: "Sign Up",
+    link: "/user-signup",
     icon: <FaCheckSquare />,
   },
   {
     name: "Dashboard",
-    link: "/user-login",
+    link: "/user-signin",
     icon: <FaThLarge />,
   },
   {
     name: "Profile",
-    link: "/user-login",
+    link: "/user-signin",
     icon: <FaUser />,
   },
   {
     name: "Buy Credit",
-    link: "/user-login",
+    link: "/user-signin",
     icon: <BsCurrencyBitcoin />,
   },
   {
@@ -47,12 +47,12 @@ export const modalLinks = [
 export const modalLinks2 = [
   {
     name: "Premium",
-    link: "/user-login",
+    link: "/user-signin",
     icon: <FaUserSecret />,
   },
   {
     name: "Message Blast",
-    link: "/user-join",
+    link: "/user-signup",
     icon: <FaEnvelope />,
   },
   {
