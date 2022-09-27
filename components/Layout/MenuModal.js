@@ -192,8 +192,8 @@ function MenuModal({ showMenu, setShowMenu, node }) {
                 </div>
                 <div className="bg-gray-300 w-full h-[.1px]"></div>
                 <div className="p-4">
-                  <div className="flex justify-between gap-[30px] text-custom-yellow2">
-                    <div className="grow">
+                  <div className="grid grid-cols-2 gap-[30px] text-custom-yellow2">
+                    <div className="">
                       <div className="rounded divide-y divide-gray-800/50 bg-custom-gray2">
                         {modalLinks.map((link, i) => (
                           <div key={i}>
@@ -211,7 +211,7 @@ function MenuModal({ showMenu, setShowMenu, node }) {
                         ))}
                       </div>
                     </div>
-                    <div className="grow">
+                    <div className="">
                       <div className="rounded divide-y divide-gray-800/50 bg-custom-gray2">
                         {modalLinks2.map((link, i) => (
                           <div key={i}>
