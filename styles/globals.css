@@ -11,7 +11,7 @@
     @apply bg-custom-gray2 px-4;
   }
   .button {
-    @apply bg-custom-yellow3 text-gray-900 rounded hover:bg-custom-yellow4 focus:bg-custom-yellow4 transition duration-200 focus:ring-4 ring-yellow-800;
+    @apply bg-custom-yellow3 font-light text-gray-900 rounded hover:bg-custom-yellow4 focus:bg-custom-yellow4 transition duration-200 focus:ring-4 ring-yellow-800;
   }
 
   /* .link {
