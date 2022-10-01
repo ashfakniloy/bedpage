@@ -24,10 +24,9 @@ function SelectStatePage() {
       country.name.toLowerCase() === stateValue && stateValue.toLowerCase()
   );
 
-  console.log(country);
   return (
     <Layout>
-      <div className=" pb-[300px]">
+      <div className="pb-14 min-h-[760px]">
         <h1 className="text-[32px] text-center font-medium">
           Select State/Territory
         </h1>

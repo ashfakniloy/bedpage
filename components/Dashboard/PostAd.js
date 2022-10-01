@@ -3,8 +3,13 @@ import { FaAlignLeft, FaAt, FaHashtag, FaLock } from "react-icons/fa";
 import Link from "next/link";
 import { TextField, SelectField, SelectField2 } from "../common/InputField";
 import Location from "./Location";
+import { useState } from "react";
 
 function PostAd() {
+  const [locationArray, setLocationArray] = useState([]);
+
+  console.log("locationArray", locationArray);
+
   const initialvalues = {
     category: "",
   };
@@ -30,7 +35,7 @@ function PostAd() {
             <span className="link font-bold"> Buy Credit</span>
           </p>
 
-          <Location />
+          <Location setLocationArray={setLocationArray} />
 
           <Formik
             initialValues={initialvalues}

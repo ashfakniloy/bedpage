@@ -1,5 +1,5 @@
 export const asiaPasificMiddleEast = {
-  name: "Asia, Pacific, and Middle East",
+  name: "Asia Pacific and Middle East",
   states: [
     {
       name: "Bahrain",

@@ -28,10 +28,9 @@ function SelectCityPage() {
     (state) => state.name.toLowerCase() === cityValue && cityValue.toLowerCase()
   );
 
-  console.log(country);
   return (
     <Layout>
-      <div className="pb-[300px]">
+      <div className="pb-14 min-h-[760px]">
         <h1 className="text-[32px] text-center font-medium">Select a City</h1>
 
         <div className="columns-1 lg:columns-3">
