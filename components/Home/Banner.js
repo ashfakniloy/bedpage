@@ -53,7 +53,7 @@ function Banner() {
         </div>
 
         <div className="">
-          <Link href="/user-signin" passHref>
+          <Link href="/post-ad" passHref>
             <a>
               <button className="bg-custom-yellow3 px-[7px] py-[6px]  text-gray-800  uppercase rounded hover:bg-custom-yellow4 focus:bg-custom-yellow4 transition duration-200 focus:ring-4 ring-yellow-800">
                 Post Ad Now
