@@ -8,25 +8,24 @@ import {
   FaEnvelope,
   FaBullhorn,
   FaPhoneAlt,
+  FaEdit,
+  FaList,
+  FaSignOutAlt,
 } from "react-icons/fa";
 import { BsCurrencyBitcoin } from "react-icons/bs";
 
-export const modalLinks = [
+export const dashboardLinks = [
   {
-    name: "Sign In",
-    link: "/user-signin",
-    icon: <FaLock />,
+    name: "POST AD",
+    link: "/post-ad",
+    icon: <FaEdit />,
   },
   {
-    name: "Sign Up",
-    link: "/user-signup",
-    icon: <FaCheckSquare />,
+    name: "My Ads",
+    link: "/my-ads",
+    icon: <FaList />,
   },
-  {
-    name: "Dashboard",
-    link: "/dashboard",
-    icon: <FaThLarge />,
-  },
+
   {
     name: "Profile",
     link: "/user-profile",
@@ -42,9 +41,25 @@ export const modalLinks = [
     link: "/",
     icon: <FaDollarSign />,
   },
+  {
+    name: "Log Out",
+    link: "/",
+    icon: <FaSignOutAlt />,
+  },
 ];
 
-export const modalLinks2 = [
+export const dashboardLinks2 = [
+  {
+    name: "Credits: 0",
+    link: "/buy-credit",
+    icon: <FaDollarSign />,
+  },
+  {
+    name: "Buy Credit",
+    link: "/buy-credit",
+    icon: <BsCurrencyBitcoin />,
+  },
+
   {
     name: "Premium",
     link: "/premium",
@@ -54,11 +69,6 @@ export const modalLinks2 = [
     name: "Message Blast",
     link: "/message-blast",
     icon: <FaEnvelope />,
-  },
-  {
-    name: "Notify Me",
-    link: "/",
-    icon: <FaBullhorn />,
   },
   {
     name: "Promote",

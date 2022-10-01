@@ -45,7 +45,8 @@ function Header() {
         </div>
         <div className="mt-2 flex justify-between gap-[43px] lg:gap-[211px] text-custom-yellow2 mr-[10px] lg:mr-[140px]">
           <div className="">
-            <Link href="/user-signin" passHref>
+            {/* <Link href="/user-signin" passHref> */}
+            <Link href="/post-ad" passHref>
               <a>
                 <button className="button px-[8px] py-[6px] text-sm uppercase">
                   Post Ad
