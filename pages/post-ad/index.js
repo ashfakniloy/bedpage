@@ -6,7 +6,7 @@ import Layout from "../../components/Layout";
 function PostAdPage() {
   return (
     <Layout>
-      <div className=" pb-[300px]">
+      <div className="pt-1 pb-[300px]">
         <h1 className="text-[32px] text-center font-medium">
           Select a country
         </h1>
