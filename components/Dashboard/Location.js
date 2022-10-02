@@ -7,8 +7,8 @@ function Location({ setLocationArray }) {
   const { selectState, selectCity, postAdForm } = router.query;
 
   const [countryName, setCountryName] = useState("");
-  const state = selectCity?.split("-").join(" ");
-  const city = postAdForm?.split("-").join(" ");
+  const state = selectCity?.split("-").join(" ").split("_").join("/");
+  const city = postAdForm?.split("-").join(" ").split("_").join("/");
 
   useEffect(() => {
     const shortCountry = () => {

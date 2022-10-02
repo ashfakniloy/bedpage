@@ -36,8 +36,14 @@ function SelectStatePage() {
             <h2 key={i} className="text-[24px] link">
               <Link
                 href={`/post-ad/${selectState}/${state.name
+                  .split("/")
+                  .join("_")
                   .split(" ")
                   .join("-")
+                  .split(".")
+                  .join("")
+                  .split("'")
+                  .join("")
                   .toLowerCase()}`}
               >
                 {state.name}

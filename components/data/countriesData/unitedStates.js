@@ -99,7 +99,7 @@ export const unitedStates = {
       ],
     },
     {
-      name: "Delaware »",
+      name: "Delaware",
       cities: ["Delaware"],
     },
     {
@@ -338,7 +338,7 @@ export const unitedStates = {
       cities: ["Elko", "Las Vegas", "Reno"],
     },
     {
-      name: "New Hampshire »",
+      name: "New Hampshire",
       cities: ["New Hampshire"],
     },
     {
@@ -550,7 +550,7 @@ export const unitedStates = {
       cities: ["Logan", "Ogden", "Provo", "Salt Lake City", "St. George"],
     },
     {
-      name: "Vermont »",
+      name: "Vermont",
       cities: ["Burlington"],
     },
     {
@@ -619,7 +619,7 @@ export const unitedStates = {
       ],
     },
     {
-      name: "Wyoming »",
+      name: "Wyoming",
       cities: ["Wyoming"],
     },
   ],

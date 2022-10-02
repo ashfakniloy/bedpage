@@ -42,15 +42,15 @@ export const canada = {
       cities: ["Fredericton", "Moncton", "St. John"],
     },
     {
-      name: "Newfoundland and Labrador »",
+      name: "Newfoundland and Labrador",
       cities: ["Newfoundland And Labrador"],
     },
     {
-      name: "Northwest Territories »",
+      name: "Northwest Territories",
       cities: ["Northwest Territories"],
     },
     {
-      name: "Nova Scotia »",
+      name: "Nova Scotia",
       cities: ["Nova Scotia"],
     },
     {
@@ -93,7 +93,7 @@ export const canada = {
       cities: ["Prince Albert", "Regina", "Saskatoon"],
     },
     {
-      name: "Yukon »",
+      name: "Yukon",
       cities: ["Yukon"],
     },
   ],

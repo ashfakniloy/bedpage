@@ -38,8 +38,14 @@ function SelectCityPage() {
             <h2 key={i} className="text-[24px] link capitalize">
               <Link
                 href={`/post-ad/${selectState}/${selectCity}/${city
+                  .split("/")
+                  .join("_")
                   .split(" ")
                   .join("-")
+                  .split(".")
+                  .join("")
+                  .split("'")
+                  .join("")
                   .toLowerCase()}`}
               >
                 {city}

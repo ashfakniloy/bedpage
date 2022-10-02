@@ -183,11 +183,11 @@ export const SelectField = ({ label, name, placeholder, options }) => {
             {options.map((option, i) => (
               <option
                 key={i}
-                value={option.toString().split(" »").join("")}
+                value={option}
                 className=""
                 disabled={option.includes("- - - ") && true}
               >
-                {option.toString().split(" »").join("")}
+                {option}
               </option>
             ))}
           </Field>
