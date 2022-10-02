@@ -6,7 +6,7 @@ import Layout from "../../../../../components/Layout";
 function PostAdFormPage() {
   return (
     <Layout>
-      <div className="pb-20">
+      <div className="pb-10">
         <div className="flex justify-end flex-wrap">
           <p className="flex items-center gap-1 uppercase">
             <span>

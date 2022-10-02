@@ -1,16 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { Formik, Form } from "formik";
 import Layout from "../components/Layout";
-import { TextField } from "../components/common/InputField";
-import { FaAlignLeft, FaAt, FaLock } from "react-icons/fa";
+import { CodeField, TextField } from "../components/common/InputField";
+import { FaAlignLeft, FaAt, FaBullhorn, FaLock } from "react-icons/fa";
 import Link from "next/link";
 
 function UserSignupPage() {
+  const [showCodeInput, setShowCodeInput] = useState(false);
+
   const initialvalues = {
     name: "",
     email: "",
     password: "",
     retype_password: "",
+    promo_code: "",
   };
 
   const handleSubmit = (values, formik) => {
@@ -20,7 +23,7 @@ function UserSignupPage() {
   return (
     <Layout>
       <div className="font-roboto pt-[30px] pb-[50px] flex justify-center font-thin">
-        <div className="">
+        <div className="lg:w-[540px]">
           <h1 className="text-center text-[32px] text-white mb-3">
             Join with Bedpage
           </h1>
@@ -33,7 +36,7 @@ function UserSignupPage() {
             >
               {(formik) => (
                 <Form>
-                  <div className="flex flex-col ">
+                  <div className="">
                     <TextField
                       label="Name"
                       name="name"
@@ -60,12 +63,42 @@ function UserSignupPage() {
                       autoComplete="on"
                       icon={<FaLock />}
                     />
-                    <button
-                      type="submit"
-                      className="button self-end mr-[60px] capitalize px-[12px] py-[7px]"
-                    >
-                      Sign Up
-                    </button>
+                    {/* {showCodeInput && (
+                      <CodeField
+                        label="PROMO CODE"
+                        name="promo_code"
+                        type="text"
+                        icon={<FaBullhorn />}
+                      />
+                    )} */}
+                    <div className="lg:flex justify-between">
+                      <div className="">
+                        {!showCodeInput ? (
+                          <p
+                            className="cursor-pointer"
+                            onClick={() => setShowCodeInput(true)}
+                          >
+                            I have a promo code
+                          </p>
+                        ) : (
+                          <CodeField
+                            label="PROMO CODE"
+                            name="promo_code"
+                            type="text"
+                            icon={<FaBullhorn />}
+                          />
+                        )}
+                      </div>
+
+                      <div className="">
+                        <button
+                          type="submit"
+                          className="button self-end mt-2 lg:mt-0 mr-[20px] capitalize px-[12px] py-[7px]"
+                        >
+                          Sign Up
+                        </button>
+                      </div>
+                    </div>
                   </div>
                 </Form>
               )}

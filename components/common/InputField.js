@@ -1,60 +1,78 @@
-// import { ErrorMessage, Field } from "formik";
 import { Field, useFormikContext } from "formik";
 import { useEffect } from "react";
 
 export const TextField = ({ label, name, icon, ...props }) => {
   return (
-    <div className="flex justify-between items-center lg:gap-20 mb-[18px]">
-      <label htmlFor={name} className="pr-8 lg:pr-[10px]">
+    <div className="grid grid-cols-3 mb-[18px]">
+      <label htmlFor={name} className="col-span-1 pr-8 lg:pr-[10px]">
         {label}
       </label>
 
-      <div className="flex">
-        <div className="py-[11px] px-[12px] border-r border-slate-300 bg-slate-200 text-slate-500 font-extralight text-sm rounded-l cursor-default">
-          {icon}
+      <div className="col-span-2">
+        <div className="flex">
+          <div className="py-[11px] px-[12px] border-r border-slate-300 bg-slate-200 text-slate-500 font-extralight text-sm rounded-l cursor-default">
+            {icon}
+          </div>
+          <Field
+            className="bg-white text-black px-3 py-[6px] w-full outline-none focus:ring-[3px] focus:transition focus:duration-200 ring-blue-400/50 rounded-r"
+            id={name}
+            name={name}
+            {...props}
+            required
+          />
         </div>
-        <Field
-          className="bg-white text-black px-3 py-[6px] w-[160px] lg:min-w-[310px] outline-none focus:ring-[3px] focus:transition focus:duration-200 ring-blue-400/50 rounded-r"
-          id={name}
-          name={name}
-          {...props}
-          required
-        />
       </div>
-
-      {/* <p className="absolute -bottom-4 text-red-600 text-xs">
-        <ErrorMessage {...props} />
-      </p> */}
     </div>
   );
 };
 
-export const TextField2 = ({ label, name, icon, ...props }) => {
+export const CodeField = ({ label, name, icon, ...props }) => {
   return (
-    <div className="flex justify-between items-center lg:gap-20 mb-[18px]">
-      <label htmlFor={name} className="pr-6 lg:pr-[115px]">
+    <div className="flex justify-between gap-20">
+      <label htmlFor={name} className="col-span-1">
         {label}
       </label>
 
-      <div className="flex">
-        <div className="py-[11px] px-[12px] border-r border-slate-300 bg-slate-200 text-slate-500 font-extralight text-sm rounded-l cursor-default">
-          {icon}
+      <div className="col-span-2 ">
+        <div className="flex">
+          <div className="py-[11px] px-[12px] border-r border-slate-300 bg-slate-200 text-slate-500 font-extralight text-sm rounded-l cursor-default">
+            {icon}
+          </div>
+          <Field
+            className="bg-white text-black px-3 py-[6px] w-[100px] outline-none focus:ring-[3px] focus:transition focus:duration-200 ring-blue-400/50 rounded-r"
+            id={name}
+            name={name}
+            {...props}
+            required
+          />
         </div>
-        <Field
-          className="bg-white text-black px-3 py-[6px] w-[170px] lg:min-w-[411px] outline-none focus:ring-[3px] focus:transition focus:duration-200 ring-blue-400/50 rounded-r"
-          id={name}
-          name={name}
-          {...props}
-          required
-        />
       </div>
-
-      {/* <p className="absolute -bottom-4 text-red-600 text-xs">
-        <ErrorMessage {...props} />
-      </p> */}
     </div>
   );
 };
+
+// export const TextField2 = ({ label, name, icon, ...props }) => {
+//   return (
+//     <div className="flex justify-between items-center lg:gap-20 mb-[18px]">
+//       <label htmlFor={name} className="pr-6 lg:pr-[115px]">
+//         {label}
+//       </label>
+
+//       <div className="flex">
+//         <div className="py-[11px] px-[12px] border-r border-slate-300 bg-slate-200 text-slate-500 font-extralight text-sm rounded-l cursor-default">
+//           {icon}
+//         </div>
+//         <Field
+//           className="bg-white text-black px-3 py-[6px] w-[170px] lg:min-w-[411px] outline-none focus:ring-[3px] focus:transition focus:duration-200 ring-blue-400/50 rounded-r"
+//           id={name}
+//           name={name}
+//           {...props}
+//           required
+//         />
+//       </div>
+//     </div>
+//   );
+// };
 
 export const TextArea = ({ label, name, ...props }) => {
   const {
@@ -101,15 +119,15 @@ export const TextArea = ({ label, name, ...props }) => {
   }, [reason, setFieldValue, name]);
 
   return (
-    <div className="flex justify-between lg:gap-20 mb-[18px]">
-      <label htmlFor={name} className="pr-6 lg:pr-[115px]">
+    <div className="grid grid-cols-3 mb-[18px]">
+      <label htmlFor={name} className="col-span-1 pr-6 lg:pr-[115px]">
         {label}
       </label>
-      <div className="flex">
+      <div className="col-span-2 flex">
         <Field
           as="textarea"
           rows="6"
-          className="bg-white text-black px-3 py-[6px] w-[210px] lg:min-w-[450px] outline-none focus:ring-[3px] focus:transition focus:duration-200 ring-blue-400/50 rounded"
+          className="bg-white text-black px-3 py-[6px] w-full outline-none focus:ring-[3px] focus:transition focus:duration-200 ring-blue-400/50 rounded"
           id={name}
           name={name}
           {...props}
@@ -121,15 +139,15 @@ export const TextArea = ({ label, name, ...props }) => {
 
 export const TextArea2 = ({ label, name, ...props }) => {
   return (
-    <div className="flex justify-between lg:gap-20 mb-[18px]">
-      <label htmlFor={name} className="pr-6 lg:pr-[115px]">
+    <div className="grid grid-cols-3 mb-[18px]">
+      <label htmlFor={name} className="col-span-1 pr-6 lg:pr-[115px]">
         {label}
       </label>
-      <div className="flex">
+      <div className="col-span-2 flex">
         <Field
           as="textarea"
           rows="10"
-          className="bg-white text-black px-3 py-[6px] w-[200px] lg:min-w-[350px] outline-none focus:ring-[3px] focus:transition focus:duration-200 ring-blue-400/50 rounded"
+          className="bg-white text-black px-3 py-[6px] w-full outline-none focus:ring-[3px] focus:transition focus:duration-200 ring-blue-400/50 rounded"
           id={name}
           name={name}
           {...props}
@@ -139,78 +157,53 @@ export const TextArea2 = ({ label, name, ...props }) => {
   );
 };
 
-export const SelectField = ({ label, name, options }) => {
+export const SelectField = ({ label, name, placeholder, options }) => {
   return (
-    <div className="flex justify-between items-center lg:gap-20 mb-[18px]">
-      <label htmlFor={name} className="pr-6 lg:pr-[115px]">
+    <div className="grid grid-cols-3 mb-[18px]">
+      <label htmlFor={name} className="col-span-1 pr-6 lg:pr-[10px]">
         {label}
       </label>
-      <div className="flex">
-        <Field
-          as="select"
-          name={name}
-          id={name}
-          className="bg-white text-black px-3 py-[6px] w-[210px] lg:min-w-[450px] outline-none focus:ring-[3px] focus:transition focus:duration-200 ring-blue-400/50 rounded"
-        >
-          {/* <option
-            value=""
-            className="text-slate-400"
-            defaultValue={true}
-            hidden
+      <div className="col-span-2">
+        <div className="flex">
+          <Field
+            as="select"
+            name={name}
+            id={name}
+            required
+            className="bg-white text-black px-3 py-[6px] w-full outline-none focus:ring-[3px] focus:transition focus:duration-200 ring-blue-400/50 rounded"
           >
-            {placeholder}
-          </option> */}
-          {options.map((option, i) => (
-            <option key={i} value={option} className="">
-              {option}
+            <option
+              value=""
+              className="text-slate-400"
+              defaultValue={true}
+              hidden
+            >
+              {placeholder}
             </option>
-          ))}
-        </Field>
-        {/* <p className="absolute -bottom-4 text-red-600 text-xs">
-          <ErrorMessage name={name} />
-        </p> */}
+            {options.map((option, i) => (
+              <option
+                key={i}
+                value={option.toString().split(" »").join("")}
+                className=""
+                disabled={option.includes("- - - ") && true}
+              >
+                {option.toString().split(" »").join("")}
+              </option>
+            ))}
+          </Field>
+        </div>
       </div>
     </div>
   );
 };
 
-export const SelectField2 = ({ label, name, placeholder, options }) => {
+export const CheckboxField = ({ label, name, placeholder, option }) => {
   return (
-    <div className="flex justify-between items-center lg:gap-20 mb-[18px]">
-      <label htmlFor={name} className="pr-6 lg:pr-[10px]">
-        {label}
-      </label>
-      <div className="flex">
-        <Field
-          as="select"
-          name={name}
-          id={name}
-          required
-          className="bg-white text-black px-3 py-[6px]  w-[200px] lg:min-w-[350px] outline-none focus:ring-[3px] focus:transition focus:duration-200 ring-blue-400/50 rounded"
-        >
-          <option
-            value=""
-            className="text-slate-400"
-            defaultValue={true}
-            hidden
-          >
-            {placeholder}
-          </option>
-          {options.map((option, i) => (
-            <option
-              key={i}
-              value={option.toString().split(" »").join("")}
-              className=""
-              disabled={option.includes("- - - ") && true}
-            >
-              {option.toString().split(" »").join("")}
-            </option>
-          ))}
-        </Field>
-        {/* <p className="absolute -bottom-4 text-red-600 text-xs">
-          <ErrorMessage name={name} />
-        </p> */}
+    <div className="flex items-center gap-2">
+      <div className="px-3 py-1 bg-slate-200 rounded">
+        <Field type="checkbox" name={name} className="" />
       </div>
+      <label>{label}</label>
     </div>
   );
 };

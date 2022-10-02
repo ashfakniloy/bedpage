@@ -2,7 +2,7 @@ import React from "react";
 import { Formik, Form } from "formik";
 import { FaAlignLeft, FaAt, FaHashtag, FaLock } from "react-icons/fa";
 import Link from "next/link";
-import { TextField, SelectField, SelectField2 } from "../common/InputField";
+import { TextField, SelectField } from "../common/InputField";
 
 function UpdateProfile() {
   const initialvalues = {
@@ -18,7 +18,7 @@ function UpdateProfile() {
 
   return (
     <div className="font-roboto py-[30px] flex justify-center font-thin">
-      <div className="">
+      <div className="lg:w-[540px]">
         <h1 className="text-center text-[32px] text-white mb-3 uppercase">
           UPDATE PROFILE
         </h1>
@@ -36,7 +36,7 @@ function UpdateProfile() {
           >
             {(formik) => (
               <Form>
-                <div className="flex flex-col ">
+                <div className="">
                   <TextField
                     label="Name"
                     name="name"
@@ -49,7 +49,7 @@ function UpdateProfile() {
                     type="email"
                     icon={<FaAt />}
                   />
-                  <SelectField2
+                  <SelectField
                     label="Gender"
                     placeholder="Select Gender"
                     name="gender"
@@ -63,12 +63,16 @@ function UpdateProfile() {
                     type="text"
                     icon={<FaHashtag />}
                   />
-                  <button
-                    type="submit"
-                    className="button self-end mr-[30px] capitalize px-[12px] py-[7px]"
-                  >
-                    Update Profile
-                  </button>
+                  <div className="grid grid-cols-3">
+                    <div className="col-start-2 col-span-2">
+                      <button
+                        type="submit"
+                        className="button self-end mr-[30px] capitalize px-[12px] py-[7px]"
+                      >
+                        Update Profile
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </Form>
             )}

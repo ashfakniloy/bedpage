@@ -5,7 +5,6 @@ import {
   SelectField,
   TextArea,
   TextField,
-  TextField2,
 } from "../components/common/InputField";
 import { FaEnvelope } from "react-icons/fa";
 import Link from "next/link";
@@ -83,7 +82,7 @@ function ContactPage() {
   return (
     <Layout>
       <div className="pt-[30px] pb-[400px] flex justify-center ">
-        <div className="">
+        <div className="lg:w-[540px]">
           <h1 className="font-roboto text-center text-[32px] text-white font-thin">
             Contact Us
           </h1>
@@ -97,7 +96,7 @@ function ContactPage() {
             >
               {(formik) => (
                 <Form>
-                  <div className="flex flex-col">
+                  <div className="">
                     <SelectField
                       label="Reason"
                       name="reason"
@@ -116,7 +115,7 @@ function ContactPage() {
                       ]}
                     />
                     <TextArea label="Message" name="message" type="text" />
-                    <TextField2
+                    <TextField
                       label="Your Email"
                       name="email"
                       type="email"
@@ -139,13 +138,15 @@ function ContactPage() {
                     )} */}
 
                     {showSendButton(formik) && (
-                      <div className="self-center mr-[53px] lg:mr-[123px]">
-                        <button
-                          type="submit"
-                          className="bg-green-600 hover:bg-green-700 focus:bg-green-700 focus:ring-4 ring-green-800 rounded capitalize px-[12px] py-[7px] transition duration-200"
-                        >
-                          Send
-                        </button>
+                      <div className="grid grid-cols-3">
+                        <div className="col-start-2 col-span-2">
+                          <button
+                            type="submit"
+                            className="bg-green-600 hover:bg-green-700 focus:bg-green-700 focus:ring-4 ring-green-800 rounded capitalize px-[12px] py-[7px] transition duration-200"
+                          >
+                            Send
+                          </button>
+                        </div>
                       </div>
                     )}
                   </div>

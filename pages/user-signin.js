@@ -5,7 +5,7 @@ import { TextField } from "../components/common/InputField";
 import { FaAt, FaLock } from "react-icons/fa";
 import Link from "next/link";
 
-function userSigninPage() {
+function UserSigninPage() {
   const initialvalues = {
     email: "",
     password: "",
@@ -18,7 +18,7 @@ function userSigninPage() {
   return (
     <Layout>
       <div className="font-roboto pt-[30px] pb-[360px] flex justify-center font-thin">
-        <div className="">
+        <div className="lg:w-[540px]">
           <h1 className="text-center text-[32px] text-white">
             Sign in: Bedpage
           </h1>
@@ -31,7 +31,7 @@ function userSigninPage() {
             >
               {(formik) => (
                 <Form>
-                  <div className="flex flex-col">
+                  <div className="">
                     <TextField
                       label="Email"
                       name="email"
@@ -45,12 +45,16 @@ function userSigninPage() {
                       autoComplete="on"
                       icon={<FaLock />}
                     />
-                    <button
-                      type="submit"
-                      className="button self-end mr-[60px] capitalize px-[12px] py-[7px]"
-                    >
-                      Sign In
-                    </button>
+                    <div className="grid grid-cols-3">
+                      <div className="col-start-3 col-span-2">
+                        <button
+                          type="submit"
+                          className="button  capitalize px-[12px] py-[7px]"
+                        >
+                          Sign In
+                        </button>
+                      </div>
+                    </div>
                   </div>
                 </Form>
               )}
@@ -83,4 +87,4 @@ function userSigninPage() {
   );
 }
 
-export default userSigninPage;
+export default UserSigninPage;

@@ -46,9 +46,9 @@ function Location({ setLocationArray }) {
   }, [selectState, countryName, state, city, setCountryName, setLocationArray]);
 
   return (
-    <div className="flex items-center gap-[93px] mb-4">
-      <p>Location:</p>
-      <div className="bg-slate-200 text-slate-600 px-4 py-1 flex items-center gap-1 rounded font-normal text-[15px]">
+    <div className="grid grid-cols-3 mb-[18px]">
+      <p className="col-span-1">Location:</p>
+      <div className="col-span-2 bg-slate-200 text-slate-600 px-4 py-1 flex items-center gap-1 rounded font-normal text-[15px]">
         <span className="text-base">
           <FaGlobeAmericas />
         </span>

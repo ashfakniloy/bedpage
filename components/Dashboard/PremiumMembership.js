@@ -2,7 +2,7 @@ import React from "react";
 import { Formik, Form } from "formik";
 import { FaHashtag } from "react-icons/fa";
 import Link from "next/link";
-import { TextField, SelectField, SelectField2 } from "../common/InputField";
+import { TextField, SelectField } from "../common/InputField";
 import { BsCurrencyBitcoin } from "react-icons/bs";
 
 function PremiumMembership() {
@@ -15,8 +15,8 @@ function PremiumMembership() {
   };
 
   return (
-    <div className="font-roboto pt-[30px] pb-[200px] flex justify-center font-thin mx-auto lg:mx-[500px]">
-      <div className="">
+    <div className="font-roboto pt-[30px] pb-[200px] flex justify-center font-thin ">
+      <div className="lg:w-[540px]">
         <h1 className="text-center text-[32px] text-white mb-3 uppercase">
           Premium Membership
         </h1>
@@ -59,7 +59,7 @@ function PremiumMembership() {
             {(formik) => (
               <Form>
                 <div className="flex flex-col ">
-                  <SelectField2
+                  <SelectField
                     label="Duration"
                     placeholder="Select Duration"
                     name="duration"

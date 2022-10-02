@@ -17,7 +17,7 @@ function UserResetPage() {
   return (
     <Layout>
       <div className="font-roboto pt-[30px] pb-[350px] flex justify-center font-thin">
-        <div className="">
+        <div className="lg:w-[540px]">
           <h1 className="text-center text-[32px] text-white mb-3">
             RESET PASSWORD
           </h1>
@@ -33,19 +33,23 @@ function UserResetPage() {
             >
               {(formik) => (
                 <Form>
-                  <div className="flex flex-col">
+                  <div className="">
                     <TextField
                       label="Your Email"
                       name="email"
                       type="email"
                       icon={<FaAt />}
                     />
-                    <button
-                      type="submit"
-                      className="button self-end mr-[60px] px-[14px] py-[7px] uppercase"
-                    >
-                      Get Code
-                    </button>
+                    <div className="grid grid-cols-3">
+                      <div className="col-start-2 lg:col-start-3 col-span-2 ml-[50px] lg:ml-0">
+                        <button
+                          type="submit"
+                          className="button px-[14px] py-[7px] uppercase"
+                        >
+                          Get Code
+                        </button>
+                      </div>
+                    </div>
                   </div>
                 </Form>
               )}

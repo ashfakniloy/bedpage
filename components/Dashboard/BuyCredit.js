@@ -2,7 +2,7 @@ import React from "react";
 import { Formik, Form } from "formik";
 import { FaHashtag } from "react-icons/fa";
 import Link from "next/link";
-import { TextField, SelectField, SelectField2 } from "../common/InputField";
+import { TextField, SelectField } from "../common/InputField";
 
 function BuyCredit() {
   const initialvalues = {
@@ -16,7 +16,7 @@ function BuyCredit() {
 
   return (
     <div className="font-roboto pt-[40px] pb-[260px] flex justify-center font-thin">
-      <div className="">
+      <div className="lg:w-[540px]">
         <h1 className="text-center text-[32px] text-white mb-3 uppercase">
           Buy Credit
         </h1>
@@ -40,8 +40,8 @@ function BuyCredit() {
           >
             {(formik) => (
               <Form>
-                <div className="flex flex-col ">
-                  <SelectField2
+                <div className="">
+                  <SelectField
                     label="Payment Method"
                     placeholder="Select Payment Method"
                     name="payment_method"
@@ -68,13 +68,16 @@ function BuyCredit() {
                     type="number"
                     icon={<FaHashtag />}
                   />
-
-                  <button
-                    type="submit"
-                    className="button self-end mr-[90px] capitalize px-[12px] py-[7px]"
-                  >
-                    Next
-                  </button>
+                  <div className="grid grid-cols-3">
+                    <div className="col-start-3 col-span-2">
+                      <button
+                        type="submit"
+                        className="button lg:ml-5 capitalize px-[12px] py-[7px]"
+                      >
+                        Next
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </Form>
             )}

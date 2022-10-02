@@ -5,7 +5,6 @@ import Link from "next/link";
 import {
   TextField,
   SelectField,
-  SelectField2,
   TextArea,
   TextArea2,
 } from "../common/InputField";
@@ -39,8 +38,8 @@ function MessageBlast() {
   };
 
   return (
-    <div className="font-roboto pt-[30px] pb-[200px] flex justify-center font-thin mx-auto lg:mx-[300px]">
-      <div className="">
+    <div className="font-roboto pt-[30px] pb-[200px] flex justify-center font-thin">
+      <div className="lg:w-[540px]">
         <h1 className="text-center text-[32px] text-white mb-3 uppercase">
           Message Blast
         </h1>
@@ -73,7 +72,7 @@ function MessageBlast() {
             {(formik) => (
               <Form>
                 <div className="flex flex-col ">
-                  <SelectField2
+                  <SelectField
                     label="To Whom"
                     placeholder="Select whom to message"
                     name="to_whom"
@@ -89,7 +88,7 @@ function MessageBlast() {
                       "To Other Users",
                     ]}
                   />
-                  <SelectField2
+                  <SelectField
                     label="Send Via"
                     placeholder="Select Send Via"
                     name="send_via"
@@ -99,14 +98,14 @@ function MessageBlast() {
                       "SMS (35 cents per SMS)",
                     ]}
                   />
-                  <SelectField2
+                  <SelectField
                     label="Country"
                     placeholder="Select Country"
                     name="country"
                     type="text"
                     options={countriesSelect}
                   />
-                  <SelectField2
+                  <SelectField
                     label="State"
                     placeholder="Select State"
                     name="state"
