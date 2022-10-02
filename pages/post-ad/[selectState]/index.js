@@ -50,11 +50,6 @@ function SelectStatePage() {
               </Link>
             </h2>
           ))}
-          {/* {countriesData.map((country, i) => (
-            <div key={i} className="text-[24px] link">
-              {country.name}
-            </div>
-          ))} */}
         </div>
       </div>
     </Layout>

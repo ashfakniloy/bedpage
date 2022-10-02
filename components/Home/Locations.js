@@ -43,8 +43,6 @@ function Locations() {
                                 <p className="text-[15px] capitalize hover:underline cursor-pointer break-all">
                                   <Link
                                     href={`/${city
-                                      // .split("/")
-                                      // .join("")
                                       .split("/")
                                       .join("_")
                                       .split(" ")

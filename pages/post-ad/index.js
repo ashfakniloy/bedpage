@@ -18,8 +18,6 @@ function PostAdPage() {
                 href={`/post-ad/${country.name
                   .split(" ")
                   .join("-")
-                  // .split(",")
-                  // .join("")
                   .toLowerCase()}`}
               >
                 {country.name}

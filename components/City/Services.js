@@ -72,7 +72,7 @@ function Services() {
                   service.categories.map((category, i) => (
                     <li
                       key={i}
-                      className="text-[15px] ml-[18px] capitalize cursor-pointer break-all hover:underline"
+                      className="text-[15px] ml-[18px] capitalize break-all hover:underline"
                     >
                       <Link
                         href={`/${city}/post/${category
