@@ -18,18 +18,18 @@ import { useEffect, useState } from "react";
 
 function PostAd() {
   const [locationArray, setLocationArray] = useState([]);
-  // const [changeColor, setChangeColor] = useState(false)
+  const [changeColor, setChangeColor] = useState(false);
 
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     setChangeColor(!changeColor);
-  //   });
-  // }, [changeColor]);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setChangeColor(!changeColor);
+    }, 500);
 
-  console.log("locationArray", locationArray);
+    return () => clearInterval(interval);
+  });
 
   const initialvalues = {
-    location: "",
+    location: locationArray,
     category: "",
     ad_title: "",
     description: "",
@@ -140,6 +140,7 @@ function PostAd() {
           <Formik
             initialValues={initialvalues}
             // validationSchema={validate}
+            enableReinitialize
             onSubmit={handleSubmit}
           >
             {(formik) => (
@@ -205,8 +206,14 @@ function PostAd() {
                         option="chekced"
                         type="checkbox"
                       />
-                      <p className="bg-gray-800 text-white px-4 py-1 font-normal ">
-                        Blink ad like this
+                      <p
+                        className={` text-white px-4 py-[5px] font-normal ${
+                          changeColor
+                            ? "bg-custom-fuschsia"
+                            : "bg-custom-emerald"
+                        }`}
+                      >
+                        Blink Ad Like This
                       </p>
                     </div>
                   </div>
@@ -227,7 +234,7 @@ function PostAd() {
                   <SelectField
                     label="Cover Star:"
                     placeholder="Select Cover Star"
-                    name="coverStarOptions"
+                    name="cover_star"
                     type="text"
                     options={coverStarOptions}
                   />

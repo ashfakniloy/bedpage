@@ -1,4 +1,5 @@
 import { Form, Formik } from "formik";
+import Link from "next/link";
 import React from "react";
 import { BsCurrencyBitcoin } from "react-icons/bs";
 import { FaThLarge, FaDollarSign, FaClock } from "react-icons/fa";
@@ -20,19 +21,27 @@ function MessageBlastPage() {
           CR: $0
         </p>
         <span className="px-1">|</span>
-        <p className="flex items-center gap-1 link uppercase">
-          <span>
-            <FaClock />
-          </span>
-          TRNS.
-        </p>
+        <Link href="/transactions" passHref>
+          <a>
+            <p className="flex items-center gap-1 link uppercase">
+              <span>
+                <FaClock />
+              </span>
+              TRNS.
+            </p>
+          </a>
+        </Link>
         <span className="px-1">|</span>
-        <p className="flex items-center gap-1 link uppercase">
-          <span>
-            <FaThLarge />
-          </span>
-          History
-        </p>
+        <Link href="/dashboard" passHref>
+          <a>
+            <p className="flex items-center gap-1 link uppercase">
+              <span>
+                <FaThLarge />
+              </span>
+              History
+            </p>
+          </a>
+        </Link>
       </div>
       {/* <Formik>
         <Form> */}

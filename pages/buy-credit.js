@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 import { BsCurrencyBitcoin } from "react-icons/bs";
 import { FaThLarge, FaDollarSign, FaClock } from "react-icons/fa";
@@ -17,19 +18,27 @@ function BuyCreditpage() {
           CR: $0
         </p>
         <span className="px-1">|</span>
-        <p className="flex items-center gap-1 link uppercase">
-          <span>
-            <FaClock />
-          </span>
-          Transactions
-        </p>
+        <Link href="/transactions" passHref>
+          <a>
+            <p className="flex items-center gap-1 link uppercase">
+              <span>
+                <FaClock />
+              </span>
+              Transactions
+            </p>
+          </a>
+        </Link>
         <span className="px-1">|</span>
-        <p className="flex items-center gap-1 link uppercase">
-          <span>
-            <FaThLarge />
-          </span>
-          Dashboard
-        </p>
+        <Link href="/dashboard" passHref>
+          <a>
+            <p className="flex items-center gap-1 link uppercase">
+              <span>
+                <FaThLarge />
+              </span>
+              Dashboard
+            </p>
+          </a>
+        </Link>
       </div>
 
       <div className="mt-1 flex flex-col items-center">

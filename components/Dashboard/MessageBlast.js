@@ -71,7 +71,7 @@ function MessageBlast() {
           >
             {(formik) => (
               <Form>
-                <div className="flex flex-col ">
+                <div className="">
                   <SelectField
                     label="To Whom"
                     placeholder="Select whom to message"

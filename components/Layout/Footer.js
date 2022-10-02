@@ -8,7 +8,7 @@ function Footer() {
         <p className="cursor-pointer hover:underline">Privacy </p>|
         <p className="cursor-pointer hover:underline">Terms </p>
       </div>
-      <div className="lg:flex gap-2 text-center">
+      <div className="flex flex-col lg:flex-row lg:gap-2 justify-center items-center">
         <p className="cursor-pointer hover:underline">
           Alternative to Bedpage |
         </p>

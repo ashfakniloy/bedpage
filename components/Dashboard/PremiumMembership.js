@@ -58,7 +58,7 @@ function PremiumMembership() {
           >
             {(formik) => (
               <Form>
-                <div className="flex flex-col ">
+                <div className="">
                   <SelectField
                     label="Duration"
                     placeholder="Select Duration"
@@ -73,9 +73,11 @@ function PremiumMembership() {
                     ]}
                   />
 
-                  <div className="my-4 flex gap-[130px] lg:gap-[230px] text-custom-gray7 font-medium">
-                    <p>TOS</p>
-                    <p>You agreed to terms of services.</p>
+                  <div className="grid grid-cols-3 text-custom-gray7 font-medium">
+                    <p className="col-span-1">TOS</p>
+                    <p className="col-span-2">
+                      You agreed to terms of services.
+                    </p>
                   </div>
 
                   <div className="mt-5 flex flex-col lg:flex-row justify-center items-center lg:gap-[200px]">
