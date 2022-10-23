@@ -1,3 +1,4 @@
+import FreeAd from "../../components/Dashboard/FreeAd";
 import PostAd from "../../components/Dashboard/PostAd";
 import { servicesData } from "../../components/data/servicesData";
 import Layout from "../../components/Layout";
@@ -26,7 +27,8 @@ function FreeAdPage() {
 
   return (
     <Layout>
-      <PostAd formTitle={formTitle} services={services} />
+      {/* <PostAd formTitle={formTitle} services={services} /> */}
+      <FreeAd formTitle={formTitle} services={services} />
     </Layout>
   );
 }
