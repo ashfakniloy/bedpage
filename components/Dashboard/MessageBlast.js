@@ -29,7 +29,7 @@ function MessageBlast() {
 
   const statesSelect = (value) => {
     if (!value) {
-      return [""];
+      return ["- - - Select Country First - - -"];
     } else {
       const country = countriesData.find((country) => country.name === value);
       const states = country.states.map((state) => state.name);

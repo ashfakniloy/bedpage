@@ -14,7 +14,7 @@ export const TextField = ({ label, name, icon, ...props }) => {
             {icon}
           </div>
           <Field
-            className="bg-white text-black px-3 py-[6px] w-full outline-none focus:ring-[3px] focus:transition focus:duration-200 ring-blue-400/50 rounded-r"
+            className="bg-white font-normal text-black px-3 py-[6px] w-full outline-none focus:ring-[3px] focus:transition focus:duration-200 ring-blue-400/50 rounded-r"
             id={name}
             name={name}
             {...props}
@@ -39,7 +39,7 @@ export const CodeField = ({ label, name, icon, ...props }) => {
             {icon}
           </div>
           <Field
-            className="bg-white text-black px-3 py-[6px] w-[100px] outline-none focus:ring-[3px] focus:transition focus:duration-200 ring-blue-400/50 rounded-r"
+            className="bg-white font-normal text-black px-3 py-[6px] w-[100px] outline-none focus:ring-[3px] focus:transition focus:duration-200 ring-blue-400/50 rounded-r"
             id={name}
             name={name}
             {...props}
@@ -127,7 +127,7 @@ export const TextArea = ({ label, name, ...props }) => {
         <Field
           as="textarea"
           rows="6"
-          className="bg-white text-black px-3 py-[6px] w-full outline-none focus:ring-[3px] focus:transition focus:duration-200 ring-blue-400/50 rounded"
+          className="bg-white font-normal text-black px-3 py-[6px] w-full outline-none focus:ring-[3px] focus:transition focus:duration-200 ring-blue-400/50 rounded"
           id={name}
           name={name}
           {...props}
@@ -147,7 +147,7 @@ export const TextArea2 = ({ label, name, ...props }) => {
         <Field
           as="textarea"
           rows="10"
-          className="bg-white text-black px-3 py-[6px] w-full outline-none focus:ring-[3px] focus:transition focus:duration-200 ring-blue-400/50 rounded"
+          className="bg-white font-normal text-black px-3 py-[6px] w-full outline-none focus:ring-[3px] focus:transition focus:duration-200 ring-blue-400/50 rounded"
           id={name}
           name={name}
           {...props}
@@ -170,7 +170,7 @@ export const SelectField = ({ label, name, placeholder, options }) => {
             name={name}
             id={name}
             required
-            className="bg-white text-black px-3 py-[6px] w-full outline-none focus:ring-[3px] focus:transition focus:duration-200 ring-blue-400/50 rounded"
+            className="bg-white font-normal text-black px-3 py-[6px] w-full outline-none focus:ring-[3px] focus:transition focus:duration-200 ring-blue-400/50 rounded"
           >
             <option
               value=""
@@ -180,16 +180,31 @@ export const SelectField = ({ label, name, placeholder, options }) => {
             >
               {placeholder}
             </option>
-            {options.map((option, i) => (
-              <option
-                key={i}
-                value={option}
-                className=""
-                disabled={option.includes("- - - ") && true}
-              >
-                {option}
-              </option>
-            ))}
+            {/* {options &&
+              options.map((option, i) => (
+                <option
+                  key={i}
+                  value={option}
+                  className=""
+                  disabled={option.includes("- - - ") && true}
+                >
+                  {option}
+                </option>
+              ))} */}
+            {options ? (
+              options.map((option, i) => (
+                <option
+                  key={i}
+                  value={option}
+                  className=""
+                  disabled={option?.includes("- - - ") && true}
+                >
+                  {option}
+                </option>
+              ))
+            ) : (
+              <option value="" className=""></option>
+            )}
           </Field>
         </div>
       </div>
