@@ -47,6 +47,7 @@ function MultiLocationAd({ formTitle, services }) {
     highlight_ad: "",
     blink_ad: "",
     sponsored_ad: "",
+    images: "",
     // city_featured: "",
     // cover_star: "",
     total_bill: "",
