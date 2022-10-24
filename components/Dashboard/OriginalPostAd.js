@@ -17,7 +17,7 @@ import Location from "./Location";
 import { useEffect, useState } from "react";
 import { countriesData } from "../data/countriesData";
 
-function LocalAd({ formTitle, services }) {
+function PostAd({ formTitle, services }) {
   const [locationArray, setLocationArray] = useState([]);
   const [changeColor, setChangeColor] = useState(false);
 
@@ -44,8 +44,8 @@ function LocalAd({ formTitle, services }) {
     highlight_ad: "",
     blink_ad: "",
     sponsored_ad: "",
-    // city_featured: "",
-    // cover_star: "",
+    city_featured: "",
+    cover_star: "",
     total_bill: "",
   };
 
@@ -338,7 +338,20 @@ function LocalAd({ formTitle, services }) {
                     type="text"
                     options={sponsoredAdOptions}
                   />
-
+                  <SelectField
+                    label="City Featured:"
+                    placeholder="Select City Featured"
+                    name="city_featured"
+                    type="text"
+                    options={cityFeaturedOptions}
+                  />
+                  <SelectField
+                    label="Cover Star:"
+                    placeholder="Select Cover Star"
+                    name="cover_star"
+                    type="text"
+                    options={coverStarOptions}
+                  />
                   <div className="grid grid-cols-3 mb-[18px]">
                     <p className="col-span-1">Total Bill:</p>
                     <div className="col-span-2 flex items-center gap-5 lg:gap-[120px]">
@@ -377,4 +390,4 @@ function LocalAd({ formTitle, services }) {
   );
 }
 
-export default LocalAd;
+export default PostAd;

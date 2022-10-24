@@ -1,5 +1,91 @@
 import { Field, useFormikContext } from "formik";
+import Image from "next/image";
 import { useEffect } from "react";
+import { FaTimes } from "react-icons/fa";
+
+export const FileField = ({
+  label,
+  name,
+  handleChange,
+  imagesPreview,
+  deleteImage,
+  formik,
+}) => {
+  return (
+    <div className="grid grid-cols-3 mb-[18px]">
+      <div className="">
+        <label htmlFor={name}>{label} </label>
+        <p className="text-xs">(Maximum 4 images)</p>
+      </div>
+      <div className="col-span-2">
+        {imagesPreview.length < 4 ? (
+          <input
+            type="file"
+            id={name}
+            className=""
+            onChange={handleChange}
+            accept="image/*"
+            multiple={true}
+            // disabled={imagesPreview.length > 3 && true}
+          />
+        ) : (
+          <p className="py-1">Maximum Image limit reached</p>
+        )}
+
+        <div className="mt-3 flex gap-2">
+          {imagesPreview.length > 0 &&
+            imagesPreview.map((item, i) => (
+              <div key={i} className="relative w-[90px] h-[90px]">
+                <Image src={item} alt="image" layout="fill" objectFit="cover" />
+                <button
+                  className="absolute top-1 right-1 p-[2px] bg-white shadow rounded-full text-slate-700 text-sm"
+                  onClick={() => deleteImage(i, formik)}
+                >
+                  <FaTimes />
+                </button>
+              </div>
+            ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// export const FileField = ({ label, name, handleChange, imagesPreview }) => {
+//   return (
+//     <div className="grid grid-cols-3 mb-[18px]">
+//       <div className="">
+//         <label htmlFor={name}>{label} </label>
+//         <p className="text-xs">(Maximum 4 images)</p>
+//       </div>
+//       <div className="col-span-2">
+//         <input
+//           type="file"
+//           id={name}
+//           className=""
+//           onChange={handleChange}
+//           accept="image/*"
+//           multiple={true}
+//         />
+
+//         <div className="mt-3 flex gap-2">
+//           {Array.from(imagesPreview).map((image, i) => (
+//             <div key={i} className="relative w-[90px] h-[90px]">
+//               <Image
+//                 src={image ? URL.createObjectURL(image) : null}
+//                 alt="image"
+//                 layout="fill"
+//                 objectFit="cover"
+//                 // width={60}
+//                 // height={60}
+//               />
+//             </div>
+//           ))}
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
 
 export const TextField = ({ label, name, icon, ...props }) => {
   return (

@@ -19,7 +19,7 @@ function Layout({ children, pageDetails }) {
       </Head>
 
       <>
-        <div className="container">
+        <div className="container overflow-x-hidden">
           <Header />
 
           {children}

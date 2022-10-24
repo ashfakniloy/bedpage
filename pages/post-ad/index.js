@@ -1,29 +1,28 @@
 import Link from "next/link";
-import React from "react";
-import { countriesData } from "../../components/data/countriesData";
 import Layout from "../../components/Layout";
+// import { countriesData } from "../../components/data/countriesData";
 
 function PostAdPage() {
   return (
     <Layout>
-      <div className="pb-14 min-h-[760px]">
+      <div className=" pb-14 min-h-[760px]">
         <h1 className="text-[32px] text-center font-medium">Post an Ad</h1>
 
-        <div className="">
-          <div className="text-[24px] flex gap-3 ">
-            <p className="link">
+        <div className="space-y-4 text-[19px] lg:text-[24px]">
+          <div className=" flex flex-wrap">
+            <p className="link mr-2">
               <Link href="/post-ad/free-ad">Post free ad</Link>
             </p>
             <span className="text-white">( Mainly free )</span>
           </div>
-          <div className="text-[24px] flex gap-3 ">
-            <p className="link">
-              <Link href="/post-ad/local-ad">Post local ad</Link>
+          <div className=" flex flex-wrap ">
+            <p className="link mr-2">
+              <Link href="/post-ad/post-ad">Post ad</Link>
             </p>
             <span className="text-white">( Paid Premium And Sponsor ads )</span>
           </div>
-          <div className="text-[24px] flex gap-3 ">
-            <p className="link">
+          <div className=" flex flex-wrap ">
+            <p className="link mr-2">
               <Link href="/post-ad/multiple-location-ad">
                 Post in multiple cities
               </Link>

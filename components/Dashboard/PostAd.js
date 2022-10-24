@@ -12,6 +12,7 @@ import {
   SelectField,
   TextArea2,
   CheckboxField,
+  FileField,
 } from "../common/InputField";
 import Location from "./Location";
 import { useEffect, useState } from "react";
@@ -29,6 +30,8 @@ function PostAd({ formTitle, services }) {
   //   return () => clearInterval(interval);
   // });
 
+  const [imagesPreview, setImagesPreview] = useState([]);
+
   const initialvalues = {
     // location: locationArray,
     country: "",
@@ -44,8 +47,9 @@ function PostAd({ formTitle, services }) {
     highlight_ad: "",
     blink_ad: "",
     sponsored_ad: "",
-    city_featured: "",
-    cover_star: "",
+    // city_featured: "",
+    // cover_star: "",
+    images: "",
     total_bill: "",
   };
 
@@ -53,65 +57,25 @@ function PostAd({ formTitle, services }) {
     console.log(values);
   };
 
-  // const categoryOptions = categories.map((category) => category.name);
-  // const categoryOptions2 = categories;
+  const imageUpload = (e, formik) => {
+    // const files = e.target.files;
+    // setImagesPreview([...imagesPreview, ...files]);
 
-  // console.log(categoryOptions2);
+    let ImagesArray = Object.entries(e.target.files).map((e) =>
+      URL.createObjectURL(e[1])
+    );
+    // console.log(ImagesArray);
+    setImagesPreview([...imagesPreview, ...ImagesArray]);
 
-  // const categoryOptions = [
-  //   "- - - Dating - - -",
-  //   "I am Woman looking for Men",
-  //   "I am Man looking for Women",
-  //   "I am Man looking for Men",
-  //   "I am Woman looking for Women",
-  //   "I am Trans/Bi/Ladyboy",
-  //   "- - - Adult - - -",
-  //   "Adult Job",
-  //   "Body Massage",
-  //   "Escort (Female)",
-  //   "Escort (Male)",
-  //   "Female domination",
-  //   "Shemale",
-  //   "Striper for hire",
-  //   "- - - Business - - -",
-  //   "Antique",
-  //   "Event",
-  //   "Furniture",
-  //   "HVAC",
-  //   "Jewelry",
-  //   "Landscape",
-  //   "Rental",
-  //   "- - - Health & Fitness - - -",
-  //   "Alternative Medicine",
-  //   "Gym",
-  //   "Healing",
-  //   "Recreational",
-  //   "Suppliments",
-  //   "YOGA/Spiritual",
-  //   "- - - Service - - -",
-  //   "Accounting",
-  //   "Cleaning",
-  //   "Dental & Doctor",
-  //   "Legal",
-  //   "Parlor or Salons",
-  //   "Plumbing",
-  //   "- - - Tech - - -",
-  //   "Accessories",
-  //   "Computer",
-  //   "Crypto",
-  //   "Fixing",
-  //   "Gaming & Console",
-  //   "Smartphone",
-  //   "Software",
-  //   "- - - Other - - -",
-  //   "Camping Hiking",
-  //   "Fishing Hunting",
-  //   "Job",
-  //   "Other",
-  //   "Pet",
-  //   "Room share",
-  //   "Vehicle & Parts",
-  // ];
+    formik.setFieldValue("images", [...imagesPreview, ...ImagesArray]);
+  };
+
+  const deleteImage = (e, formik) => {
+    const updatedImages = imagesPreview.filter((item, index) => index !== e);
+    setImagesPreview(updatedImages);
+    formik.setFieldValue("images", updatedImages);
+    // console.log(s);
+  };
 
   const sponsoredAdOptions = [
     "Not Now $0.0",
@@ -119,21 +83,6 @@ function PostAd({ formTitle, services }) {
     "14 days $18.00",
     "30 days $30.00",
     "90 days $60.00",
-  ];
-
-  const cityFeaturedOptions = [
-    "Not Now $0.0",
-    "7 days $20.00",
-    "14 days $36.00",
-    "30 days $60.00",
-    "90 days $120.00",
-  ];
-
-  const coverStarOptions = [
-    "Not Now $0.0",
-    "1 day $99.00",
-    "7 days $499.00",
-    "14 days $699.00",
   ];
 
   const serviceOptions = services.map((category) => category?.name);
@@ -338,20 +287,15 @@ function PostAd({ formTitle, services }) {
                     type="text"
                     options={sponsoredAdOptions}
                   />
-                  <SelectField
-                    label="City Featured:"
-                    placeholder="Select City Featured"
-                    name="city_featured"
-                    type="text"
-                    options={cityFeaturedOptions}
+                  <FileField
+                    name={imagesPreview}
+                    label="Add Images"
+                    handleChange={(e) => imageUpload(e, formik)}
+                    imagesPreview={imagesPreview}
+                    deleteImage={deleteImage}
+                    formik={formik}
                   />
-                  <SelectField
-                    label="Cover Star:"
-                    placeholder="Select Cover Star"
-                    name="cover_star"
-                    type="text"
-                    options={coverStarOptions}
-                  />
+
                   <div className="grid grid-cols-3 mb-[18px]">
                     <p className="col-span-1">Total Bill:</p>
                     <div className="col-span-2 flex items-center gap-5 lg:gap-[120px]">
@@ -367,7 +311,7 @@ function PostAd({ formTitle, services }) {
                         type="submit"
                         className=" button capitalize px-[12px] py-[7px]"
                       >
-                        Next Step {">>"} (Add Photos)
+                        Post Ad
                       </button>
                       <div className="mt-3">
                         <p className="By clicking on Post Ad you agreed to"></p>

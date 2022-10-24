@@ -12,10 +12,12 @@ import {
   SelectField,
   TextArea2,
   CheckboxField,
+  FileField,
 } from "../common/InputField";
 import Location from "./Location";
 import { useEffect, useState } from "react";
 import { countriesData } from "../data/countriesData";
+import Image from "next/image";
 
 function FreeAd({ formTitle, services }) {
   const [locationArray, setLocationArray] = useState([]);
@@ -28,6 +30,7 @@ function FreeAd({ formTitle, services }) {
 
   //   return () => clearInterval(interval);
   // });
+  const [imagesPreview, setImagesPreview] = useState([]);
 
   const initialvalues = {
     // location: locationArray,
@@ -41,6 +44,7 @@ function FreeAd({ formTitle, services }) {
     email: "",
     contact_no: "",
     age: "",
+    images: "",
     // highlight_ad: "",
     // blink_ad: "",
     // sponsored_ad: "",
@@ -53,88 +57,62 @@ function FreeAd({ formTitle, services }) {
     console.log(values);
   };
 
-  // const categoryOptions = categories.map((category) => category.name);
-  // const categoryOptions2 = categories;
+  // console.log(imagesPreview);
 
-  // console.log(categoryOptions2);
+  const imageUpload = (e, formik) => {
+    // const files = e.target.files;
+    // setImagesPreview([...imagesPreview, ...files]);
 
-  // const categoryOptions = [
-  //   "- - - Dating - - -",
-  //   "I am Woman looking for Men",
-  //   "I am Man looking for Women",
-  //   "I am Man looking for Men",
-  //   "I am Woman looking for Women",
-  //   "I am Trans/Bi/Ladyboy",
-  //   "- - - Adult - - -",
-  //   "Adult Job",
-  //   "Body Massage",
-  //   "Escort (Female)",
-  //   "Escort (Male)",
-  //   "Female domination",
-  //   "Shemale",
-  //   "Striper for hire",
-  //   "- - - Business - - -",
-  //   "Antique",
-  //   "Event",
-  //   "Furniture",
-  //   "HVAC",
-  //   "Jewelry",
-  //   "Landscape",
-  //   "Rental",
-  //   "- - - Health & Fitness - - -",
-  //   "Alternative Medicine",
-  //   "Gym",
-  //   "Healing",
-  //   "Recreational",
-  //   "Suppliments",
-  //   "YOGA/Spiritual",
-  //   "- - - Service - - -",
-  //   "Accounting",
-  //   "Cleaning",
-  //   "Dental & Doctor",
-  //   "Legal",
-  //   "Parlor or Salons",
-  //   "Plumbing",
-  //   "- - - Tech - - -",
-  //   "Accessories",
-  //   "Computer",
-  //   "Crypto",
-  //   "Fixing",
-  //   "Gaming & Console",
-  //   "Smartphone",
-  //   "Software",
-  //   "- - - Other - - -",
-  //   "Camping Hiking",
-  //   "Fishing Hunting",
-  //   "Job",
-  //   "Other",
-  //   "Pet",
-  //   "Room share",
-  //   "Vehicle & Parts",
-  // ];
+    let ImagesArray = Object.entries(e.target.files).map((e) =>
+      URL.createObjectURL(e[1])
+    );
+    // console.log(ImagesArray);
+    setImagesPreview([...imagesPreview, ...ImagesArray]);
 
-  const sponsoredAdOptions = [
-    "Not Now $0.0",
-    "7 days $10.00",
-    "14 days $18.00",
-    "30 days $30.00",
-    "90 days $60.00",
-  ];
+    formik.setFieldValue("images", [...imagesPreview, ...ImagesArray]);
 
-  const cityFeaturedOptions = [
-    "Not Now $0.0",
-    "7 days $20.00",
-    "14 days $36.00",
-    "30 days $60.00",
-    "90 days $120.00",
-  ];
+    // const formData = new FormData();
+    // formData.append("file", [...imagesPreview, ...ImagesArray]);
 
-  const coverStarOptions = [
-    "Not Now $0.0",
-    "1 day $99.00",
-    "7 days $499.00",
-    "14 days $699.00",
-  ];
+    // formik.setFieldValue("images", e.target.files[0]);
+    // console.log("file", imagesPreview);
+
+    // const filesArray = Array.from(files);
+    // console.log(files);
+    // const formData = new FormData();
+    // formData.append("file", files[0]);
+    // formData.append("upload_preset", "u9pqvof1");
+
+    // console.log([...formData.entries()]);
+
+    // setPhotoPreview(formData);
+    // formik.setFieldValue("images", formData);
+
+    // const res = await fetch(
+    //   "https://api.cloudinary.com/v1_1/niloy56/image/upload",
+    //   {
+    //     method: "POST",
+    //     body: formData,
+    //   }
+    // );
+
+    // const data = await res.json();
+
+    // if (res.ok) {
+    //   console.log("success", data.secure_url);
+    //   setPhotoPreview(data.secure_url);
+    //   formik.setFieldValue("photo", data.secure_url);
+    // } else {
+    //   console.log("failed", data);
+    // }
+  };
+
+  const deleteImage = (e, formik) => {
+    const updatedImages = imagesPreview.filter((item, index) => index !== e);
+    setImagesPreview(updatedImages);
+    formik.setFieldValue("images", updatedImages);
+    // console.log(s);
+  };
 
   const serviceOptions = services.map((category) => category?.name);
 
@@ -181,36 +159,8 @@ function FreeAd({ formTitle, services }) {
     // }
   };
 
-  // const statesSelect = (values) => {
-  //   if (!values?.country) {
-  //     return [""];
-  //   } else {
-  //     const country = countriesData.find(
-  //       (country) => country.name === values?.country
-  //     );
-  //     const states = country?.states?.map((state) => state.name);
-  //     return states;
-  //   }
-  // };
-
-  // const citySelect = (values) => {
-  //   if (!values.country || !values.state) {
-  //     return [""];
-  //   }
-
-  //   const countries = countriesData?.find(
-  //     (country) => country?.name === values?.country
-  //   );
-
-  //   const citiesValues = countries?.states?.find(
-  //     (state) => state.name === values?.state
-  //   );
-  //   const cities = citiesValues?.cities?.map((city) => city);
-  //   return cities;
-  // };
-
   return (
-    <div className="font-roboto py-2 flex justify-center font-thin">
+    <div className="font-roboto py-2 flex justify-center font-thin overflow-hidden">
       <div className="lg:w-[540px]">
         <h1 className="text-center text-[32px] text-white">
           {formTitle && formTitle}
@@ -297,6 +247,26 @@ function FreeAd({ formTitle, services }) {
                     type="number"
                     icon={<FaHashtag />}
                   />
+                  <FileField
+                    name={imagesPreview}
+                    label="Add Images"
+                    handleChange={(e) => imageUpload(e, formik)}
+                    imagesPreview={imagesPreview}
+                    deleteImage={deleteImage}
+                    formik={formik}
+                  />
+                  {/* <div className="mt-2">
+                    {Array.from(imagesPreview).map((image, i) => (
+                      <div key={i} className="flex">
+                        <Image
+                          src={image ? URL.createObjectURL(image) : null}
+                          alt="image"
+                          width={60}
+                          height={60}
+                        />
+                      </div>
+                    ))}                  
+                  </div> */}
 
                   <div className="grid grid-cols-3">
                     <div className="col-start-2 col-span-2">
@@ -304,7 +274,7 @@ function FreeAd({ formTitle, services }) {
                         type="submit"
                         className=" button capitalize px-[12px] py-[7px]"
                       >
-                        Next Step {">>"} (Add Photos)
+                        Post Ad
                       </button>
                       <div className="mt-3">
                         <p className="By clicking on Post Ad you agreed to"></p>

@@ -1,10 +1,9 @@
 import Layout from "../../components/Layout";
-import PostAd from "../../components/Dashboard/PostAd";
 import { servicesData } from "../../components/data/servicesData";
-import LocalAd from "../../components/Dashboard/LocalAd";
+import PostAd from "../../components/Dashboard/PostAd";
 
-function LocalAdPage() {
-  const formTitle = "Post Local Ad";
+function PostAdPage() {
+  const formTitle = "Post Ad";
 
   const selectedServices = [
     "Adult",
@@ -27,10 +26,9 @@ function LocalAdPage() {
 
   return (
     <Layout>
-      {/* <PostAd formTitle={formTitle} services={services} /> */}
-      <LocalAd formTitle={formTitle} services={services} />
+      <PostAd formTitle={formTitle} services={services} />
     </Layout>
   );
 }
 
-export default LocalAdPage;
+export default PostAdPage;

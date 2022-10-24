@@ -12,6 +12,7 @@ import {
   SelectField,
   TextArea2,
   CheckboxField,
+  FileField,
 } from "../common/InputField";
 import Location from "./Location";
 import { useEffect, useState } from "react";
@@ -28,6 +29,8 @@ function MultiLocationAd({ formTitle, services }) {
 
   //   return () => clearInterval(interval);
   // });
+
+  const [imagesPreview, setImagesPreview] = useState([]);
 
   const initialvalues = {
     // location: locationArray,
@@ -51,6 +54,26 @@ function MultiLocationAd({ formTitle, services }) {
 
   const handleSubmit = (values, formik) => {
     console.log(values);
+  };
+
+  const imageUpload = (e, formik) => {
+    // const files = e.target.files;
+    // setImagesPreview([...imagesPreview, ...files]);
+
+    let ImagesArray = Object.entries(e.target.files).map((e) =>
+      URL.createObjectURL(e[1])
+    );
+    // console.log(ImagesArray);
+    setImagesPreview([...imagesPreview, ...ImagesArray]);
+
+    formik.setFieldValue("images", [...imagesPreview, ...ImagesArray]);
+  };
+
+  const deleteImage = (e, formik) => {
+    const updatedImages = imagesPreview.filter((item, index) => index !== e);
+    setImagesPreview(updatedImages);
+    formik.setFieldValue("images", updatedImages);
+    // console.log(s);
   };
 
   // const categoryOptions = categories.map((category) => category.name);
@@ -337,6 +360,16 @@ function MultiLocationAd({ formTitle, services }) {
                     name="sponsored_ad"
                     type="text"
                     options={sponsoredAdOptions}
+                    deleteImage={deleteImage}
+                    formik={formik}
+                  />
+                  <FileField
+                    name={imagesPreview}
+                    label="Add Images"
+                    handleChange={(e) => imageUpload(e, formik)}
+                    imagesPreview={imagesPreview}
+                    deleteImage={deleteImage}
+                    formik={formik}
                   />
                   <div className="grid grid-cols-3 mb-[18px]">
                     <p className="col-span-1">Total Bill:</p>
@@ -353,7 +386,7 @@ function MultiLocationAd({ formTitle, services }) {
                         type="submit"
                         className=" button capitalize px-[12px] py-[7px]"
                       >
-                        Next Step {">>"} (Add Photos)
+                        Post Ad
                       </button>
                       <div className="mt-3">
                         <p className="By clicking on Post Ad you agreed to"></p>
