@@ -15,8 +15,10 @@ import {
   FileField,
 } from "../common/InputField";
 import Location from "./Location";
-import { useEffect, useState } from "react";
+import { useEffect, useId, useState } from "react";
 import { countriesData } from "../data/countriesData";
+import Select, { components } from "react-select";
+import MySelect from "../common/MySelect";
 
 function MultiLocationAd({ formTitle, services }) {
   const [locationArray, setLocationArray] = useState([]);
@@ -32,11 +34,18 @@ function MultiLocationAd({ formTitle, services }) {
 
   const [imagesPreview, setImagesPreview] = useState([]);
 
+  const [countrySelected, setCountrySelected] = useState(null);
+  const [stateSelected, setStateSelected] = useState(null);
+  const [citySelected, setCitySelected] = useState(null);
+
+  const countries = countrySelected?.map((option) => option.value);
+  const states = stateSelected?.map((option) => option.value);
+
   const initialvalues = {
     // location: locationArray,
-    country: "",
-    state: "",
-    city: "",
+    // country: "",
+    // state: "",
+    city: citySelected,
     service: "",
     category: "",
     ad_title: "",
@@ -77,87 +86,12 @@ function MultiLocationAd({ formTitle, services }) {
     // console.log(s);
   };
 
-  // const categoryOptions = categories.map((category) => category.name);
-  // const categoryOptions2 = categories;
-
-  // console.log(categoryOptions2);
-
-  // const categoryOptions = [
-  //   "- - - Dating - - -",
-  //   "I am Woman looking for Men",
-  //   "I am Man looking for Women",
-  //   "I am Man looking for Men",
-  //   "I am Woman looking for Women",
-  //   "I am Trans/Bi/Ladyboy",
-  //   "- - - Adult - - -",
-  //   "Adult Job",
-  //   "Body Massage",
-  //   "Escort (Female)",
-  //   "Escort (Male)",
-  //   "Female domination",
-  //   "Shemale",
-  //   "Striper for hire",
-  //   "- - - Business - - -",
-  //   "Antique",
-  //   "Event",
-  //   "Furniture",
-  //   "HVAC",
-  //   "Jewelry",
-  //   "Landscape",
-  //   "Rental",
-  //   "- - - Health & Fitness - - -",
-  //   "Alternative Medicine",
-  //   "Gym",
-  //   "Healing",
-  //   "Recreational",
-  //   "Suppliments",
-  //   "YOGA/Spiritual",
-  //   "- - - Service - - -",
-  //   "Accounting",
-  //   "Cleaning",
-  //   "Dental & Doctor",
-  //   "Legal",
-  //   "Parlor or Salons",
-  //   "Plumbing",
-  //   "- - - Tech - - -",
-  //   "Accessories",
-  //   "Computer",
-  //   "Crypto",
-  //   "Fixing",
-  //   "Gaming & Console",
-  //   "Smartphone",
-  //   "Software",
-  //   "- - - Other - - -",
-  //   "Camping Hiking",
-  //   "Fishing Hunting",
-  //   "Job",
-  //   "Other",
-  //   "Pet",
-  //   "Room share",
-  //   "Vehicle & Parts",
-  // ];
-
   const sponsoredAdOptions = [
     "Not Now $0.0",
     "7 days $10.00",
     "14 days $18.00",
     "30 days $30.00",
     "90 days $60.00",
-  ];
-
-  const cityFeaturedOptions = [
-    "Not Now $0.0",
-    "7 days $20.00",
-    "14 days $36.00",
-    "30 days $60.00",
-    "90 days $120.00",
-  ];
-
-  const coverStarOptions = [
-    "Not Now $0.0",
-    "1 day $99.00",
-    "7 days $499.00",
-    "14 days $699.00",
   ];
 
   const serviceOptions = services.map((category) => category?.name);
@@ -167,10 +101,10 @@ function MultiLocationAd({ formTitle, services }) {
       return ["- - - Select Service First - - -"];
     }
     const filteredServices = services.find((service) => service.name === value);
-    const filteredCAtegories = filteredServices?.categories?.map(
+    const filteredCategories = filteredServices?.categories?.map(
       (category) => category
     );
-    return filteredCAtegories;
+    return filteredCategories;
   };
 
   const countriesSelect = countriesData.map((country, i) => [country.name]);
@@ -233,6 +167,199 @@ function MultiLocationAd({ formTitle, services }) {
   //   return cities;
   // };
 
+  const [dropdown, setDropdown] = useState(false);
+  const [stateDropDown, setStateDropDown] = useState(false);
+  const [countryName, setCountryName] = useState("");
+  const [stateName, setStateName] = useState("");
+
+  const statesData = countriesData.find(
+    (country) => country.name === countryName
+  );
+
+  const toggle = (index) => {
+    if (countryDropDown === index) {
+      return setCountryDropDown(null);
+    }
+
+    setCountryDropDown(index);
+  };
+
+  // countriesOptions.push({ value: "*", label: "Select All" });
+
+  // const InputOption = ({
+  //   getStyles,
+  //   Icon,
+  //   isDisabled,
+  //   isFocused,
+  //   isSelected,
+  //   children,
+  //   innerProps,
+  //   ...rest
+  // }) => {
+  //   const [isActive, setIsActive] = useState(false);
+  //   const onMouseDown = () => setIsActive(true);
+  //   const onMouseUp = () => setIsActive(false);
+  //   const onMouseLeave = () => setIsActive(false);
+
+  //   // styles
+  //   let bg = "transparent";
+  //   if (isFocused) bg = "#eee";
+  //   if (isActive) bg = "#B2D4FF";
+
+  //   const style = {
+  //     alignItems: "center",
+  //     backgroundColor: bg,
+  //     color: "inherit",
+  //     display: "flex ",
+  //   };
+
+  //   // prop assignment
+  //   const props = {
+  //     ...innerProps,
+  //     onMouseDown,
+  //     onMouseUp,
+  //     onMouseLeave,
+  //     style,
+  //   };
+
+  //   return (
+  //     <components.Option
+  //       {...rest}
+  //       isDisabled={isDisabled}
+  //       isFocused={isFocused}
+  //       isSelected={isSelected}
+  //       getStyles={getStyles}
+  //       innerProps={props}
+  //     >
+  //       <input type="checkbox" checked={isSelected} className="mr-2" />
+  //       {children}
+  //     </components.Option>
+  //   );
+  // };
+
+  const Option = (props) => {
+    return (
+      <div>
+        <components.Option {...props}>
+          <input
+            type="checkbox"
+            checked={props.isSelected}
+            onChange={() => null}
+          />{" "}
+          <label>{props.label}</label>
+        </components.Option>
+      </div>
+    );
+  };
+
+  const MultiValue = (props) => (
+    <components.MultiValue {...props}>
+      <span>{props.data.label}</span>
+    </components.MultiValue>
+  );
+
+  // const [countrySelected, setCountrySelected] = useState(null);
+  // const [stateSelected, setStateSelected] = useState(null);
+  // const [citySelected, setCitySelected] = useState(null);
+
+  // const countries = countrySelected?.map((option) => option.value);
+  // const states = stateSelected?.map((option) => option.value);
+
+  // console.log(countries);
+
+  const selectedStates = () => {
+    const country = countries?.map((v) =>
+      countriesData.find((country) => country.name.includes(v))
+    );
+
+    // Array.prototype.concatAll = function () {
+    //   var results = [];
+    //   this.forEach(function (subArray) {
+    //     subArray.forEach(function (subArrayValue) {
+    //       results.push(subArrayValue);
+    //     });
+    //   });
+    //   return results;
+    // };
+
+    // const x = country?.map((c) => c?.states).concatAll();
+
+    const x = country?.flatMap((c) => c?.states);
+
+    const states = x?.map((s) => s.name);
+
+    return states;
+  };
+
+  const selectedCities = () => {
+    const filteredStates = states?.map((s) =>
+      countriesData?.map((c) =>
+        c?.states?.find((state) => state?.name?.includes(s))
+      )
+    );
+
+    const x = filteredStates?.flatMap((c) => c);
+
+    const z = x?.flatMap((y) => y?.cities);
+
+    const citiesFiltered = z?.filter((value) => value !== undefined);
+
+    return citiesFiltered;
+  };
+
+  // console.log(selectedCities());
+
+  //   const country = countriesData.find((country) => country.name === "Canada");
+  //   // const country = countriesData.find((country) =>
+  //   //   country.name.includes(values)
+  //   // );
+  //   const states = country?.states?.map((state) => state.name);
+  //   return states;
+  // };
+
+  // console.log(selectedStates());
+
+  const statesValue = selectedStates();
+
+  const citiesValue = selectedCities();
+
+  const countriesOptions = countriesData.map((country) => {
+    return {
+      value: country.name,
+      label: country.name,
+    };
+  });
+
+  const statesOptions = statesValue?.map((state) => {
+    return {
+      value: state,
+      label: state,
+    };
+  });
+
+  const citiesOptions = citiesValue?.map((city) => {
+    return {
+      value: city,
+      label: city,
+    };
+  });
+
+  const countriesId = useId();
+  const statesId = useId();
+  const citiesId = useId();
+
+  const handleCountryChange = (selected) => {
+    setCountrySelected(selected);
+  };
+
+  const handleStateChange = (selected) => {
+    setStateSelected(selected);
+  };
+
+  const handleCityChange = (selected) => {
+    setCitySelected(selected);
+  };
+
   return (
     <div className="font-roboto py-2 flex justify-center font-thin">
       <div className="lg:w-[540px]">
@@ -256,8 +383,229 @@ function MultiLocationAd({ formTitle, services }) {
             {(formik) => (
               <Form>
                 <div className="">
+                  <div className="grid grid-cols-3 mb-[18px]">
+                    <label
+                      htmlFor="countries"
+                      className="col-span-1 pr-6 lg:pr-[10px]"
+                    >
+                      Countries
+                    </label>
+                    <div className="col-span-2 text-black font-normal">
+                      <MySelect
+                        isMulti
+                        options={countriesOptions}
+                        closeMenuOnSelect={false}
+                        instanceId={countriesId}
+                        hideSelectedOptions={false}
+                        components={{ Option, MultiValue }}
+                        onChange={handleCountryChange}
+                        allowSelectAll={true}
+                        value={countrySelected}
+                      />
+                      {/* <Select
+                        options={countriesOptions}
+                        isMulti
+                        closeMenuOnSelect={false}
+                        instanceId={useId()}
+                        hideSelectedOptions={false}
+                        placeholder="Select Country"
+                        components={{
+                          Option: InputOption,
+                        }}
+                      /> */}
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-3 mb-[18px]">
+                    <label
+                      htmlFor="states"
+                      className="col-span-1 pr-6 lg:pr-[10px]"
+                    >
+                      States
+                    </label>
+                    {countrySelected ? (
+                      <div className="col-span-2 text-black font-normal">
+                        <MySelect
+                          isMulti
+                          options={statesOptions}
+                          closeMenuOnSelect={false}
+                          instanceId={statesId}
+                          hideSelectedOptions={false}
+                          components={{ Option, MultiValue }}
+                          onChange={handleStateChange}
+                          allowSelectAll={true}
+                          value={stateSelected}
+                        />
+                      </div>
+                    ) : (
+                      <div className="bg-white px-3 py-[5px] rounded col-span-2 text-slate-700 font-normal opacity-90">
+                        - - - Select Country First - - -
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="grid grid-cols-3 mb-[18px]">
+                    <label
+                      htmlFor="cities"
+                      className="col-span-1 pr-6 lg:pr-[10px]"
+                    >
+                      Cities
+                    </label>
+                    {stateSelected ? (
+                      <div className="col-span-2 text-black font-normal">
+                        <MySelect
+                          isMulti
+                          options={citiesOptions}
+                          closeMenuOnSelect={false}
+                          instanceId={citiesId}
+                          hideSelectedOptions={false}
+                          components={{ Option, MultiValue }}
+                          onChange={handleCityChange}
+                          allowSelectAll={true}
+                          value={citySelected}
+                        />
+                      </div>
+                    ) : (
+                      <div className="bg-white px-3 py-[5px] rounded col-span-2 text-slate-700 font-normal opacity-90">
+                        - - - Select State First - - -
+                      </div>
+                    )}
+                  </div>
+
                   {/* <Location setLocationArray={setLocationArray} /> */}
-                  <SelectField
+                  {/* <div className="grid grid-cols-3 mb-[18px]">
+                    <label
+                      htmlFor="country"
+                      className="col-span-1 pr-6 lg:pr-[10px]"
+                      // onClick={() => setDropdown(!dropdown)}
+                    >
+                      Country
+                    </label>
+
+                    <div className="col-span-2 relative">
+                      <div className="flex ">
+                        <div
+                          id="#country"
+                          className=" bg-white font-normal text-black px-3 py-[6px] w-full outline-none focus:ring-[3px] focus:transition focus:duration-200 ring-blue-400/50 rounded"
+                          onClick={() => setDropdown(!dropdown)}
+                        >
+                          {countryName ? countryName : "Select Country"}
+                        </div>
+                      </div>
+                      {dropdown && (
+                        <div className="z-20 absolute w-full border border-slate-600  bg-white shadow  text-black font-normal">
+                          {countriesData.map((country, i) => (
+                            <div
+                              key={i}
+                              className="px-4 py-1 hover:bg-blue-400 cursor-default relative"
+                            >
+                              <div className="flex gap-2">
+                                <input
+                                  type="checkbox"
+                                  value={country.name}
+                                  onChange={(e) =>
+                                    setCountryName(e.target.value)
+                                  }
+                                  // name={countryName}
+                                />
+                                <p
+                                  onClick={() => {
+                                    setCountryName(country.name);
+                                    setDropdown(!dropdown);
+                                  }}
+                                >
+                                  {country.name}
+                                </p>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  </div> */}
+
+                  {/* <div className="grid grid-cols-3 mb-[18px]">
+                    <label
+                      htmlFor="country"
+                      className="col-span-1 pr-6 lg:pr-[10px]"
+                      // onClick={() => setStateDropDown(!stateDropDown)}
+                    >
+                      State
+                    </label>
+
+                    <div className="col-span-2 relative">
+                      <div className="flex ">
+                        <div
+                          id="#country"
+                          className=" bg-white font-normal text-black px-3 py-[6px] w-full outline-none focus:ring-[3px] focus:transition focus:duration-200 ring-blue-400/50 rounded"
+                          onClick={() => setStateDropDown(!stateDropDown)}
+                        >
+                          {stateName ? stateName : "Select State"}
+                        </div>
+                      </div>
+                      {stateDropDown && (
+                        <div className="z-20 absolute w-full border border-slate-600  bg-white shadow  text-black font-normal">
+                          {statesData?.states?.map((state, i) => (
+                            <div
+                              key={i}
+                              className="px-4 py-1 hover:bg-blue-400 cursor-default relative"
+                            >
+                              <p
+                                onClick={() => {
+                                  setStateName(state.name);
+                                  setStateDropDown(!stateDropDown);
+                                }}
+                              >
+                                {state.name}
+                              </p>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  </div> */}
+
+                  {/* <div className="grid grid-cols-3 mb-[18px]">
+                    <label
+                      htmlFor="state"
+                      className="col-span-1 pr-6 lg:pr-[10px]"
+                    >
+                      State
+                    </label>
+
+                    <div className="col-span-2 relative">
+                      <div className="flex ">
+                        <div
+                          id="#country"
+                          className=" bg-white font-normal text-black px-3 py-[6px] w-full outline-none focus:ring-[3px] focus:transition focus:duration-200 ring-blue-400/50 rounded"
+                          onClick={() => setDropdown(!dropdown)}
+                        >
+                          Select Country
+                        </div>
+                      </div>
+                      {dropdown && (
+                        <div className="absolute w-full border border-slate-600  bg-white shadow  text-black font-normal">
+                          {countriesData.map((country, i) => (
+                            <div
+                              key={i}
+                              className="px-4 py-1 hover:bg-blue-400 cursor-default relative"
+                            >
+                              <p
+                                onClick={() =>
+                                  // setCountryDropDown(!countryDropDown)
+                                  toggle(country.name)
+                                }
+                              >
+                                {country.name}
+                              </p>
+                              
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  </div> */}
+                  {/* <SelectField
                     label="Country"
                     placeholder="Select Country"
                     name="country"
@@ -277,7 +625,7 @@ function MultiLocationAd({ formTitle, services }) {
                     name="city"
                     type="text"
                     options={citySelect(formik.values)}
-                  />
+                  /> */}
                   <SelectField
                     label="Service:"
                     placeholder="Select Service"
