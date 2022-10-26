@@ -1,4 +1,5 @@
 import FreeAd from "../../components/Dashboard/FreeAd";
+import FreeAd2 from "../../components/Dashboard/FreeAd2";
 import { servicesData } from "../../components/data/servicesData";
 import Layout from "../../components/Layout";
 
@@ -26,7 +27,8 @@ function FreeAdPage() {
 
   return (
     <Layout>
-      <FreeAd formTitle={formTitle} services={services} />
+      {/* <FreeAd formTitle={formTitle} services={services} /> */}
+      <FreeAd2 formTitle={formTitle} services={services} />
     </Layout>
   );
 }

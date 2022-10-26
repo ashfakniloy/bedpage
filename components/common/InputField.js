@@ -6,10 +6,12 @@ import { FaTimes } from "react-icons/fa";
 export const FileField = ({
   label,
   name,
-  handleChange,
+  handleImageChange,
   imagesPreview,
   deleteImage,
   formik,
+  selectedFiles,
+  renderImages,
 }) => {
   return (
     <div className="grid grid-cols-3 mb-[18px]">
@@ -18,21 +20,25 @@ export const FileField = ({
         <p className="text-xs">(Maximum 4 images)</p>
       </div>
       <div className="col-span-2">
-        {imagesPreview.length < 4 ? (
-          <input
-            type="file"
-            id={name}
-            className=""
-            onChange={handleChange}
-            accept="image/*"
-            multiple={true}
-            // disabled={imagesPreview.length > 3 && true}
-          />
-        ) : (
+        {/* {imagesPreview.length < 4 ? ( */}
+        <input
+          type="file"
+          id={name}
+          className=""
+          onChange={(e) => handleImageChange(e, formik)}
+          accept="image/*"
+          multiple={true}
+          // disabled={imagesPreview.length > 3 && true}
+        />
+        {/* ) : (
           <p className="py-1">Maximum Image limit reached</p>
-        )}
+        )} */}
 
-        <div className="mt-3 flex gap-2">
+        {/* <div className="mt-3 flex gap-2">
+          {renderImages(selectedFiles, formik)}
+        </div> */}
+
+        {/* <div className="mt-3 flex gap-2">
           {imagesPreview.length > 0 &&
             imagesPreview.map((item, i) => (
               <div key={i} className="relative w-[90px] h-[90px]">
@@ -45,7 +51,7 @@ export const FileField = ({
                 </button>
               </div>
             ))}
-        </div>
+        </div> */}
       </div>
     </div>
   );
@@ -104,7 +110,7 @@ export const TextField = ({ label, name, icon, ...props }) => {
             id={name}
             name={name}
             {...props}
-            required
+            // required
           />
         </div>
       </div>
@@ -129,7 +135,7 @@ export const CodeField = ({ label, name, icon, ...props }) => {
             id={name}
             name={name}
             {...props}
-            required
+            // required
           />
         </div>
       </div>
@@ -255,7 +261,7 @@ export const SelectField = ({ label, name, placeholder, options }) => {
             as="select"
             name={name}
             id={name}
-            required
+            // required
             className="bg-white font-normal text-black px-3 py-[6px] w-full outline-none focus:ring-[3px] focus:transition focus:duration-200 ring-blue-400/50 rounded"
           >
             <option
