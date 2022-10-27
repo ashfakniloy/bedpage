@@ -24,6 +24,7 @@ function ImageUpload() {
       formData.append("image", item)
     );
     formik.setFieldValue("images", formData);
+    // formik.setFieldValue("images", e.target.files);
 
     // console.log(formData);
     console.log([...formData.entries()]);
