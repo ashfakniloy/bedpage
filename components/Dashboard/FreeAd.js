@@ -1,4 +1,4 @@
-import { Formik, Form } from "formik";
+import { Formik, Form, useFormikContext } from "formik";
 import {
   FaAlignLeft,
   FaAt,
@@ -19,6 +19,8 @@ import Location from "./Location";
 import { useEffect, useState, useRef } from "react";
 import { countriesData } from "../data/countriesData";
 import Image from "next/image";
+import ImageUpload from "./ImageUpload";
+import usePostData from "../../hooks/usePostData";
 
 function FreeAd({ formTitle, services }) {
   const [locationArray, setLocationArray] = useState([]);
@@ -36,6 +38,7 @@ function FreeAd({ formTitle, services }) {
   //   return () => clearInterval(interval);
   // });
   const [selectedFiles, setSelectedFiles] = useState([]);
+  const [imagesPreview, setImagesPreview] = useState([]);
 
   const initialvalues = {
     // location: locationArray,
@@ -53,17 +56,28 @@ function FreeAd({ formTitle, services }) {
     images: "",
   };
 
+  // const handleSubmit = (values, formik) => {
+  //   // const data = values.images;
+  //   // console.log([...data.entries()]);
+  //   console.log(values);
+  // };
+
+  const { postData } = usePostData();
+
   const handleSubmit = (values, formik) => {
-    console.log(values);
+    postData(values, formik);
   };
 
   const handleImageChange = (e, formik) => {
     // e.preventDefault();
-    setSelectedFiles(e.target.files);
+    // setSelectedFiles(e.target.files);
+    setImagesPreview(e.target.files);
 
     let formData = new FormData();
     // formData.append("category", category);
-    Array.from(selectedFiles).forEach((item) => formData.append("image", item));
+    Array.from(e.target.files).forEach((item) =>
+      formData.append("image", item)
+    );
     formik.setFieldValue("images", formData);
 
     // console.log(formData);
@@ -71,95 +85,42 @@ function FreeAd({ formTitle, services }) {
   };
 
   const handleImageDelete = (i, formik) => {
-    const updatedImages = Array.from(selectedFiles).filter(
+    const updatedImages = Array.from(formik.values.images).filter(
       (item, index) => index !== i
     );
     // formData.append("category", category);
-    setSelectedFiles(updatedImages);
+    // setSelectedFiles(updatedImages);
     let formData = new FormData();
     Array.from(updatedImages).forEach((item) => formData.append("image", item));
     formik.setFieldValue("images", formData);
+
+    const updatedPreview = Array.from(imagesPreview).filter(
+      (item, index) => index !== i
+    );
+    setImagesPreview(updatedPreview);
     // formik.setFieldValue("images", updatedImages);
   };
 
-  const renderImages = (source, formik) => {
-    return Array.from(source).map((image, i) => {
-      return (
-        <div key={i} className="relative">
-          <Image
-            alt="image"
-            className="p-2"
-            src={image ? URL.createObjectURL(image) : null}
-            width={100}
-            height={100}
-          />
-          <span
-            className="absolute top-1 right-1 bg-white border border-slate-700 p-[2px] rounded-full text-slate-700 shadow-lg text-[15px]"
-            onClick={() => handleImageDelete(i, formik)}
-          >
-            <FaTimes />
-          </span>
-        </div>
-      );
-    });
-  };
-
-  // console.log(imagesPreview);
-
-  // const imageUpload = (e, formik) => {
-  //   // const files = e.target.files;
-  //   // setImagesPreview([...imagesPreview, ...files]);
-
-  //   let ImagesArray = Object.entries(e.target.files).map((e) =>
-  //     URL.createObjectURL(e[1])
-  //   );
-  //   // console.log(ImagesArray);
-  //   setImagesPreview([...imagesPreview, ...ImagesArray]);
-
-  //   formik.setFieldValue("images", [...imagesPreview, ...ImagesArray]);
-
-  //   // const formData = new FormData();
-  //   // formData.append("file", [...imagesPreview, ...ImagesArray]);
-
-  //   // formik.setFieldValue("images", e.target.files[0]);
-  //   // console.log("file", imagesPreview);
-
-  //   // const filesArray = Array.from(files);
-  //   // console.log(files);
-  //   // const formData = new FormData();
-  //   // formData.append("file", files[0]);
-  //   // formData.append("upload_preset", "u9pqvof1");
-
-  //   // console.log([...formData.entries()]);
-
-  //   // setPhotoPreview(formData);
-  //   // formik.setFieldValue("images", formData);
-
-  //   // const res = await fetch(
-  //   //   "https://api.cloudinary.com/v1_1/niloy56/image/upload",
-  //   //   {
-  //   //     method: "POST",
-  //   //     body: formData,
-  //   //   }
-  //   // );
-
-  //   // const data = await res.json();
-
-  //   // if (res.ok) {
-  //   //   console.log("success", data.secure_url);
-  //   //   setPhotoPreview(data.secure_url);
-  //   //   formik.setFieldValue("photo", data.secure_url);
-  //   // } else {
-  //   //   console.log("failed", data);
-  //   // }
+  // const renderImages = (source, formik) => {
+  //   return Array.from(source).map((image, i) => {
+  //     return (
+  //       <div key={i} className="relative">
+  //         <Image
+  //           className="p-2"
+  //           src={image ? URL.createObjectURL(image) : null}
+  //           width={100}
+  //           height={100}
+  //         />
+  //         <span
+  //           className="absolute top-1 right-1 bg-white border border-slate-700 p-[2px] rounded-full text-slate-700 shadow-lg text-[15px]"
+  //           onClick={() => handleImageDelete(i, formik)}
+  //         >
+  //           <FaTimes />
+  //         </span>
+  //       </div>
+  //     );
+  //   });
   // };
-
-  const deleteImage = (e, formik) => {
-    const updatedImages = imagesPreview.filter((item, index) => index !== e);
-    setImagesPreview(updatedImages);
-    formik.setFieldValue("images", updatedImages);
-    // console.log(s);
-  };
 
   const serviceOptions = services.map((category) => category?.name);
 
@@ -295,29 +256,16 @@ function FreeAd({ formTitle, services }) {
                     icon={<FaHashtag />}
                   />
 
-                  <FileField
-                    name={selectedFiles}
-                    label="Add Images"
-                    // handleChange={(e) => imageUpload(e, formik)}
-                    handleImageChange={handleImageChange}
-                    // imagesPreview={imagesPreview}
-                    selectedFiles={selectedFiles}
-                    renderImages={renderImages}
-                    // deleteImage={deleteImage}
-                    formik={formik}
-                  />
-                  {/* <div className="mt-2">
-                    {Array.from(imagesPreview).map((image, i) => (
-                      <div key={i} className="flex">
-                        <Image
-                          src={image ? URL.createObjectURL(image) : null}
-                          alt="image"
-                          width={60}
-                          height={60}
-                        />
-                      </div>
-                    ))}                  
-                  </div> */}
+                  <div className="grid grid-cols-3 mb-[18px]">
+                    <div className="">
+                      <label htmlFor="images">Images </label>
+                      <p className="text-xs">(Maximum 4 images)</p>
+                    </div>
+
+                    <div className="col-span-2">
+                      <ImageUpload />
+                    </div>
+                  </div>
 
                   <div className="grid grid-cols-3">
                     <div className="col-start-2 col-span-2">

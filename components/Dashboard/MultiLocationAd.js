@@ -19,6 +19,8 @@ import { useEffect, useId, useState } from "react";
 import { countriesData } from "../data/countriesData";
 import Select, { components } from "react-select";
 import MySelect from "../common/MySelect";
+import ImageUpload from "./ImageUpload";
+import usePostData from "../../hooks/usePostData";
 
 function MultiLocationAd({ formTitle, services }) {
   const [locationArray, setLocationArray] = useState([]);
@@ -62,8 +64,14 @@ function MultiLocationAd({ formTitle, services }) {
     total_bill: "",
   };
 
+  // const handleSubmit = (values, formik) => {
+  //   console.log(values);
+  // };
+
+  const { postData } = usePostData();
+
   const handleSubmit = (values, formik) => {
-    console.log(values);
+    postData(values, formik);
   };
 
   const imageUpload = (e, formik) => {
@@ -709,17 +717,18 @@ function MultiLocationAd({ formTitle, services }) {
                     name="sponsored_ad"
                     type="text"
                     options={sponsoredAdOptions}
-                    deleteImage={deleteImage}
                     formik={formik}
                   />
-                  <FileField
-                    name={imagesPreview}
-                    label="Add Images"
-                    handleChange={(e) => imageUpload(e, formik)}
-                    imagesPreview={imagesPreview}
-                    deleteImage={deleteImage}
-                    formik={formik}
-                  />
+                  <div className="grid grid-cols-3 mb-[18px]">
+                    <div className="">
+                      <label htmlFor="images">Images </label>
+                      <p className="text-xs">(Maximum 4 images)</p>
+                    </div>
+
+                    <div className="col-span-2">
+                      <ImageUpload />
+                    </div>
+                  </div>
                   <div className="grid grid-cols-3 mb-[18px]">
                     <p className="col-span-1">Total Bill:</p>
                     <div className="col-span-2 flex items-center gap-5 lg:gap-[120px]">

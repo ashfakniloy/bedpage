@@ -17,6 +17,8 @@ import {
 import Location from "./Location";
 import { useEffect, useState } from "react";
 import { countriesData } from "../data/countriesData";
+import ImageUpload from "./ImageUpload";
+import usePostData from "../../hooks/usePostData";
 
 function PostAd({ formTitle, services }) {
   const [locationArray, setLocationArray] = useState([]);
@@ -53,8 +55,14 @@ function PostAd({ formTitle, services }) {
     total_bill: "",
   };
 
+  // const handleSubmit = (values, formik) => {
+  //   console.log(values);
+  // };
+
+  const { postData } = usePostData();
+
   const handleSubmit = (values, formik) => {
-    console.log(values);
+    postData(values, formik);
   };
 
   const imageUpload = (e, formik) => {
@@ -295,6 +303,17 @@ function PostAd({ formTitle, services }) {
                     deleteImage={deleteImage}
                     formik={formik}
                   />
+
+                  <div className="grid grid-cols-3 mb-[18px]">
+                    <div className="">
+                      <label htmlFor="images">Images </label>
+                      <p className="text-xs">(Maximum 4 images)</p>
+                    </div>
+
+                    <div className="col-span-2">
+                      <ImageUpload />
+                    </div>
+                  </div>
 
                   <div className="grid grid-cols-3 mb-[18px]">
                     <p className="col-span-1">Total Bill:</p>
