@@ -32,8 +32,6 @@ function PostAd({ formTitle, services }) {
   //   return () => clearInterval(interval);
   // });
 
-  const [imagesPreview, setImagesPreview] = useState([]);
-
   const initialvalues = {
     // location: locationArray,
     country: "",
@@ -49,8 +47,7 @@ function PostAd({ formTitle, services }) {
     highlight_ad: "",
     blink_ad: "",
     sponsored_ad: "",
-    // city_featured: "",
-    // cover_star: "",
+
     images: "",
     total_bill: "",
   };
@@ -63,26 +60,6 @@ function PostAd({ formTitle, services }) {
 
   const handleSubmit = (values, formik) => {
     postData(values, formik);
-  };
-
-  const imageUpload = (e, formik) => {
-    // const files = e.target.files;
-    // setImagesPreview([...imagesPreview, ...files]);
-
-    let ImagesArray = Object.entries(e.target.files).map((e) =>
-      URL.createObjectURL(e[1])
-    );
-    // console.log(ImagesArray);
-    setImagesPreview([...imagesPreview, ...ImagesArray]);
-
-    formik.setFieldValue("images", [...imagesPreview, ...ImagesArray]);
-  };
-
-  const deleteImage = (e, formik) => {
-    const updatedImages = imagesPreview.filter((item, index) => index !== e);
-    setImagesPreview(updatedImages);
-    formik.setFieldValue("images", updatedImages);
-    // console.log(s);
   };
 
   const sponsoredAdOptions = [
@@ -183,7 +160,7 @@ function PostAd({ formTitle, services }) {
             // innerRef={formikRef}
             initialValues={initialvalues}
             // validationSchema={validate}
-            enableReinitialize
+            // enableReinitialize
             onSubmit={handleSubmit}
           >
             {(formik) => (
@@ -294,14 +271,6 @@ function PostAd({ formTitle, services }) {
                     name="sponsored_ad"
                     type="text"
                     options={sponsoredAdOptions}
-                  />
-                  <FileField
-                    name={imagesPreview}
-                    label="Add Images"
-                    handleChange={(e) => imageUpload(e, formik)}
-                    imagesPreview={imagesPreview}
-                    deleteImage={deleteImage}
-                    formik={formik}
                   />
 
                   <div className="grid grid-cols-3 mb-[18px]">

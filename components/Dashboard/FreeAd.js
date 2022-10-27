@@ -37,8 +37,6 @@ function FreeAd({ formTitle, services }) {
 
   //   return () => clearInterval(interval);
   // });
-  const [selectedFiles, setSelectedFiles] = useState([]);
-  const [imagesPreview, setImagesPreview] = useState([]);
 
   const initialvalues = {
     // location: locationArray,
@@ -52,7 +50,6 @@ function FreeAd({ formTitle, services }) {
     email: "",
     contact_no: "",
     age: "",
-    // images: selectedFiles,
     images: "",
   };
 
@@ -67,60 +64,6 @@ function FreeAd({ formTitle, services }) {
   const handleSubmit = (values, formik) => {
     postData(values, formik);
   };
-
-  const handleImageChange = (e, formik) => {
-    // e.preventDefault();
-    // setSelectedFiles(e.target.files);
-    setImagesPreview(e.target.files);
-
-    let formData = new FormData();
-    // formData.append("category", category);
-    Array.from(e.target.files).forEach((item) =>
-      formData.append("image", item)
-    );
-    formik.setFieldValue("images", formData);
-
-    // console.log(formData);
-    console.log([...formData.entries()]);
-  };
-
-  const handleImageDelete = (i, formik) => {
-    const updatedImages = Array.from(formik.values.images).filter(
-      (item, index) => index !== i
-    );
-    // formData.append("category", category);
-    // setSelectedFiles(updatedImages);
-    let formData = new FormData();
-    Array.from(updatedImages).forEach((item) => formData.append("image", item));
-    formik.setFieldValue("images", formData);
-
-    const updatedPreview = Array.from(imagesPreview).filter(
-      (item, index) => index !== i
-    );
-    setImagesPreview(updatedPreview);
-    // formik.setFieldValue("images", updatedImages);
-  };
-
-  // const renderImages = (source, formik) => {
-  //   return Array.from(source).map((image, i) => {
-  //     return (
-  //       <div key={i} className="relative">
-  //         <Image
-  //           className="p-2"
-  //           src={image ? URL.createObjectURL(image) : null}
-  //           width={100}
-  //           height={100}
-  //         />
-  //         <span
-  //           className="absolute top-1 right-1 bg-white border border-slate-700 p-[2px] rounded-full text-slate-700 shadow-lg text-[15px]"
-  //           onClick={() => handleImageDelete(i, formik)}
-  //         >
-  //           <FaTimes />
-  //         </span>
-  //       </div>
-  //     );
-  //   });
-  // };
 
   const serviceOptions = services.map((category) => category?.name);
 
