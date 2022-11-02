@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Layout from "../../components/Layout";
 import { getSession } from "next-auth/react";
-import { redirect } from "next/dist/server/api-utils";
 import { redirectPage } from "../../utils/redirectPage";
 // import { countriesData } from "../../components/data/countriesData";
 
