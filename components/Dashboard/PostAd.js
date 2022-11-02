@@ -34,21 +34,21 @@ function PostAd({ formTitle, services }) {
 
   const initialvalues = {
     // location: locationArray,
+    tag: "ad",
     country: "",
     state: "",
     city: "",
     service: "",
     category: "",
-    ad_title: "",
+    title: "",
     description: "",
     email: "",
-    contact_no: "",
+    phone: "",
     age: "",
     highlight_ad: "",
     blink_ad: "",
     sponsored_ad: "",
-
-    images: "",
+    images: [],
     total_bill: "",
   };
 
@@ -56,7 +56,7 @@ function PostAd({ formTitle, services }) {
   //   console.log(values);
   // };
 
-  const { postData } = usePostData();
+  const { postData } = usePostData("/post/add/free");
 
   const handleSubmit = (values, formik) => {
     postData(values, formik);
@@ -204,7 +204,7 @@ function PostAd({ formTitle, services }) {
                   />
                   <TextField
                     label="Ad Title"
-                    name="ad_title"
+                    name="title"
                     type="text"
                     icon={<FaAlignLeft />}
                   />
@@ -221,7 +221,7 @@ function PostAd({ formTitle, services }) {
                   />
                   <TextField
                     label="Contact No."
-                    name="contact_no"
+                    name="phone"
                     type="text"
                     icon={<FaComments />}
                   />

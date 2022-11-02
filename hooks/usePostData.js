@@ -1,26 +1,46 @@
-function usePostData() {
-  const url = ``;
+import { API_URL } from "../config";
+import { useSession } from "next-auth/react";
+import { useEffect } from "react";
+import { toast } from "react-toastify";
+
+function usePostData(path) {
+  const { data } = useSession();
+  const { token, id } = data ? data.user : "";
+
+  const url = `${API_URL}${path}/${id}`;
+
+  // useEffect(() => {
+  //   console.log(`${API_URL}${path}/${id}`);
+  // }, [data]);
+
+  // console.log(`${API_URL}${path}/${id}`);
+
+  // const url = `https://boiling-dusk-89135.herokuapp.com/v1/post/add/free/${data?.id}`;
 
   const postData = async (values, formik) => {
-    console.log(values);
+    // console.log(values);
+    // return;
 
-    // const res = await fetch(url, {
-    //   method: "POST",
-    //   headers: {
-    //     Accept: "application/json",
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(values),
-    // });
+    const res = await fetch(url, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(values),
+    });
 
-    // const data = await res.json();
+    const data = await res.json();
 
-    // if (res.ok) {
-    //   console.log("success", data);
-    //   // formik.resetForm();
-    // } else {
-    //   console.log("error", data);
-    // }
+    if (res.ok) {
+      console.log("success", data);
+      toast.success("Submitted Successfully");
+      // formik.resetForm();
+    } else {
+      console.log("error", data);
+      toast.error("Something Went Wrong");
+    }
   };
 
   return { postData };

@@ -1,6 +1,8 @@
 import Head from "next/head";
 import Header from "./Header";
 import Footer from "./Footer";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 // import Sidebar from "./Sidebar";
 
 function Layout({ children, pageDetails }) {
@@ -21,6 +23,7 @@ function Layout({ children, pageDetails }) {
       <>
         <div className="container overflow-x-hidden">
           <Header />
+          <ToastContainer />
 
           {children}
         </div>

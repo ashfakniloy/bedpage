@@ -4,35 +4,54 @@ import {
   dashboardLinks,
   dashboardLinks2,
 } from "../components/Dashboard/dashboardLinks";
+import { FaSignOutAlt } from "react-icons/fa";
+import useLogOut from "../hooks/useLogOut";
 
 function DashboardPage() {
+  const { logoutUser } = useLogOut();
+
+  const handleLogOut = () => {
+    logoutUser();
+  };
+
   return (
     <Layout>
       <div className="py-1">
         <div className="grid grid-cols-2 gap-[30px] text-custom-yellow2">
           <div className="">
-            <div className="rounded border border-gray-800/50 divide-y divide-gray-800/50 bg-custom-gray2">
-              {dashboardLinks.map((link, i) => (
-                <div key={i}>
-                  <Link href={link.link} passHref>
-                    <a>
-                      <button className="flex items-center gap-[7px] w-full px-4 lg:px-5 py-[13px] text-left hover:bg-custom-gray5 hover:text-custom-gray4 focus:bg-custom-gray5 focus:text-custom-gray4 active:text-custom-gray6 hover:rounded focus:rounded">
-                        <span className="text-[15px]">{link.icon}</span>
-                        {link.name}
-                      </button>
-                    </a>
-                  </Link>
-                </div>
-              ))}
+            <div className="rounded border border-gray-800/50 bg-custom-gray2 overflow-hidden">
+              <div className="divide-y divide-gray-800/50 ">
+                {dashboardLinks.map((link, i) => (
+                  <div key={i}>
+                    <Link href={link.link} passHref>
+                      <a>
+                        <button className="flex items-center gap-[7px] w-full px-4 lg:px-5 py-[13px] text-left hover:bg-custom-gray5 hover:text-custom-gray4 focus:bg-custom-gray5 focus:text-custom-gray4 active:text-custom-gray6">
+                          <span className="text-[15px]">{link.icon}</span>
+                          {link.name}
+                        </button>
+                      </a>
+                    </Link>
+                  </div>
+                ))}
+                <button
+                  className="flex items-center gap-[7px] w-full px-4 lg:px-5 py-[13px] text-left hover:bg-custom-gray5 hover:text-custom-gray4 focus:bg-custom-gray5 focus:text-custom-gray4 active:text-custom-gray6"
+                  onClick={handleLogOut}
+                >
+                  <span className="text-[15px]">
+                    <FaSignOutAlt />
+                  </span>
+                  Log Out
+                </button>
+              </div>
             </div>
           </div>
           <div className="">
-            <div className="rounded border border-gray-800/50 divide-y divide-gray-800/50 bg-custom-gray2">
+            <div className="rounded border border-gray-800/50 divide-y divide-gray-800/50 bg-custom-gray2 overflow-hidden">
               {dashboardLinks2.map((link, i) => (
                 <div key={i}>
                   <Link href={link.link} passHref>
                     <a>
-                      <button className="flex items-center gap-[7px] w-full px-4 lg:px-5 py-[13px] text-left hover:bg-custom-gray5 hover:text-custom-gray4 focus:bg-custom-gray5 focus:text-custom-gray4 active:text-custom-gray6 hover:rounded focus:rounded">
+                      <button className="flex items-center gap-[7px] w-full px-4 lg:px-5 py-[13px] text-left hover:bg-custom-gray5 hover:text-custom-gray4 focus:bg-custom-gray5 focus:text-custom-gray4 active:text-custom-gray6">
                         <span className="text-[15px]">{link.icon}</span>
                         {link.name}
                       </button>

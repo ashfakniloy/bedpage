@@ -5,8 +5,16 @@ import Banner from "../components/Home/Banner";
 import Description from "../components/Home/Description";
 import Locations from "../components/Home/Locations";
 import Layout from "../components/Layout";
+import { useSession } from "next-auth/react";
+import { useEffect } from "react";
 
 export default function Home() {
+  const { data } = useSession();
+
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
+
   return (
     <Layout>
       <Banner />

@@ -1,6 +1,8 @@
 import Layout from "../../components/Layout";
 import { servicesData } from "../../components/data/servicesData";
-import MultiLocationAd from "../../components/Dashboard/MultiLocationAd";
+import MultiLocationAd from "../../components/Dashboard/MultipleLocationAd";
+import OldMultiLocationAd from "../../components/Dashboard/OldMultiLocationAd";
+import TestMultiple from "../../components/Dashboard/TestMultiple";
 
 function MultipleLocationAdPage() {
   const formTitle = "Post Ad in Multiple Cities";
@@ -26,7 +28,9 @@ function MultipleLocationAdPage() {
 
   return (
     <Layout>
-      <MultiLocationAd formTitle={formTitle} services={services} />
+      {/* <OldMultiLocationAd formTitle={formTitle} services={services} /> */}
+      {/* <MultiLocationAd formTitle={formTitle} services={services} /> */}
+      <TestMultiple formTitle={formTitle} services={services} />
     </Layout>
   );
 }

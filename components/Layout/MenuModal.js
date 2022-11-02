@@ -1,8 +1,9 @@
 import Link from "next/link";
-import { FaTimes } from "react-icons/fa";
+import { FaSignOutAlt, FaTimes } from "react-icons/fa";
 import { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { modalLinks, modalLinks2 } from "./modalLinks";
+import { modalLinks, modalLinks2, modalLinksLogged } from "./modalLinks";
+import useLogOut from "../../hooks/useLogOut";
 
 // Modal.setAppElement("#__next");
 
@@ -30,7 +31,7 @@ import { modalLinks, modalLinks2 } from "./modalLinks";
 //   },
 // };
 
-function MenuModal({ showMenu, setShowMenu, node }) {
+function MenuModal({ showMenu, setShowMenu, node, status }) {
   useEffect(() => {
     if (showMenu) {
       document.body.style.overflow = "hidden";
@@ -67,6 +68,12 @@ function MenuModal({ showMenu, setShowMenu, node }) {
   // const styles2 = useSpring({
   //   y: showMenu ? 0 : 24,
   // });
+
+  const { logoutUser } = useLogOut();
+
+  const handleLogOut = () => {
+    logoutUser();
+  };
 
   const slide = {
     initial: {
@@ -194,21 +201,49 @@ function MenuModal({ showMenu, setShowMenu, node }) {
                 <div className="p-4">
                   <div className="grid grid-cols-2 gap-[30px] text-custom-yellow2">
                     <div className="">
-                      <div className="rounded divide-y divide-gray-800/50 bg-custom-gray2">
-                        {modalLinks.map((link, i) => (
-                          <div key={i}>
-                            <Link href={link.link} passHref>
-                              <a>
-                                <button className="flex items-center gap-[7px] w-full px-4 lg:px-5 py-[13px] text-left hover:bg-custom-gray5 hover:text-custom-gray4 focus:bg-custom-gray5 focus:text-custom-gray4 active:text-custom-gray6 hover:rounded focus:rounded">
-                                  <span className="text-[15px]">
-                                    {link.icon}
-                                  </span>
-                                  {link.name}
-                                </button>
-                              </a>
-                            </Link>
+                      <div className="rounded bg-custom-gray2">
+                        {status === "authenticated" ? (
+                          <div className="divide-y divide-gray-800/50">
+                            {modalLinksLogged.map((link, i) => (
+                              <div key={i}>
+                                <Link href={link.link} passHref>
+                                  <a>
+                                    <button className="flex items-center gap-[7px] w-full px-4 lg:px-5 py-[13px] text-left hover:bg-custom-gray5 hover:text-custom-gray4 focus:bg-custom-gray5 focus:text-custom-gray4 active:text-custom-gray6 hover:rounded focus:rounded">
+                                      <span className="text-[15px]">
+                                        {link.icon}
+                                      </span>
+                                      {link.name}
+                                    </button>
+                                  </a>
+                                </Link>
+                              </div>
+                            ))}
+                            <button
+                              className="flex items-center gap-[7px] w-full px-4 lg:px-5 py-[13px] text-left hover:bg-custom-gray5 hover:text-custom-gray4 focus:bg-custom-gray5 focus:text-custom-gray4 active:text-custom-gray6 hover:rounded focus:rounded"
+                              onClick={handleLogOut}
+                            >
+                              <span className="text-[15px]">
+                                <FaSignOutAlt />
+                              </span>
+                              Log Out
+                            </button>
                           </div>
-                        ))}
+                        ) : (
+                          modalLinks.map((link, i) => (
+                            <div key={i}>
+                              <Link href={link.link} passHref>
+                                <a>
+                                  <button className="flex items-center gap-[7px] w-full px-4 lg:px-5 py-[13px] text-left hover:bg-custom-gray5 hover:text-custom-gray4 focus:bg-custom-gray5 focus:text-custom-gray4 active:text-custom-gray6 hover:rounded focus:rounded">
+                                    <span className="text-[15px]">
+                                      {link.icon}
+                                    </span>
+                                    {link.name}
+                                  </button>
+                                </a>
+                              </Link>
+                            </div>
+                          ))
+                        )}
                       </div>
                     </div>
                     <div className="">

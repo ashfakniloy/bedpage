@@ -1,5 +1,8 @@
 import Link from "next/link";
 import Layout from "../../components/Layout";
+import { getSession } from "next-auth/react";
+import { redirect } from "next/dist/server/api-utils";
+import { redirectPage } from "../../utils/redirectPage";
 // import { countriesData } from "../../components/data/countriesData";
 
 function PostAdPage() {
@@ -9,7 +12,7 @@ function PostAdPage() {
         <h1 className="text-[32px] text-center font-medium">Post an Ad</h1>
 
         <div className="space-y-4 text-[19px] lg:text-[24px]">
-          <div className=" flex flex-wrap">
+          <div className="flex flex-wrap">
             <p className="link mr-2">
               <Link href="/post-ad/free-ad">Post free ad</Link>
             </p>
@@ -59,5 +62,13 @@ function PostAdPage() {
   //   </Layout>
   // );
 }
+
+// export async function getServerSideProps(context) {
+//   return redirectPage(context, () => {
+//     return {
+//       props: {},
+//     };
+//   });
+// }
 
 export default PostAdPage;

@@ -1,11 +1,10 @@
-import { Formik, Form, useFormikContext } from "formik";
+import { Formik, Form } from "formik";
 import {
   FaAlignLeft,
   FaAt,
   FaComments,
   FaHashtag,
   FaLock,
-  FaTimes,
 } from "react-icons/fa";
 import Link from "next/link";
 import {
@@ -14,21 +13,19 @@ import {
   TextArea2,
   CheckboxField,
   FileField,
+  TestMulti,
 } from "../common/InputField";
 import Location from "./Location";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { countriesData } from "../data/countriesData";
-import Image from "next/image";
 import ImageUpload from "./ImageUpload";
 import usePostData from "../../hooks/usePostData";
+import MySelect from "../common/MySelect";
+import Select from "react-select";
 
-function FreeAd({ formTitle, services }) {
+function TestMultiple({ formTitle, services }) {
   const [locationArray, setLocationArray] = useState([]);
   const [changeColor, setChangeColor] = useState(false);
-
-  // const formikRef = useRef();
-
-  // console.log(formikRef);
 
   // useEffect(() => {
   //   const interval = setInterval(() => {
@@ -38,9 +35,11 @@ function FreeAd({ formTitle, services }) {
   //   return () => clearInterval(interval);
   // });
 
+  const [cityValue, setCityValue] = useState([]);
+
   const initialvalues = {
     // location: locationArray,
-    tag: "free",
+    tag: "multiple",
     country: "",
     state: "",
     city: "",
@@ -51,20 +50,34 @@ function FreeAd({ formTitle, services }) {
     email: "",
     phone: "",
     age: "",
+    highlight_ad: "",
+    blink_ad: "",
+    sponsored_ad: "",
     images: [],
+    total_bill: "",
+  };
+
+  const handleCityChange = (selected) => {
+    setCityValue(selected);
   };
 
   // const handleSubmit = (values, formik) => {
-  //   // const data = values.images;
-  //   // console.log([...data.entries()]);
   //   console.log(values);
   // };
 
-  const { postData } = usePostData("/post/add/free");
+  const { postData } = usePostData();
 
   const handleSubmit = (values, formik) => {
     postData(values, formik);
   };
+
+  const sponsoredAdOptions = [
+    "Not Now $0.0",
+    "7 days $10.00",
+    "14 days $18.00",
+    "30 days $30.00",
+    "90 days $60.00",
+  ];
 
   const serviceOptions = services.map((category) => category?.name);
 
@@ -108,11 +121,12 @@ function FreeAd({ formTitle, services }) {
     );
     const cities = citiesValues?.cities?.map((city) => city);
     return cities;
-    // }
   };
 
+  const citiesOptions = [{ value: "city", label: "city" }];
+
   return (
-    <div className="font-roboto py-2 flex justify-center font-thin overflow-hidden">
+    <div className="font-roboto py-2 flex justify-center font-thin">
       <div className="lg:w-[540px]">
         <h1 className="text-center text-[32px] text-white">
           {formTitle && formTitle}
@@ -149,13 +163,43 @@ function FreeAd({ formTitle, services }) {
                     type="text"
                     options={statesSelect(formik.values)}
                   />
-                  <SelectField
+                  <div className="grid grid-cols-3 mb-[18px]">
+                    <label
+                      htmlFor="cities"
+                      className="col-span-1 pr-6 lg:pr-[10px]"
+                    >
+                      Cities
+                    </label>
+                    <div className="col-span-2 text-black font-normal">
+                      {/* <Select options={citiesOptions} /> */}
+                      <TestMulti
+                        cityValue={cityValue}
+                        handleCityChange={handleCityChange}
+                      />
+                      {/* <MySelect
+                        isMulti
+                        options={citiesOptions}
+                        // options={countriesOptions}
+                        // options={citiesOptions}
+                        // // closeMenuOnSelect={false}
+                        // // // instanceId={countriesId}
+                        // // hideSelectedOptions={false}
+                        // // // components={{ Option, MultiValue }}
+                        // // // onChange={handleCountryChange}
+                        // onChange={handleCityChange}
+                        // // allowSelectAll={true}
+                        // // // value={countrySelected}
+                        // value={citySelected}
+                      /> */}
+                    </div>
+                  </div>
+                  {/* <SelectField
                     label="City"
                     placeholder="Select City"
                     name="city"
                     type="text"
                     options={citySelect(formik.values)}
-                  />
+                  /> */}
                   <SelectField
                     label="Service:"
                     placeholder="Select Service"
@@ -199,6 +243,47 @@ function FreeAd({ formTitle, services }) {
                     type="number"
                     icon={<FaHashtag />}
                   />
+                  <div className="grid grid-cols-3 mb-[18px]">
+                    <p className="col-span-1">Approval Fees:</p>
+                    <div className="col-span-2 flex items-center gap-5 lg:gap-[120px]">
+                      <p className="bg-slate-200 text-slate-600 px-4 py-1 rounded font-normal text-[15px]">
+                        $0.50
+                      </p>
+                      <CheckboxField
+                        label="Highlight Ad"
+                        name="highlight_ad"
+                        option="chekced"
+                        type="checkbox"
+                      />
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-3 mb-[18px]">
+                    <p className="col-span-1">Blink Ad::</p>
+                    <div className="col-span-2 flex items-center gap-2 text-[18px]">
+                      <CheckboxField
+                        // label="Highlight Ad"
+                        name="blink_ad"
+                        option="chekced"
+                        type="checkbox"
+                      />
+                      <p
+                        className={` text-white px-4 py-[5px] font-normal ${
+                          changeColor
+                            ? "bg-custom-fuschsia"
+                            : "bg-custom-emerald"
+                        }`}
+                      >
+                        Blink Ad Like This
+                      </p>
+                    </div>
+                  </div>
+                  <SelectField
+                    label="Sponsored Ad:"
+                    placeholder="Select Sponsored Ad"
+                    name="sponsored_ad"
+                    type="text"
+                    options={sponsoredAdOptions}
+                  />
 
                   <div className="grid grid-cols-3 mb-[18px]">
                     <div className="">
@@ -208,6 +293,15 @@ function FreeAd({ formTitle, services }) {
 
                     <div className="col-span-2">
                       <ImageUpload />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-3 mb-[18px]">
+                    <p className="col-span-1">Total Bill:</p>
+                    <div className="col-span-2 flex items-center gap-5 lg:gap-[120px]">
+                      <p className="bg-slate-200 text-slate-600 px-4 py-1 rounded font-normal text-[15px]">
+                        $0.50
+                      </p>
                     </div>
                   </div>
 
@@ -240,4 +334,4 @@ function FreeAd({ formTitle, services }) {
   );
 }
 
-export default FreeAd;
+export default TestMultiple;

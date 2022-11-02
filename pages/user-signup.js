@@ -4,20 +4,53 @@ import Layout from "../components/Layout";
 import { CodeField, TextField } from "../components/common/InputField";
 import { FaAlignLeft, FaAt, FaBullhorn, FaLock } from "react-icons/fa";
 import Link from "next/link";
+import usePostData from "../hooks/usePostData";
+import { API_URL } from "../config";
 
 function UserSignupPage() {
   const [showCodeInput, setShowCodeInput] = useState(false);
+  const [passwordMatchError, setPasswordMatchError] = useState(false);
 
   const initialvalues = {
     name: "",
     email: "",
     password: "",
     retype_password: "",
-    promo_code: "",
+    // promo_code: "",
   };
 
-  const handleSubmit = (values, formik) => {
-    console.log(values);
+  // const { postData } = usePostData("/user/signup");
+
+  const handleSubmit = async (values, formik) => {
+    const { name, email, password, retype_password } = values;
+    if (password !== retype_password) {
+      setPasswordMatchError(true);
+    } else {
+      // console.log({ name, email, password });
+      setPasswordMatchError(false);
+
+      // postData(values);
+
+      const url = `${API_URL}/user/signup`;
+
+      const res = await fetch(url, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, email, password }),
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        console.log("success", data);
+        // formik.resetForm();
+      } else {
+        console.log("error", data);
+      }
+    }
   };
 
   return (
@@ -63,6 +96,13 @@ function UserSignupPage() {
                       autoComplete="on"
                       icon={<FaLock />}
                     />
+                    {passwordMatchError && (
+                      <div className="grid grid-cols-3 mb-[18px]">
+                        <p className="col-start-2 col-end-4 text-sm">
+                          Password does not match
+                        </p>
+                      </div>
+                    )}
                     {/* {showCodeInput && (
                       <CodeField
                         label="PROMO CODE"
@@ -93,7 +133,7 @@ function UserSignupPage() {
                       <div className="">
                         <button
                           type="submit"
-                          className="button self-end mt-2 lg:mt-0 mr-[20px] capitalize px-[12px] py-[7px]"
+                          className="button self-end mt-2 lg:mt-0 ml-[180px] lg:ml-0 lg:mr-[80px] capitalize px-[12px] py-[7px]"
                         >
                           Sign Up
                         </button>
@@ -105,7 +145,7 @@ function UserSignupPage() {
             </Formik>
           </div>
 
-          <div className="flex flex-col items-center">
+          <div className="mt-10 pt-5 border-t border-gray-800 flex flex-col items-center">
             <p className=" text-custom-yellow2">Already have an account?</p>
             <Link href="/user-signin" passHref>
               <a>

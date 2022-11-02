@@ -41,11 +41,11 @@ export const dashboardLinks = [
     link: "/",
     icon: <FaDollarSign />,
   },
-  {
-    name: "Log Out",
-    link: "/",
-    icon: <FaSignOutAlt />,
-  },
+  // {
+  //   name: "Log Out",
+  //   link: "/",
+  //   icon: <FaSignOutAlt />,
+  // },
 ];
 
 export const dashboardLinks2 = [

@@ -1,7 +1,12 @@
 import React from "react";
 import Layout from "../components/Layout";
+import useGetData from "../hooks/useGetData";
 
 function MyAdsPage() {
+  // const { fetchedData } = useGetData("/post/get/dashboard");
+
+  // console.log("fetched", fetchedData);
+
   return (
     <Layout>
       <div className="font-roboto pb-[700px] font-thin">

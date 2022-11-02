@@ -4,6 +4,10 @@ import Layout from "../components/Layout";
 import { TextField } from "../components/common/InputField";
 import { FaAt, FaLock } from "react-icons/fa";
 import Link from "next/link";
+import { API_URL } from "../config";
+import useLogin from "../hooks/useLogin";
+import { getSession } from "next-auth/react";
+// import { ToastContainer, toast } from "react-toastify";
 
 function UserSigninPage() {
   const initialvalues = {
@@ -11,12 +15,37 @@ function UserSigninPage() {
     password: "",
   };
 
-  const handleSubmit = (values, formik) => {
-    console.log(values);
+  const { loginUser } = useLogin();
+
+  const handleSubmit = async (values, formik) => {
+    // console.log(values);
+
+    loginUser(values);
+
+    // const url = `${API_URL}/user/login`;
+
+    // const res = await fetch(url, {
+    //   method: "POST",
+    //   headers: {
+    //     Accept: "application/json",
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(values),
+    // });
+
+    // const data = await res.json();
+
+    // if (res.ok) {
+    //   console.log("success", data);
+    //   // formik.resetForm();
+    // } else {
+    //   console.log("error", data);
+    // }
   };
 
   return (
     <Layout>
+      {/* <ToastContainer /> */}
       <div className="font-roboto pt-[30px] pb-[360px] flex justify-center font-thin">
         <div className="lg:w-[540px]">
           <h1 className="text-center text-[32px] text-white">
@@ -49,7 +78,7 @@ function UserSigninPage() {
                       <div className="col-start-3 col-span-2">
                         <button
                           type="submit"
-                          className="button  capitalize px-[12px] py-[7px]"
+                          className="button capitalize px-[12px] py-[7px]"
                         >
                           Sign In
                         </button>
@@ -85,6 +114,23 @@ function UserSigninPage() {
       </div>
     </Layout>
   );
+}
+
+export async function getServerSideProps(context) {
+  const session = await getSession(context);
+
+  if (session) {
+    return {
+      redirect: {
+        destination: "/dashboard",
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {},
+  };
 }
 
 export default UserSigninPage;
