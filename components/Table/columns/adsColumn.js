@@ -19,30 +19,30 @@ export const adsColumn = [
     Header: "category",
     accessor: "category",
   },
-  {
-    Header: "service",
-    accessor: "service",
-  },
+  // {
+  //   Header: "service",
+  //   accessor: "service",
+  // },
   {
     Header: "title",
     accessor: "title",
   },
-  {
-    Header: "description",
-    accessor: "description",
-  },
-  {
-    Header: "email",
-    accessor: "email",
-  },
-  {
-    Header: "phone",
-    accessor: "phone",
-  },
-  {
-    Header: "age",
-    accessor: "age",
-  },
+  // {
+  //   Header: "description",
+  //   accessor: "description",
+  // },
+  // {
+  //   Header: "email",
+  //   accessor: "email",
+  // },
+  // {
+  //   Header: "phone",
+  //   accessor: "phone",
+  // },
+  // {
+  //   Header: "age",
+  //   accessor: "age",
+  // },
   // {
   //   Header: "images",
   //   accessor: "images",

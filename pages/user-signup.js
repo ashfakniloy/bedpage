@@ -6,10 +6,15 @@ import { FaAlignLeft, FaAt, FaBullhorn, FaLock } from "react-icons/fa";
 import Link from "next/link";
 import usePostData from "../hooks/usePostData";
 import { API_URL } from "../config";
+import { useRouter } from "next/router";
+import { toast } from "react-toastify";
+import useLogin from "../hooks/useLogin";
 
 function UserSignupPage() {
   const [showCodeInput, setShowCodeInput] = useState(false);
   const [passwordMatchError, setPasswordMatchError] = useState(false);
+
+  const router = useRouter();
 
   const initialvalues = {
     name: "",
@@ -20,6 +25,8 @@ function UserSignupPage() {
   };
 
   // const { postData } = usePostData("/user/signup");
+
+  const { loginUser } = useLogin();
 
   const handleSubmit = async (values, formik) => {
     const { name, email, password, retype_password } = values;
@@ -46,9 +53,15 @@ function UserSignupPage() {
 
       if (res.ok) {
         console.log("success", data);
+        // toast.success(data?.message);
+        toast.success("Account Created Successfully");
+        loginUser({ email, password });
+        // router.push("/user-signin");
+        // router.push("/user-signin");
         // formik.resetForm();
       } else {
         console.log("error", data);
+        toast.error(data?.message);
       }
     }
   };

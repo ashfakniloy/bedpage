@@ -220,6 +220,7 @@ export const config = {
     "/buy-credit",
     "/premium",
     "/message-blast",
+    "/my-ads",
     // "/user-signin",
     "/post-ad/:path*",
   ],

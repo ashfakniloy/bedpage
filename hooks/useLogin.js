@@ -19,6 +19,7 @@ function useLogin() {
 
     if (ok) {
       console.log(res);
+      toast.success("Signed in Successfully");
       await router.push("/dashboard");
     }
     // else {

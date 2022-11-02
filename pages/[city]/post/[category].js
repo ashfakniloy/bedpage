@@ -5,30 +5,32 @@ import { countriesData } from "../../../components/data/countriesData";
 import { API_URL } from "../../../config";
 import Link from "next/link";
 
-const testTitle = [
-  {
-    name: "Title 1",
-  },
-  {
-    name: "Title 2",
-  },
-  {
-    name: "Title 3",
-  },
-  {
-    name: "Title 4",
-  },
-  {
-    name: "Title 5",
-  },
-  {
-    name: "Title 6",
-  },
-];
+// const testTitle = [
+//   {
+//     name: "Title 1",
+//   },
+//   {
+//     name: "Title 2",
+//   },
+//   {
+//     name: "Title 3",
+//   },
+//   {
+//     name: "Title 4",
+//   },
+//   {
+//     name: "Title 5",
+//   },
+//   {
+//     name: "Title 6",
+//   },
+// ];
 
 function CategoryPage({ data }) {
   const router = useRouter();
   const { category, city } = router.query;
+
+  console.log("fetched data", data);
 
   // const result = countriesData.map((country) =>
   //   country.states.map((cities) =>
@@ -36,7 +38,7 @@ function CategoryPage({ data }) {
   //   )
   // );
 
-  const cityName = city && city.split("_").join("/").split("-").join(" ");
+  // const cityName = city && city.split("_").join("/").split("-").join(" ");
 
   // useEffect(() => {
   //   const result =
@@ -69,26 +71,31 @@ function CategoryPage({ data }) {
   //   console.log(result);
   // }, [cityName]);
 
-  const categoryFiltered = category?.split("-").join(" ");
+  const categoryName = category?.split("_").join("/").split("-").join(" ");
+  const cityName = city?.split("_").join("/").split("-").join(" ");
 
-  useEffect(() => {
-    const url = `${API_URL}/post/get/${city}/${category}`;
-    console.log(url);
-    const fetchData = async () => {
-      const res = await fetch(url);
-      const data = await res.json();
-      console.log(data);
-    };
+  // useEffect(() => {
+  //   // const url = `${API_URL}/post/get/${city}/${category}`;
+  //   const url =
+  //     "https://boiling-dusk-89135.herokuapp.com/v1/post/get/auburn/appliances";
+  //   console.log(url);
+  //   const fetchData = async () => {
+  //     const res = await fetch(url);
+  //     const data = await res.json();
+  //     console.log(data);
+  //   };
 
-    fetchData();
-  }, []);
+  //   fetchData();
+  // }, []);
+
+  const adTitles = data?.success?.title;
 
   return (
     <Layout>
       <div className="h-[770px]">
         <h1 className="text-[32px] font-semibold">
-          <span className="capitalize">{categoryFiltered}</span> in{" "}
-          <span className="capitalize">{city}</span>
+          <span className="capitalize">{categoryName}</span> in{" "}
+          <span className="capitalize">{cityName}</span>
         </h1>
         <p>
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Esse
@@ -100,6 +107,21 @@ function CategoryPage({ data }) {
         </p>
 
         <div className="my-5">
+          {adTitles?.map((title, i) => (
+            <div
+              key={i}
+              className=" odd:bg-custom-gray8 even:bg-custom-gray2 -mx-4 p-3"
+            >
+              <Link href="/">
+                <span className=" text-custom-yellow2 hover:text-white hover:underline text-lg">
+                  {title}
+                </span>
+              </Link>
+            </div>
+          ))}
+        </div>
+
+        {/* <div className="my-5">
           {testTitle.map((title, i) => (
             <div
               key={i}
@@ -112,25 +134,27 @@ function CategoryPage({ data }) {
               </Link>
             </div>
           ))}
-        </div>
+        </div> */}
       </div>
     </Layout>
   );
 }
 
-// export async function getServerSideProps({ query }) {
-//   const { city, category } = query;
-//   // console.log(city, category);
-//   const url = `${API_URL}/post/get/${city}/${category}`;
-//   const res = await fetch(url);
+export async function getServerSideProps({ query }) {
+  const { city, category } = query;
+  // console.log(city, category);
+  const url = `${API_URL}/post/get/${city}/${category}`;
+  // const url = "https://jsonplaceholder.typicode.com/todos";
+  console.log(url);
+  const res = await fetch(url);
 
-//   const data = await res.json();
+  const data = await res.json();
 
-//   console.log(data);
+  console.log(data);
 
-//   return {
-//     props: {},
-//   };
-// }
+  return {
+    props: {},
+  };
+}
 
 export default CategoryPage;
