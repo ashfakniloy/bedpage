@@ -27,7 +27,7 @@ function Services() {
 
   // const cityName = cityUppercase();
 
-  const cityName = city.split("-").join(" ").split("_").join("/");
+  const cityName = city?.split("-").join(" ").split("_").join("/");
   // .split("/")
   // .join("")
   // .split(" ")

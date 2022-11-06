@@ -1,5 +1,5 @@
 function NotFoundPage() {
-  return <p className="text-black p-2">404 Noting Found</p>;
+  return <div className="p-5 text-white">Page not found</div>;
 }
 
 export default NotFoundPage;

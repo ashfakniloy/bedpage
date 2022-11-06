@@ -1,9 +1,11 @@
 import React, { useEffect } from "react";
 import { useRouter } from "next/router";
-import Layout from "../../../components/Layout";
-import { countriesData } from "../../../components/data/countriesData";
-import { API_URL } from "../../../config";
+import Layout from "../../../../components/Layout";
+import { countriesData } from "../../../../components/data/countriesData";
+import { API_URL } from "../../../../config";
 import Link from "next/link";
+import { allCategories } from "../../../../components/data/all/allCategories";
+import { allCities } from "../../../../components/data/all/allCities";
 
 // const testTitle = [
 //   {
@@ -26,9 +28,9 @@ import Link from "next/link";
 //   },
 // ];
 
-function CategoryPage({ data }) {
-  const router = useRouter();
-  const { category, city } = router.query;
+function CategoryPage({ data, categoryName, cityName }) {
+  // const router = useRouter();
+  // const { category, city } = router.query;
 
   console.log("fetched data", data);
 
@@ -71,8 +73,8 @@ function CategoryPage({ data }) {
   //   console.log(result);
   // }, [cityName]);
 
-  const categoryName = category?.split("_").join("/").split("-").join(" ");
-  const cityName = city?.split("_").join("/").split("-").join(" ");
+  // const categoryName = category?.split("_").join("/").split("-").join(" ");
+  // const cityName = city?.split("_").join("/").split("-").join(" ");
 
   // useEffect(() => {
   //   // const url = `${API_URL}/post/get/${city}/${category}`;
@@ -150,10 +152,25 @@ export async function getServerSideProps({ query }) {
 
   const data = await res.json();
 
-  console.log(data);
+  // console.log(data);
+
+  // console.log(allCategories);
+
+  if (!allCities.includes(city) || !allCategories.includes(category)) {
+    return {
+      notFound: true,
+    };
+  }
+
+  const categoryName = category?.split("_").join("/").split("-").join(" ");
+  const cityName = city?.split("_").join("/").split("-").join(" ");
 
   return {
-    props: {},
+    props: {
+      data,
+      categoryName,
+      cityName,
+    },
   };
 }
 
