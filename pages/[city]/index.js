@@ -58,10 +58,10 @@ function PostPage() {
   // }
 
   return (
-    <Layout>
+    <>
       <Services />
       <Description />
-    </Layout>
+    </>
   );
 }
 
@@ -71,8 +71,6 @@ export async function getServerSideProps({ params: { city } }) {
       notFound: true,
     };
   }
-
-  console.log(allCities);
 
   return {
     props: {},

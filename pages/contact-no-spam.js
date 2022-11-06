@@ -80,7 +80,7 @@ function ContactPage() {
   };
 
   return (
-    <Layout>
+    <>
       <div className="pt-[30px] pb-[400px] flex justify-center ">
         <div className="lg:w-[540px]">
           <h1 className="font-roboto text-center text-[32px] text-white font-thin">
@@ -156,7 +156,7 @@ function ContactPage() {
           </div>
         </div>
       </div>
-    </Layout>
+    </>
   );
 }
 

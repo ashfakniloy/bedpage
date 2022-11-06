@@ -26,10 +26,10 @@ function FreeAdPage() {
   // console.log(services);
 
   return (
-    <Layout>
+    <>
       {/* <FreeAdOld formTitle={formTitle} services={services} /> */}
       <FreeAd formTitle={formTitle} services={services} />
-    </Layout>
+    </>
   );
 }
 

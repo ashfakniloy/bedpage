@@ -12,7 +12,7 @@ import Layout from "../components/Layout";
 
 function MessageBlastPage() {
   return (
-    <Layout>
+    <>
       <div className="flex justify-end flex-wrap">
         <p className="flex items-center gap-1 uppercase">
           <span>
@@ -48,7 +48,7 @@ function MessageBlastPage() {
       <MessageBlast />
       {/* </Form>
       </Formik> */}
-    </Layout>
+    </>
   );
 }
 

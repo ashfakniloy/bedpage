@@ -44,7 +44,7 @@ function UserSigninPage() {
   };
 
   return (
-    <Layout>
+    <>
       {/* <ToastContainer /> */}
       <div className="font-roboto pt-[30px] pb-[360px] flex justify-center font-thin">
         <div className="lg:w-[540px]">
@@ -112,7 +112,7 @@ function UserSigninPage() {
           </div>
         </div>
       </div>
-    </Layout>
+    </>
   );
 }
 

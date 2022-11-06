@@ -25,7 +25,7 @@ function MyAdsPage({ data }) {
   // ];
 
   return (
-    <Layout>
+    <>
       <div className="font-roboto pb-[700px] font-thin">
         <h1 className="text-center text-[32px] text-white mb-1 uppercase">
           MY ADS
@@ -54,7 +54,7 @@ function MyAdsPage({ data }) {
           <div className="lg:pr-[230px] ">Bill</div>
         </div> */}
       </div>
-    </Layout>
+    </>
   );
 }
 

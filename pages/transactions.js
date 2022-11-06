@@ -5,7 +5,7 @@ import { BsCurrencyBitcoin } from "react-icons/bs";
 
 function TransactionsPage() {
   return (
-    <Layout>
+    <>
       <div className="flex justify-end flex-wrap">
         <Link href="/buy-credit" passHref>
           <a>
@@ -38,7 +38,7 @@ function TransactionsPage() {
           <div className="border-t border-custom-yellow2 w-full"></div>
         </div>
       </div>
-    </Layout>
+    </>
   );
 }
 

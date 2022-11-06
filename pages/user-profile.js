@@ -8,7 +8,7 @@ import Layout from "../components/Layout";
 
 function UserProfilePage() {
   return (
-    <Layout>
+    <>
       <div className="flex justify-end">
         <Link href="/buy-credit" passHref>
           <a>
@@ -35,7 +35,7 @@ function UserProfilePage() {
 
       <UpdateProfile />
       <UpdatePassword />
-    </Layout>
+    </>
   );
 }
 

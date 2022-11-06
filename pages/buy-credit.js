@@ -9,7 +9,7 @@ import Layout from "../components/Layout";
 
 function BuyCreditpage() {
   return (
-    <Layout>
+    <>
       <div className="flex justify-end flex-wrap">
         <p className="flex items-center gap-1 uppercase">
           <span>
@@ -54,7 +54,7 @@ function BuyCreditpage() {
       </div>
 
       <BuyCredit />
-    </Layout>
+    </>
   );
 }
 

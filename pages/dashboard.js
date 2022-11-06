@@ -15,7 +15,7 @@ function DashboardPage() {
   };
 
   return (
-    <Layout>
+    <>
       <div className="py-1">
         <div className="grid grid-cols-2 gap-[30px] text-custom-yellow2">
           <div className="">
@@ -122,7 +122,7 @@ function DashboardPage() {
           star. Noticed by everyone and brings a lot of leads.
         </p>
       </div>
-    </Layout>
+    </>
   );
 }
 

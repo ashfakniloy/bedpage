@@ -67,7 +67,7 @@ function UserSignupPage() {
   };
 
   return (
-    <Layout>
+    <>
       <div className="font-roboto pt-[30px] pb-[50px] flex justify-center font-thin">
         <div className="lg:w-[540px]">
           <h1 className="text-center text-[32px] text-white mb-3">
@@ -170,7 +170,7 @@ function UserSignupPage() {
           </div>
         </div>
       </div>
-    </Layout>
+    </>
   );
 }
 

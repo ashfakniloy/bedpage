@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { modalLinks, modalLinks2, modalLinksLogged } from "./modalLinks";
 import useLogOut from "../../hooks/useLogOut";
+import { useRouter } from "next/router";
 
 // Modal.setAppElement("#__next");
 
@@ -32,6 +33,12 @@ import useLogOut from "../../hooks/useLogOut";
 // };
 
 function MenuModal({ showMenu, setShowMenu, node, status }) {
+  const { pathname } = useRouter();
+
+  useEffect(() => {
+    setShowMenu(false);
+  }, [pathname, setShowMenu]);
+
   useEffect(() => {
     if (showMenu) {
       document.body.style.overflow = "hidden";

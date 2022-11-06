@@ -6,7 +6,7 @@ import { redirectPage } from "../../utils/redirectPage";
 
 function PostAdPage() {
   return (
-    <Layout>
+    <>
       <div className=" pb-14 min-h-[760px]">
         <h1 className="text-[32px] text-center font-medium">Post an Ad</h1>
 
@@ -33,7 +33,7 @@ function PostAdPage() {
           </div>
         </div>
       </div>
-    </Layout>
+    </>
   );
 
   // return (

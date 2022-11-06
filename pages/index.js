@@ -9,18 +9,18 @@ import { useSession } from "next-auth/react";
 import { useEffect } from "react";
 
 export default function Home() {
-  const { data } = useSession();
+  // const { data } = useSession();
 
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
+  // useEffect(() => {
+  //   console.log(data);
+  // }, [data]);
 
   return (
-    <Layout>
+    <>
       <Banner />
       <Locations />
       <Description />
-    </Layout>
+    </>
   );
 }
 

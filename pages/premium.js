@@ -10,7 +10,7 @@ import Layout from "../components/Layout";
 
 function PremiumPage() {
   return (
-    <Layout>
+    <>
       <div className="flex justify-end flex-wrap">
         <p className="flex items-center gap-1 uppercase">
           <span>
@@ -43,7 +43,7 @@ function PremiumPage() {
       </div>
 
       <PremiumMembership />
-    </Layout>
+    </>
   );
 }
 

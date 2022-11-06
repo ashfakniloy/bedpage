@@ -15,7 +15,7 @@ function UserResetPage() {
   };
 
   return (
-    <Layout>
+    <>
       <div className="font-roboto pt-[30px] pb-[350px] flex justify-center font-thin">
         <div className="lg:w-[540px]">
           <h1 className="text-center text-[32px] text-white mb-3">
@@ -57,7 +57,7 @@ function UserResetPage() {
           </div>
         </div>
       </div>
-    </Layout>
+    </>
   );
 }
 

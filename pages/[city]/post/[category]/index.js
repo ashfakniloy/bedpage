@@ -93,7 +93,7 @@ function CategoryPage({ data, categoryName, cityName }) {
   const adTitles = data?.success?.title;
 
   return (
-    <Layout>
+    <>
       <div className="h-[770px]">
         <h1 className="text-[32px] font-semibold">
           <span className="capitalize">{categoryName}</span> in{" "}
@@ -138,7 +138,7 @@ function CategoryPage({ data, categoryName, cityName }) {
           ))}
         </div> */}
       </div>
-    </Layout>
+    </>
   );
 }
 

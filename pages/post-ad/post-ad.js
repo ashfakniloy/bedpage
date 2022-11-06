@@ -25,9 +25,9 @@ function PostAdPage() {
   );
 
   return (
-    <Layout>
+    <>
       <PostAd formTitle={formTitle} services={services} />
-    </Layout>
+    </>
   );
 }
 

@@ -27,11 +27,11 @@ function MultipleLocationAdPage() {
   );
 
   return (
-    <Layout>
+    <>
       {/* <OldMultiLocationAd formTitle={formTitle} services={services} /> */}
       {/* <MultiLocationAd formTitle={formTitle} services={services} /> */}
       <TestMultiple formTitle={formTitle} services={services} />
-    </Layout>
+    </>
   );
 }
 
