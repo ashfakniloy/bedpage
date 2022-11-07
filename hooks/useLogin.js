@@ -5,29 +5,28 @@ import { useRouter } from "next/router";
 function useLogin() {
   const router = useRouter();
 
-  // const { data } = useSession();
-  // const { id, user_name, institution_name, role } = data ? data.user : "";
+  const { data } = useSession();
 
   const loginUser = async (values) => {
     const res = await signIn("credentials", {
       ...values,
-      // callbackUrl: `${window.location.origin}/dashboard`,
-      redirect: false,
+      callbackUrl: `${window.location.origin}/dashboard`,
+      // redirect: false,
     });
 
-    const { ok, error } = res;
+    // const { ok, error } = res;
 
-    if (ok) {
+    if (res?.ok) {
       console.log(res);
+      // router.reload();
       toast.success("Signed in Successfully");
-      await router.push("/dashboard");
     }
     // else {
     //   toast.error("Something went wrong");
     // }
-    if (error) {
+    if (res?.error) {
       console.log(res);
-      toast.error(error);
+      toast.error(res?.error);
     }
   };
 

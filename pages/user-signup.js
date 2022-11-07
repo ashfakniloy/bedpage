@@ -9,6 +9,7 @@ import { API_URL } from "../config";
 import { useRouter } from "next/router";
 import { toast } from "react-toastify";
 import useLogin from "../hooks/useLogin";
+import { getSession, useSession } from "next-auth/react";
 
 function UserSignupPage() {
   const [showCodeInput, setShowCodeInput] = useState(false);
@@ -25,6 +26,8 @@ function UserSignupPage() {
   };
 
   // const { postData } = usePostData("/user/signup");
+
+  const { data } = useSession();
 
   const { loginUser } = useLogin();
 
@@ -56,7 +59,9 @@ function UserSignupPage() {
         // toast.success(data?.message);
         toast.success("Account Created Successfully");
         loginUser({ email, password });
-        // router.push("/user-signin");
+        // if (data) {
+        //   router.push("/dashboard");
+        // }
         // router.push("/user-signin");
         // formik.resetForm();
       } else {
@@ -172,6 +177,23 @@ function UserSignupPage() {
       </div>
     </>
   );
+}
+
+export async function getServerSideProps(context) {
+  const session = await getSession(context);
+
+  if (session) {
+    return {
+      redirect: {
+        destination: "/dashboard",
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {},
+  };
 }
 
 export default UserSignupPage;

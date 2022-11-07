@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { modalLinks, modalLinks2, modalLinksLogged } from "./modalLinks";
 import useLogOut from "../../hooks/useLogOut";
-import { useRouter } from "next/router";
+import Router, { useRouter } from "next/router";
 
 // Modal.setAppElement("#__next");
 
@@ -38,6 +38,10 @@ function MenuModal({ showMenu, setShowMenu, node, status }) {
   useEffect(() => {
     setShowMenu(false);
   }, [pathname, setShowMenu]);
+
+  // Router.events.on("routeChangeStart", (url) => {
+  //   setShowMenu(false);
+  // });
 
   useEffect(() => {
     if (showMenu) {

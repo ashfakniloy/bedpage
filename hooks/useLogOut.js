@@ -1,10 +1,12 @@
 import { useRouter } from "next/router";
 import Cookies from "js-cookie";
 // import cookie from "cookie";
-import { signOut } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 
 function useLogOut() {
   // const dispatch = useDispatch();
+
+  const { data } = useSession();
   const router = useRouter();
 
   const logoutUser = () => {
@@ -14,7 +16,8 @@ function useLogOut() {
     });
 
     Cookies.remove("id");
-    // router.push("/user-signin");
+
+    // await router.push("/user-signin");
   };
 
   return { logoutUser };

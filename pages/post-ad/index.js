@@ -4,10 +4,10 @@ import { getSession } from "next-auth/react";
 import { redirectPage } from "../../utils/redirectPage";
 // import { countriesData } from "../../components/data/countriesData";
 
-function PostAdPage() {
+function PostAnAdPage() {
   return (
     <>
-      <div className=" pb-14 min-h-[760px]">
+      <div className="pb-14 min-h-[760px]">
         <h1 className="text-[32px] text-center font-medium">Post an Ad</h1>
 
         <div className="space-y-4 text-[19px] lg:text-[24px]">
@@ -70,4 +70,4 @@ function PostAdPage() {
 //   });
 // }
 
-export default PostAdPage;
+export default PostAnAdPage;
