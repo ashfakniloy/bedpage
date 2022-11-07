@@ -35,13 +35,13 @@ import Router, { useRouter } from "next/router";
 function MenuModal({ showMenu, setShowMenu, node, status }) {
   const { pathname } = useRouter();
 
-  useEffect(() => {
-    setShowMenu(false);
-  }, [pathname, setShowMenu]);
-
-  // Router.events.on("routeChangeStart", (url) => {
+  // useEffect(() => {
   //   setShowMenu(false);
-  // });
+  // }, [pathname, setShowMenu]);
+
+  Router.events.on("routeChangeStart", (url) => {
+    setShowMenu(false);
+  });
 
   useEffect(() => {
     if (showMenu) {
