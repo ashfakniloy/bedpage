@@ -10,21 +10,21 @@ function useLogin() {
   const loginUser = async (values) => {
     const res = await signIn("credentials", {
       ...values,
-      callbackUrl: `${window.location.origin}/dashboard`,
-      // redirect: false,
+      // callbackUrl: `${window.location.origin}/dashboard`,
+      redirect: false,
     });
 
     // const { ok, error } = res;
 
     if (res?.ok) {
       console.log(res);
-      // router.reload();
+      router.reload();
+      router.push("/dashboard");
       toast.success("Signed in Successfully");
     }
-    // else {
-    //   toast.error("Something went wrong");
-    // }
+
     if (res?.error) {
+      // router.reload();
       console.log(res);
       toast.error(res?.error);
     }
