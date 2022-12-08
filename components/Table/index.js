@@ -116,64 +116,67 @@ function Table({ columnsHeading, usersData }) {
   return (
     <div className="flex flex-col items-stretch">
       <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
-      <table {...getTableProps()} className="table-auto  text-xs lg:text-base">
-        <thead className="bg-custom-gray5">
-          {headerGroups.map((headerGroup, i) => (
-            <tr key={i} {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map((column, i) => (
-                <th
-                  key={i}
-                  className="px-4 py-3 text-sm border-collapse border border-gray-800 capitalize"
-                >
-                  {column.render("Header")}
-                  <span
-                    {...column.getHeaderProps(column.getSortByToggleProps())}
-                    className="inline-block px-2"
+      <div className="flex flex-col items-stretch overflow-x-scroll lg:overflow-x-hidden ">
+        <table {...getTableProps()} className="table-auto text-xs lg:text-base">
+          <thead className="bg-custom-gray5">
+            {headerGroups.map((headerGroup, i) => (
+              <tr key={i} {...headerGroup.getHeaderGroupProps()}>
+                {headerGroup.headers.map((column, i) => (
+                  <th
+                    key={i}
+                    // className="px-4 py-3 text-sm border-collapse border border-gray-800 capitalize first:sticky w-full left-0 first:bg-custom-gray5"
+                    className="px-4 py-3 text-sm border-collapse border border-gray-800 capitalize"
                   >
-                    <div className="text-xs">
-                      {column.isSorted ? (
-                        column.isSortedDesc ? (
-                          <FaSortDown />
+                    {column.render("Header")}
+                    <span
+                      {...column.getHeaderProps(column.getSortByToggleProps())}
+                      className="inline-block px-2"
+                    >
+                      <div className="text-xs">
+                        {column.isSorted ? (
+                          column.isSortedDesc ? (
+                            <FaSortDown />
+                          ) : (
+                            <FaSortUp />
+                          )
                         ) : (
-                          <FaSortUp />
-                        )
-                      ) : (
-                        <FaSort />
-                      )}
-                    </div>
-                  </span>
-                  {/* <div className="mt-2 text-black font-normal">
+                          <FaSort />
+                        )}
+                      </div>
+                    </span>
+                    {/* <div className="mt-2 text-black font-normal">
                       {column.canFilter ? column.render("Filter") : null}
                     </div> */}
-                </th>
-              ))}
-            </tr>
-          ))}
-        </thead>
-        <tbody {...getTableBodyProps()}>
-          {page.map((row, i) => {
-            prepareRow(row);
-            return (
-              <tr
-                key={i}
-                {...row.getRowProps()}
-                className={`hover:shadow transition duration-200 ${
-                  active === i && "shadow bg-gray-700"
-                }`}
-              >
-                {row.cells.map((cell, i) => {
-                  return (
-                    <td
-                      key={i}
-                      {...cell.getCellProps()}
-                      className="px-4 py-3 text-sm text-white font-semibold border-collapse border border-gray-800"
-                    >
-                      {cell.render("Cell")}
-                    </td>
-                  );
-                })}
+                  </th>
+                ))}
+              </tr>
+            ))}
+          </thead>
+          <tbody {...getTableBodyProps()}>
+            {page.map((row, i) => {
+              prepareRow(row);
+              return (
+                <tr
+                  key={i}
+                  {...row.getRowProps()}
+                  className={`hover:shadow transition duration-200 relative${
+                    active === i && "shadow bg-gray-700"
+                  }`}
+                >
+                  {row.cells.map((cell, i) => {
+                    return (
+                      <td
+                        key={i}
+                        {...cell.getCellProps()}
+                        // className="px-4 py-3 first:sticky  first:left-0 first:bg-custom-gray2 text-sm text-white font-semibold border-collapse border border-gray-800"
+                        className="px-4 py-3  text-sm text-white font-semibold border-collapse border border-gray-800"
+                      >
+                        {cell.render("Cell")}
+                      </td>
+                    );
+                  })}
 
-                {/* <td className="cursor-pointer">
+                  {/* <td className="cursor-pointer">
                   {active !== i && (
                     <div
                       className={`px-2 py-[11px] border border-white text-lg  text-white bg-transparent ${
@@ -202,7 +205,7 @@ function Table({ columnsHeading, usersData }) {
                   />
                 </td> */}
 
-                {/* <td className="cursor-pointer w-[10px]">
+                  {/* <td className="cursor-pointer w-[10px]">
                   {active !== i && (
                     <div
                       className={`px-2 py-[11px] border border-white text-lg  text-custom-gray3 bg-white ${
@@ -244,51 +247,54 @@ function Table({ columnsHeading, usersData }) {
                     </div>
                   )}
                 </td> */}
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
 
-      <div className="flex justify-center text-sm items-center mt-3 space-x-2">
-        <span className="text-sm">
-          Page{" "}
-          <strong>
-            {pageIndex + 1} of {pageOptions.length}
-          </strong>
-        </span>
+      <div className="flex flex-col lg:flex-row gap-5 justify-center items-center text-sm mt-3">
+        <div className="flex gap-0.5 lg:gap-1 flex-nowrap">
+          <span className="text-sm">
+            Page{" "}
+            <strong>
+              {pageIndex + 1} of {pageOptions.length}
+            </strong>
+          </span>
 
-        <span>
-          | Rows per page:{" "}
-          <select
-            className="outline-none w-12 border border-slate-300 bg-slate-600"
-            value={pageSize}
-            onChange={(e) => setPageSize(Number(e.target.value))}
-          >
-            {[20, 50, 100].map((pageSize) => (
-              <option key={pageSize} value={pageSize}>
-                {pageSize}
-              </option>
-            ))}
-          </select>
-        </span>
+          <span>
+            | Rows per page:{" "}
+            <select
+              className="outline-none w-12 border border-slate-300 bg-slate-600"
+              value={pageSize}
+              onChange={(e) => setPageSize(Number(e.target.value))}
+            >
+              {[20, 50, 100].map((pageSize) => (
+                <option key={pageSize} value={pageSize}>
+                  {pageSize}
+                </option>
+              ))}
+            </select>
+          </span>
 
-        <span>
-          | Go to page:{" "}
-          <input
-            type="number"
-            min="1"
-            max={pageOptions.length}
-            className="w-10 outline-none border border-slate-500 bg-slate-600"
-            defaultValue={pageIndex + 1}
-            onChange={(e) => {
-              const pageNumber = e.target.value
-                ? Number(e.target.value) - 1
-                : 0;
-              gotoPage(pageNumber);
-            }}
-          />
-        </span>
+          <span>
+            | Go to page:{" "}
+            <input
+              type="number"
+              min="1"
+              max={pageOptions.length}
+              className="w-10 outline-none border border-slate-500 bg-slate-600"
+              defaultValue={pageIndex + 1}
+              onChange={(e) => {
+                const pageNumber = e.target.value
+                  ? Number(e.target.value) - 1
+                  : 0;
+                gotoPage(pageNumber);
+              }}
+            />
+          </span>
+        </div>
 
         <div className="flex gap-1 ">
           <button

@@ -31,7 +31,7 @@ const nextAuthOptions = (req, res) => {
 
           const user = await response.json();
 
-          // console.log("main", user);
+          console.log("main", user);
 
           // if (response.ok && user) {
           if (response.ok) {

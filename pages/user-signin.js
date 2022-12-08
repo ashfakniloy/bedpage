@@ -7,6 +7,8 @@ import Link from "next/link";
 import { API_URL } from "../config";
 import useLogin from "../hooks/useLogin";
 import { getSession } from "next-auth/react";
+// import { unstable_getServerSession } from "next-auth";
+// import { RotatingLines } from "react-loader-spinner";
 // import { ToastContainer, toast } from "react-toastify";
 
 function UserSigninPage() {
@@ -118,6 +120,9 @@ function UserSigninPage() {
 
 export async function getServerSideProps(context) {
   const session = await getSession(context);
+  // const session = await unstable_getServerSession(context.req, context.res);
+
+  console.log("session is", session);
 
   if (session) {
     return {

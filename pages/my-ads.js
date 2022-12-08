@@ -31,7 +31,7 @@ function MyAdsPage({ data }) {
           MY ADS
         </h1>
 
-        <div className="my-10 ">
+        <div className="my-10">
           {posts && <Table columnsHeading={adsColumn} usersData={posts} />}
         </div>
 

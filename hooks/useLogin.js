@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 function useLogin() {
   const router = useRouter();
 
-  const { data } = useSession();
+  const { data, status } = useSession();
 
   const loginUser = async (values) => {
     const res = await signIn("credentials", {
@@ -19,8 +19,8 @@ function useLogin() {
     if (res?.ok) {
       console.log(res);
       router.reload();
-      router.push("/dashboard");
-      toast.success("Signed in Successfully");
+      // router.push("/dashboard");
+      // toast.success("Signed in Successfully");
     }
 
     if (res?.error) {

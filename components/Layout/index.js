@@ -1,9 +1,9 @@
 import Head from "next/head";
 import Header from "./Header";
 import Footer from "./Footer";
-import NextNProgress from "nextjs-progressbar";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+// import NextNProgress from "nextjs-progressbar";
+// import { ToastContainer } from "react-toastify";
+// import "react-toastify/dist/ReactToastify.css";
 
 function Layout({ children, pageDetails }) {
   // const { title, description, keywords } = pageDetails;
@@ -21,8 +21,8 @@ function Layout({ children, pageDetails }) {
       </Head>
 
       <>
-        <NextNProgress color="red" options={{ showSpinner: false }} />
-        <ToastContainer />
+        {/* <NextNProgress color="red" options={{ showSpinner: false }} />
+        <ToastContainer /> */}
         <div className="container overflow-x-hidden">
           <Header />
 

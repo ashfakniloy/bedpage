@@ -23,7 +23,7 @@ import usePostData from "../../hooks/usePostData";
 import MySelect from "../common/MySelect";
 import Select from "react-select";
 
-function TestMultiple({ formTitle, services }) {
+function MultiLocationAd({ formTitle, services }) {
   const [locationArray, setLocationArray] = useState([]);
   const [changeColor, setChangeColor] = useState(false);
 
@@ -65,7 +65,7 @@ function TestMultiple({ formTitle, services }) {
   //   console.log(values);
   // };
 
-  const { postData } = usePostData();
+  const { postData } = usePostData("/post/add/multiple");
 
   const handleSubmit = (values, formik) => {
     postData(values, formik);
@@ -334,4 +334,4 @@ function TestMultiple({ formTitle, services }) {
   );
 }
 
-export default TestMultiple;
+export default MultiLocationAd;

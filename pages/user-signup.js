@@ -57,8 +57,9 @@ function UserSignupPage() {
       if (res.ok) {
         console.log("success", data);
         // toast.success(data?.message);
-        toast.success("Account Created Successfully");
-        loginUser({ email, password });
+        router.push("/verification");
+        // toast.success("Account Created Successfully");
+        // loginUser({ email, password });
         // if (data) {
         //   router.push("/dashboard");
         // }
